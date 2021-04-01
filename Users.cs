@@ -75,11 +75,17 @@ namespace Proyek_UAS
                         //Insert data yang ada di textbox ke dalam database
                         SqlCommand cmd = con.CreateCommand();
                         cmd.CommandType = CommandType.Text;
-                        cmd.CommandText = "insert into Users values ('" + FirstNameBox.Text + "','" + LastNameBox.Text + "', '" + UsernameBox.Text + "', '" + PasswordBox.Text + "', '" + EmailBox.Text + "', '" + PhoneBox.Text + "')";
+                        cmd.CommandText = "INSERT INTO Users VALUES ('" + FirstNameBox.Text + "','"
+                                                                        + LastNameBox.Text + "', '"
+                                                                        + UsernameBox.Text + "', '"
+                                                                        + PasswordBox.Text + "', '"
+                                                                        + EmailBox.Text + "', '"
+                                                                        + PhoneBox.Text + "')";
                         cmd.ExecuteNonQuery();
 
                         //Menghapus teks yang ada di textbox
-                        FirstNameBox.Text = ""; LastNameBox.Text = ""; UsernameBox.Text = ""; PasswordBox.Text = ""; EmailBox.Text = ""; PhoneBox.Text = "";
+                        FirstNameBox.Text = ""; LastNameBox.Text = ""; UsernameBox.Text = "";
+                        PasswordBox.Text = ""; EmailBox.Text = ""; PhoneBox.Text = "";
 
                         //Refresh Table
                         display();

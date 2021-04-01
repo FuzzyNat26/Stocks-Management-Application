@@ -30,26 +30,27 @@ namespace Proyek_UAS
         private void InitializeComponent()
         {
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.Profit_Box = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.Quantity_Box = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.Product_ID_Box = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Product_Price_Box = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
-            this.LastNameBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.FirstNameBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Username_Box = new System.Windows.Forms.ComboBox();
+            this.deleteButton = new System.Windows.Forms.Button();
+            this.Purchase_Date = new System.Windows.Forms.DateTimePicker();
+            this.Dealer_Name_Box = new System.Windows.Forms.ComboBox();
+            this.Product_Name_Box = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -64,15 +65,15 @@ namespace Proyek_UAS
             this.label8.TabIndex = 59;
             this.label8.Text = "Profit %";
             // 
-            // textBox5
+            // Profit_Box
             // 
-            this.textBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(216)))), ((int)(((byte)(96)))));
-            this.textBox5.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(1068, 197);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(267, 35);
-            this.textBox5.TabIndex = 58;
+            this.Profit_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(216)))), ((int)(((byte)(96)))));
+            this.Profit_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Profit_Box.Location = new System.Drawing.Point(1068, 197);
+            this.Profit_Box.Multiline = true;
+            this.Profit_Box.Name = "Profit_Box";
+            this.Profit_Box.Size = new System.Drawing.Size(267, 35);
+            this.Profit_Box.TabIndex = 58;
             // 
             // label9
             // 
@@ -84,16 +85,6 @@ namespace Proyek_UAS
             this.label9.TabIndex = 57;
             this.label9.Text = "Purchase Date";
             // 
-            // textBox6
-            // 
-            this.textBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
-            this.textBox6.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(1068, 113);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(267, 35);
-            this.textBox6.TabIndex = 56;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -104,15 +95,15 @@ namespace Proyek_UAS
             this.label6.TabIndex = 55;
             this.label6.Text = "Quantity";
             // 
-            // textBox3
+            // Quantity_Box
             // 
-            this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
-            this.textBox3.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(744, 197);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(267, 35);
-            this.textBox3.TabIndex = 54;
+            this.Quantity_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
+            this.Quantity_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Quantity_Box.Location = new System.Drawing.Point(744, 197);
+            this.Quantity_Box.Multiline = true;
+            this.Quantity_Box.Name = "Quantity_Box";
+            this.Quantity_Box.Size = new System.Drawing.Size(267, 35);
+            this.Quantity_Box.TabIndex = 54;
             // 
             // label7
             // 
@@ -124,15 +115,16 @@ namespace Proyek_UAS
             this.label7.TabIndex = 53;
             this.label7.Text = "Product ID";
             // 
-            // textBox4
+            // Product_ID_Box
             // 
-            this.textBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
-            this.textBox4.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(744, 113);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(267, 35);
-            this.textBox4.TabIndex = 52;
+            this.Product_ID_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
+            this.Product_ID_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Product_ID_Box.Location = new System.Drawing.Point(744, 113);
+            this.Product_ID_Box.Multiline = true;
+            this.Product_ID_Box.Name = "Product_ID_Box";
+            this.Product_ID_Box.ReadOnly = true;
+            this.Product_ID_Box.Size = new System.Drawing.Size(267, 35);
+            this.Product_ID_Box.TabIndex = 52;
             // 
             // label4
             // 
@@ -144,15 +136,15 @@ namespace Proyek_UAS
             this.label4.TabIndex = 51;
             this.label4.Text = "Product Price";
             // 
-            // textBox1
+            // Product_Price_Box
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
-            this.textBox1.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(419, 197);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(267, 35);
-            this.textBox1.TabIndex = 50;
+            this.Product_Price_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
+            this.Product_Price_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Product_Price_Box.Location = new System.Drawing.Point(419, 197);
+            this.Product_Price_Box.Multiline = true;
+            this.Product_Price_Box.Name = "Product_Price_Box";
+            this.Product_Price_Box.Size = new System.Drawing.Size(267, 35);
+            this.Product_Price_Box.TabIndex = 50;
             // 
             // label5
             // 
@@ -160,19 +152,9 @@ namespace Proyek_UAS
             this.label5.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(416, 89);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(90, 19);
+            this.label5.Size = new System.Drawing.Size(93, 19);
             this.label5.TabIndex = 49;
-            this.label5.Text = "User Name";
-            // 
-            // textBox2
-            // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
-            this.textBox2.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(419, 113);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(267, 35);
-            this.textBox2.TabIndex = 48;
+            this.label5.Text = "Inserted By";
             // 
             // button2
             // 
@@ -180,9 +162,9 @@ namespace Proyek_UAS
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(1068, 344);
+            this.button2.Location = new System.Drawing.Point(1068, 425);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(267, 171);
+            this.button2.Size = new System.Drawing.Size(267, 273);
             this.button2.TabIndex = 47;
             this.button2.Text = "PRODUCT\r\nNAME LIST";
             this.button2.UseVisualStyleBackColor = false;
@@ -200,6 +182,7 @@ namespace Proyek_UAS
             this.button1.TabIndex = 45;
             this.button1.Text = "PURCHASE";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // dataGridView1
             // 
@@ -227,16 +210,6 @@ namespace Proyek_UAS
             this.label2.TabIndex = 43;
             this.label2.Text = "Product Name";
             // 
-            // LastNameBox
-            // 
-            this.LastNameBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
-            this.LastNameBox.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LastNameBox.Location = new System.Drawing.Point(91, 197);
-            this.LastNameBox.Multiline = true;
-            this.LastNameBox.Name = "LastNameBox";
-            this.LastNameBox.Size = new System.Drawing.Size(267, 35);
-            this.LastNameBox.TabIndex = 42;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -246,16 +219,6 @@ namespace Proyek_UAS
             this.label3.Size = new System.Drawing.Size(104, 19);
             this.label3.TabIndex = 41;
             this.label3.Text = "Dealer Name";
-            // 
-            // FirstNameBox
-            // 
-            this.FirstNameBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
-            this.FirstNameBox.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FirstNameBox.Location = new System.Drawing.Point(91, 113);
-            this.FirstNameBox.Multiline = true;
-            this.FirstNameBox.Name = "FirstNameBox";
-            this.FirstNameBox.Size = new System.Drawing.Size(267, 35);
-            this.FirstNameBox.TabIndex = 40;
             // 
             // label1
             // 
@@ -281,31 +244,110 @@ namespace Proyek_UAS
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // Username_Box
+            // 
+            this.Username_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
+            this.Username_Box.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.Username_Box.DropDownHeight = 110;
+            this.Username_Box.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Username_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F);
+            this.Username_Box.FormattingEnabled = true;
+            this.Username_Box.IntegralHeight = false;
+            this.Username_Box.ItemHeight = 25;
+            this.Username_Box.Location = new System.Drawing.Point(419, 113);
+            this.Username_Box.MaxDropDownItems = 4;
+            this.Username_Box.Name = "Username_Box";
+            this.Username_Box.Size = new System.Drawing.Size(266, 31);
+            this.Username_Box.Sorted = true;
+            this.Username_Box.TabIndex = 61;
+            this.Username_Box.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.Username_Box_DrawItem);
+            // 
+            // deleteButton
+            // 
+            this.deleteButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(111)))), ((int)(((byte)(81)))));
+            this.deleteButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.deleteButton.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteButton.ForeColor = System.Drawing.Color.White;
+            this.deleteButton.Location = new System.Drawing.Point(1068, 341);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(267, 51);
+            this.deleteButton.TabIndex = 62;
+            this.deleteButton.Text = "DELETE ITEM";
+            this.deleteButton.UseVisualStyleBackColor = false;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
+            // Purchase_Date
+            // 
+            this.Purchase_Date.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
+            this.Purchase_Date.Font = new System.Drawing.Font("Roboto Condensed", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Purchase_Date.Location = new System.Drawing.Point(1068, 111);
+            this.Purchase_Date.Name = "Purchase_Date";
+            this.Purchase_Date.Size = new System.Drawing.Size(267, 23);
+            this.Purchase_Date.TabIndex = 63;
+            // 
+            // Dealer_Name_Box
+            // 
+            this.Dealer_Name_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
+            this.Dealer_Name_Box.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.Dealer_Name_Box.DropDownHeight = 110;
+            this.Dealer_Name_Box.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Dealer_Name_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F);
+            this.Dealer_Name_Box.FormattingEnabled = true;
+            this.Dealer_Name_Box.IntegralHeight = false;
+            this.Dealer_Name_Box.ItemHeight = 25;
+            this.Dealer_Name_Box.Location = new System.Drawing.Point(91, 113);
+            this.Dealer_Name_Box.MaxDropDownItems = 4;
+            this.Dealer_Name_Box.Name = "Dealer_Name_Box";
+            this.Dealer_Name_Box.Size = new System.Drawing.Size(266, 31);
+            this.Dealer_Name_Box.Sorted = true;
+            this.Dealer_Name_Box.TabIndex = 64;
+            this.Dealer_Name_Box.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.Dealer_Name_Box_DrawItem);
+            // 
+            // Product_Name_Box
+            // 
+            this.Product_Name_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
+            this.Product_Name_Box.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.Product_Name_Box.DropDownHeight = 110;
+            this.Product_Name_Box.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Product_Name_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F);
+            this.Product_Name_Box.FormattingEnabled = true;
+            this.Product_Name_Box.IntegralHeight = false;
+            this.Product_Name_Box.ItemHeight = 25;
+            this.Product_Name_Box.Location = new System.Drawing.Point(91, 197);
+            this.Product_Name_Box.MaxDropDownItems = 4;
+            this.Product_Name_Box.Name = "Product_Name_Box";
+            this.Product_Name_Box.Size = new System.Drawing.Size(266, 31);
+            this.Product_Name_Box.Sorted = true;
+            this.Product_Name_Box.TabIndex = 65;
+            this.Product_Name_Box.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.Product_Name_Box_DrawItem);
+            this.Product_Name_Box.SelectedIndexChanged += new System.EventHandler(this.Product_Name_Box_SelectionIndexChanged);
+            // 
             // Add_Stocks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
             this.ClientSize = new System.Drawing.Size(1372, 726);
+            this.Controls.Add(this.Product_Name_Box);
+            this.Controls.Add(this.Dealer_Name_Box);
+            this.Controls.Add(this.Purchase_Date);
+            this.Controls.Add(this.deleteButton);
+            this.Controls.Add(this.Username_Box);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.Profit_Box);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.textBox6);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.Quantity_Box);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.Product_ID_Box);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.Product_Price_Box);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.LastNameBox);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.FirstNameBox);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Name = "Add_Stocks";
@@ -320,25 +362,26 @@ namespace Proyek_UAS
 
         #endregion
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox Profit_Box;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox Quantity_Box;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox Product_ID_Box;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox Product_Price_Box;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox LastNameBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox FirstNameBox;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox Username_Box;
+        private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.DateTimePicker Purchase_Date;
+        private System.Windows.Forms.ComboBox Dealer_Name_Box;
+        private System.Windows.Forms.ComboBox Product_Name_Box;
     }
 }

@@ -152,7 +152,8 @@ namespace Proyek_UAS
                                                                             DealerNameBox.Text      + "','" + 
                                                                             DealerEmailBox.Text     + "','" + 
                                                                             DealerAddressBox.Text   + "','" +
-                                                                            DealerPhoneBox.Text     + "')";
+                                                                            DealerPhoneBox.Text     + "','" +
+                                                                            Inserted_By_Box.Text    + "')";
                         cmd.ExecuteNonQuery();
 
                         //Menghapus teks yang ada di textbox
