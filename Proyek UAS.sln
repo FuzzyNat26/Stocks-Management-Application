@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proyek UAS", "Proyek UAS.csproj", "{8B3BD23F-1BDB-4137-ABDA-867350209DF0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8B3BD23F-1BDB-4137-ABDA-867350209DF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B3BD23F-1BDB-4137-ABDA-867350209DF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B3BD23F-1BDB-4137-ABDA-867350209DF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B3BD23F-1BDB-4137-ABDA-867350209DF0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7FF6CDC5-9403-47DE-93EF-3F46B74CDCD3}
+	EndGlobalSection
+EndGlobal
