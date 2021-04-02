@@ -108,8 +108,9 @@ namespace Proyek_UAS
                         //Insert data yang ada di textbox ke dalam database
                         SqlCommand cmd = con.CreateCommand();
                         cmd.CommandType = CommandType.Text;
-                        cmd.CommandText = "INSERT INTO Product_Name values ('" + Product_ID_Box.Text + "','"
-                                                                               + Product_Name_Box.Text + "')";
+                        cmd.CommandText = "INSERT INTO Product_Name values ('" + Product_ID_Box.Text    + "','"
+                                                                               + Product_Name_Box.Text  + "','"
+                                                                               + 0 + "')";
                         cmd.ExecuteNonQuery();
 
                         //Menghapus teks yang ada di textbox

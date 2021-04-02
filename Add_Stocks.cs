@@ -225,6 +225,12 @@ namespace Proyek_UAS
                                                                          + Profit_Box.Text + "')";
                     cmd.ExecuteNonQuery();
 
+                    SqlCommand cmd1 = con.CreateCommand();
+                    cmd1.CommandType = CommandType.Text;
+                    cmd1.CommandText = "UPDATE Product_Name SET Product_Quantity = Product_Quantity + "
+                        + Quantity_Box.Text + " WHERE Product_ID = '" + Product_ID_Box.Text + "'";
+                    cmd1.ExecuteNonQuery();
+
                     //Menghapus teks yang ada di textbox
                     Product_ID_Box.Text = ""; Product_Name_Box.Text = ""; Quantity_Box.Text = "";
                     Product_Price_Box.Text = ""; Dealer_Name_Box.Text = ""; Username_Box.Text = "";
@@ -255,6 +261,15 @@ namespace Proyek_UAS
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = "DELETE FROM Add_Stocks where Purchase_ID='" + Purchase_ID + "'";
                 cmd.ExecuteNonQuery();
+
+                //Hapus quantity di tabel Product_Name
+                var Product_ID = dataGridView1.SelectedCells[1].Value.ToString();
+                var Quantity = dataGridView1.SelectedCells[3].Value.ToString();
+                SqlCommand cmd1 = con.CreateCommand();
+                cmd1.CommandType = CommandType.Text;
+                cmd1.CommandText = "UPDATE Product_Name SET Product_Quantity = Product_Quantity - "
+                    + Quantity + " WHERE Product_ID = '" + Product_ID + "'";
+                cmd1.ExecuteNonQuery();
 
                 display();
 

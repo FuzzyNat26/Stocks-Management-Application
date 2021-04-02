@@ -280,7 +280,7 @@ namespace Proyek_UAS
             // 
             this.Purchase_Date.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
             this.Purchase_Date.Font = new System.Drawing.Font("Roboto Condensed", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Purchase_Date.Location = new System.Drawing.Point(1068, 111);
+            this.Purchase_Date.Location = new System.Drawing.Point(1068, 113);
             this.Purchase_Date.Name = "Purchase_Date";
             this.Purchase_Date.Size = new System.Drawing.Size(267, 23);
             this.Purchase_Date.TabIndex = 63;
