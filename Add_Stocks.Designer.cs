@@ -30,7 +30,7 @@ namespace Proyek_UAS
         private void InitializeComponent()
         {
             this.label8 = new System.Windows.Forms.Label();
-            this.Profit_Box = new System.Windows.Forms.TextBox();
+            this.Total_Box = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.Quantity_Box = new System.Windows.Forms.TextBox();
@@ -51,6 +51,8 @@ namespace Proyek_UAS
             this.Purchase_Date = new System.Windows.Forms.DateTimePicker();
             this.Dealer_Name_Box = new System.Windows.Forms.ComboBox();
             this.Product_Name_Box = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -61,19 +63,20 @@ namespace Proyek_UAS
             this.label8.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(1065, 173);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(68, 19);
+            this.label8.Size = new System.Drawing.Size(41, 19);
             this.label8.TabIndex = 59;
-            this.label8.Text = "Profit %";
+            this.label8.Text = "Total";
             // 
-            // Profit_Box
+            // Total_Box
             // 
-            this.Profit_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(216)))), ((int)(((byte)(96)))));
-            this.Profit_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Profit_Box.Location = new System.Drawing.Point(1068, 197);
-            this.Profit_Box.Multiline = true;
-            this.Profit_Box.Name = "Profit_Box";
-            this.Profit_Box.Size = new System.Drawing.Size(267, 35);
-            this.Profit_Box.TabIndex = 58;
+            this.Total_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(216)))), ((int)(((byte)(96)))));
+            this.Total_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Total_Box.Location = new System.Drawing.Point(1100, 197);
+            this.Total_Box.Multiline = true;
+            this.Total_Box.Name = "Total_Box";
+            this.Total_Box.Size = new System.Drawing.Size(235, 35);
+            this.Total_Box.TabIndex = 58;
+            this.Total_Box.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Only_Accept_Number_Key_Press);
             // 
             // label9
             // 
@@ -104,6 +107,9 @@ namespace Proyek_UAS
             this.Quantity_Box.Name = "Quantity_Box";
             this.Quantity_Box.Size = new System.Drawing.Size(267, 35);
             this.Quantity_Box.TabIndex = 54;
+            this.Quantity_Box.Text = "0";
+            this.Quantity_Box.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Only_Accept_Number_Key_Press);
+            this.Quantity_Box.Leave += new System.EventHandler(this.Total_Box_Value_Textbox_Leave);
             // 
             // label7
             // 
@@ -140,11 +146,13 @@ namespace Proyek_UAS
             // 
             this.Product_Price_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
             this.Product_Price_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Product_Price_Box.Location = new System.Drawing.Point(419, 197);
+            this.Product_Price_Box.Location = new System.Drawing.Point(451, 195);
             this.Product_Price_Box.Multiline = true;
             this.Product_Price_Box.Name = "Product_Price_Box";
-            this.Product_Price_Box.Size = new System.Drawing.Size(267, 35);
+            this.Product_Price_Box.Size = new System.Drawing.Size(234, 35);
             this.Product_Price_Box.TabIndex = 50;
+            this.Product_Price_Box.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Only_Accept_Number_Key_Press);
+            this.Product_Price_Box.Leave += new System.EventHandler(this.Total_Box_Value_Textbox_Leave);
             // 
             // label5
             // 
@@ -279,10 +287,10 @@ namespace Proyek_UAS
             // Purchase_Date
             // 
             this.Purchase_Date.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
-            this.Purchase_Date.Font = new System.Drawing.Font("Roboto Condensed", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Purchase_Date.Font = new System.Drawing.Font("Roboto Condensed", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Purchase_Date.Location = new System.Drawing.Point(1068, 113);
             this.Purchase_Date.Name = "Purchase_Date";
-            this.Purchase_Date.Size = new System.Drawing.Size(267, 23);
+            this.Purchase_Date.Size = new System.Drawing.Size(267, 30);
             this.Purchase_Date.TabIndex = 63;
             // 
             // Dealer_Name_Box
@@ -322,19 +330,41 @@ namespace Proyek_UAS
             this.Product_Name_Box.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.Product_Name_Box_DrawItem);
             this.Product_Name_Box.SelectedIndexChanged += new System.EventHandler(this.Product_Name_Box_SelectionIndexChanged);
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(416, 201);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(29, 19);
+            this.label10.TabIndex = 66;
+            this.label10.Text = "Rp";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(1065, 201);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(29, 19);
+            this.label11.TabIndex = 67;
+            this.label11.Text = "Rp";
+            // 
             // Add_Stocks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
             this.ClientSize = new System.Drawing.Size(1372, 726);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.Product_Name_Box);
             this.Controls.Add(this.Dealer_Name_Box);
             this.Controls.Add(this.Purchase_Date);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.Username_Box);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.Profit_Box);
+            this.Controls.Add(this.Total_Box);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.Quantity_Box);
@@ -362,7 +392,7 @@ namespace Proyek_UAS
 
         #endregion
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox Profit_Box;
+        private System.Windows.Forms.TextBox Total_Box;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox Quantity_Box;
@@ -383,5 +413,7 @@ namespace Proyek_UAS
         private System.Windows.Forms.DateTimePicker Purchase_Date;
         private System.Windows.Forms.ComboBox Dealer_Name_Box;
         private System.Windows.Forms.ComboBox Product_Name_Box;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
     }
 }

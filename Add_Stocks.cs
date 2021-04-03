@@ -116,8 +116,40 @@ namespace Proyek_UAS
             foreach (DataRow dr in dt.Rows)
             {
                 Product_ID_Box.Text = Convert.ToString(dr["Product_ID"]);
+            }   
+        }
+
+        private void Only_Accept_Number_Key_Press (object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            } else
+            {
+                e.Handled = true;
+                MessageBox.Show("Oops! Input Number Only! (No letters, ',' and '.'");
             }
-                
+        }
+
+        private void Total_Box_Value_Textbox_Leave(object sender, EventArgs e)
+        {
+            bool a = string.IsNullOrEmpty(Product_Price_Box.Text); //true
+            bool b = string.IsNullOrEmpty(Quantity_Box.Text); //true
+            if (a)
+            {
+                Product_Price_Box.Text = "0";
+            } 
+
+            if (b)
+            {
+                Quantity_Box.Text = "0";
+            }
+
+            if (a || b == false)
+            {
+                Total_Box.Text = Convert.ToString(Convert.ToInt32(Product_Price_Box.Text) * Convert.ToInt32(Quantity_Box.Text));
+            }
+
         }
 
         public void display()
@@ -196,8 +228,8 @@ namespace Proyek_UAS
                 confirm.AddLast(Username_Box.Text);
                 confirm.AddLast("Purchase Date:");
                 confirm.AddLast(Purchase_Date.Text);
-                confirm.AddLast("Profit:");
-                confirm.AddLast(Profit_Box.Text);
+                confirm.AddLast("Total:");
+                confirm.AddLast(Total_Box.Text);
 
                 var Texts = "";
                 foreach (var text in confirm)
@@ -222,7 +254,7 @@ namespace Proyek_UAS
                                                                          + Dealer_Name_Box.Text + "', '"
                                                                          + Username_Box.Text + "', '"
                                                                          + Purchase_Date.Value.Date + "', '"
-                                                                         + Profit_Box.Text + "')";
+                                                                         + Total_Box.Text + "')";
                     cmd.ExecuteNonQuery();
 
                     SqlCommand cmd1 = con.CreateCommand();
@@ -232,9 +264,10 @@ namespace Proyek_UAS
                     cmd1.ExecuteNonQuery();
 
                     //Menghapus teks yang ada di textbox
-                    Product_ID_Box.Text = ""; Product_Name_Box.Text = ""; Quantity_Box.Text = "";
-                    Product_Price_Box.Text = ""; Dealer_Name_Box.Text = ""; Username_Box.Text = "";
-                    Purchase_Date.Text = ""; Profit_Box.Text = "";
+                    Product_ID_Box.Text = ""; Product_Name_Box.Text = "";
+                    Quantity_Box.Text = ""; Product_Price_Box.Text = "";
+                    Dealer_Name_Box.Text = ""; Username_Box.Text = "";
+                    Purchase_Date.Text = ""; Total_Box.Text = "";
 
                     //Refresh Table
                     display();

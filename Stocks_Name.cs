@@ -178,5 +178,23 @@ namespace Proyek_UAS
                 display();
             }
         }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Are you sure you want to delete this item?",
+                "Confirmation", MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                var Product_ID = dataGridView1.SelectedCells[0].Value.ToString();
+                SqlCommand cmd = con.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "DELETE FROM Product_Name where Product_ID='" + Product_ID + "'";
+                cmd.ExecuteNonQuery();
+
+                display();
+
+                MessageBox.Show("Item deleted!");
+            }
+        }
     }
 }

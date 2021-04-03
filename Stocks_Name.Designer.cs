@@ -43,6 +43,7 @@ namespace Proyek_UAS
             this.label4 = new System.Windows.Forms.Label();
             this.U_Product_ID_Box = new System.Windows.Forms.TextBox();
             this.Update_Panel = new System.Windows.Forms.Panel();
+            this.deleteButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.Update_Panel.SuspendLayout();
@@ -144,12 +145,12 @@ namespace Proyek_UAS
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(441, 108);
+            this.dataGridView1.Location = new System.Drawing.Point(422, 108);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(607, 465);
+            this.dataGridView1.Size = new System.Drawing.Size(626, 554);
             this.dataGridView1.TabIndex = 56;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -200,17 +201,32 @@ namespace Proyek_UAS
             this.Update_Panel.Controls.Add(this.updateButton);
             this.Update_Panel.Controls.Add(this.label4);
             this.Update_Panel.Controls.Add(this.U_Product_ID_Box);
-            this.Update_Panel.Location = new System.Drawing.Point(65, 334);
+            this.Update_Panel.Location = new System.Drawing.Point(62, 423);
             this.Update_Panel.Name = "Update_Panel";
             this.Update_Panel.Size = new System.Drawing.Size(300, 239);
             this.Update_Panel.TabIndex = 61;
             this.Update_Panel.Visible = false;
             // 
+            // deleteButton
+            // 
+            this.deleteButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(111)))), ((int)(((byte)(81)))));
+            this.deleteButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.deleteButton.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteButton.ForeColor = System.Drawing.Color.White;
+            this.deleteButton.Location = new System.Drawing.Point(80, 344);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(267, 51);
+            this.deleteButton.TabIndex = 63;
+            this.deleteButton.Text = "DELETE ITEM";
+            this.deleteButton.UseVisualStyleBackColor = false;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
             // Stocks_Name
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1099, 608);
+            this.ClientSize = new System.Drawing.Size(1099, 688);
+            this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label5);
@@ -248,5 +264,6 @@ namespace Proyek_UAS
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox U_Product_ID_Box;
         private System.Windows.Forms.Panel Update_Panel;
+        private System.Windows.Forms.Button deleteButton;
     }
 }
