@@ -31,5 +31,12 @@ namespace Proyek_UAS
             Form Home = new Home();
             Home.Show();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form Sales_History = new Sales_History();
+            Sales_History.Show();
+        }
     }
 }

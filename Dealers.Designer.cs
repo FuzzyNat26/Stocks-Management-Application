@@ -159,7 +159,7 @@ namespace Proyek_UAS
             // DealerIDBox
             // 
             this.DealerIDBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
-            this.DealerIDBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
+            this.DealerIDBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.DealerIDBox.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DealerIDBox.Location = new System.Drawing.Point(87, 132);
             this.DealerIDBox.Multiline = true;

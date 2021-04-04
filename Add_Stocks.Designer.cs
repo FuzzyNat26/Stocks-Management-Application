@@ -39,7 +39,6 @@ namespace Proyek_UAS
             this.label4 = new System.Windows.Forms.Label();
             this.Product_Price_Box = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
@@ -53,6 +52,7 @@ namespace Proyek_UAS
             this.Product_Name_Box = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -163,20 +163,6 @@ namespace Proyek_UAS
             this.label5.Size = new System.Drawing.Size(93, 19);
             this.label5.TabIndex = 49;
             this.label5.Text = "Inserted By";
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(138)))), ((int)(((byte)(111)))));
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(1068, 425);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(267, 273);
-            this.button2.TabIndex = 47;
-            this.button2.Text = "PRODUCT\r\nNAME LIST";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -350,6 +336,20 @@ namespace Proyek_UAS
             this.label11.TabIndex = 67;
             this.label11.Text = "Rp";
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(138)))), ((int)(((byte)(111)))));
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(1068, 425);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(267, 273);
+            this.button2.TabIndex = 47;
+            this.button2.Text = "PRODUCT\r\nNAME LIST";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Add_Stocks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -401,7 +401,6 @@ namespace Proyek_UAS
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox Product_Price_Box;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label2;
@@ -415,5 +414,6 @@ namespace Proyek_UAS
         private System.Windows.Forms.ComboBox Product_Name_Box;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button button2;
     }
 }
