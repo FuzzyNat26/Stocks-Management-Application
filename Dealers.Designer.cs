@@ -177,7 +177,7 @@ namespace Proyek_UAS
             this.label1.Size = new System.Drawing.Size(199, 45);
             this.label1.TabIndex = 21;
             this.label1.Text = "DEALERS";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.label1.Click += new System.EventHandler(this.Back_Button_Click);
             // 
             // pictureBox1
             // 
@@ -189,7 +189,7 @@ namespace Proyek_UAS
             this.pictureBox1.Size = new System.Drawing.Size(46, 40);
             this.pictureBox1.TabIndex = 22;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.pictureBox1.Click += new System.EventHandler(this.Back_Button_Click);
             // 
             // deleteButton
             // 

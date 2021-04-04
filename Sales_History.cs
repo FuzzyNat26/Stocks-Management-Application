@@ -22,5 +22,12 @@ namespace Proyek_UAS
         {
             InitializeComponent();
         }
+
+        private void Back_Button_Click (object sender, EventArgs e)
+        {
+            this.Hide();
+            Form Sales = new Sales();
+            Sales.Show();
+        }
     }
 }

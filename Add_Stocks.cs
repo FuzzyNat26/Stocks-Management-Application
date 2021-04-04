@@ -127,7 +127,7 @@ namespace Proyek_UAS
             } else
             {
                 e.Handled = true;
-                MessageBox.Show("Oops! Input Number Only! (No letters, ',' and '.'");
+                MessageBox.Show("Oops! Input Number Only! (No letters, ',' and '.')");
             }
         }
 
@@ -165,14 +165,7 @@ namespace Proyek_UAS
             dataGridView1.DataSource = dataTable;
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Form Home = new Home();
-            Home.Show();
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void Back_Button_Click(object sender, EventArgs e)
         {
             this.Hide();
             Form Home = new Home();

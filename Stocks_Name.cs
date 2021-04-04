@@ -47,14 +47,8 @@ namespace Proyek_UAS
             dataGridView1.DataSource = dataTable;
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Form stocks = new Add_Stocks();
-            stocks.Show();
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
+        //Return Home
+        private void Back_Button_Click(object sender, EventArgs e)
         {
             this.Hide();
             Form stocks = new Add_Stocks();

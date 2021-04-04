@@ -79,14 +79,7 @@ namespace Proyek_UAS
         }
 
         //Return to home
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Form Home = new Home();
-            Home.Show();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
+        private void Back_Button_Click(object sender, EventArgs e)
         {
             this.Hide();
             Form Home = new Home();

@@ -32,11 +32,11 @@ namespace Proyek_UAS
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.FirstNameBox = new System.Windows.Forms.TextBox();
+            this.Customer_Box = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Add_Item_To_List = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.Save_Order_Button = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -47,17 +47,17 @@ namespace Proyek_UAS
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.Product_Name_Box = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.Product_Price_Box = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.Total_Box = new System.Windows.Forms.TextBox();
             this.Quantity_Box = new System.Windows.Forms.TextBox();
-            this.Purchase_Date = new System.Windows.Forms.DateTimePicker();
+            this.Sale_Date_Box = new System.Windows.Forms.DateTimePicker();
             this.Username_Box = new System.Windows.Forms.ComboBox();
             this.Bill_Type_Box = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.Product_ID_Box = new System.Windows.Forms.TextBox();
+            this.Product_Name_Box = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -72,13 +72,13 @@ namespace Proyek_UAS
             this.label1.Size = new System.Drawing.Size(145, 45);
             this.label1.TabIndex = 3;
             this.label1.Text = "SALES";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.label1.Click += new System.EventHandler(this.Back_Button_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(78, 170);
+            this.label2.Location = new System.Drawing.Point(78, 176);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(113, 19);
             this.label2.TabIndex = 13;
@@ -94,15 +94,15 @@ namespace Proyek_UAS
             this.label3.TabIndex = 11;
             this.label3.Text = "Customer Name";
             // 
-            // FirstNameBox
+            // Customer_Box
             // 
-            this.FirstNameBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
-            this.FirstNameBox.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FirstNameBox.Location = new System.Drawing.Point(81, 110);
-            this.FirstNameBox.Multiline = true;
-            this.FirstNameBox.Name = "FirstNameBox";
-            this.FirstNameBox.Size = new System.Drawing.Size(267, 31);
-            this.FirstNameBox.TabIndex = 10;
+            this.Customer_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
+            this.Customer_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Customer_Box.Location = new System.Drawing.Point(81, 110);
+            this.Customer_Box.Multiline = true;
+            this.Customer_Box.Name = "Customer_Box";
+            this.Customer_Box.Size = new System.Drawing.Size(267, 35);
+            this.Customer_Box.TabIndex = 10;
             // 
             // dataGridView1
             // 
@@ -110,28 +110,29 @@ namespace Proyek_UAS
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(81, 259);
+            this.dataGridView1.Location = new System.Drawing.Point(81, 280);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.ShowEditingIcon = false;
-            this.dataGridView1.Size = new System.Drawing.Size(920, 497);
+            this.dataGridView1.Size = new System.Drawing.Size(920, 476);
             this.dataGridView1.TabIndex = 21;
             // 
-            // button1
+            // Add_Item_To_List
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(70)))), ((int)(((byte)(83)))));
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(1058, 259);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(267, 51);
-            this.button1.TabIndex = 21;
-            this.button1.Text = "ADD ORDER";
-            this.button1.UseVisualStyleBackColor = false;
+            this.Add_Item_To_List.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(70)))), ((int)(((byte)(83)))));
+            this.Add_Item_To_List.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Add_Item_To_List.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Add_Item_To_List.ForeColor = System.Drawing.Color.White;
+            this.Add_Item_To_List.Location = new System.Drawing.Point(1058, 375);
+            this.Add_Item_To_List.Name = "Add_Item_To_List";
+            this.Add_Item_To_List.Size = new System.Drawing.Size(267, 51);
+            this.Add_Item_To_List.TabIndex = 21;
+            this.Add_Item_To_List.Text = "ADD ORDER";
+            this.Add_Item_To_List.UseVisualStyleBackColor = false;
+            this.Add_Item_To_List.Click += new System.EventHandler(this.button1_Click);
             // 
             // deleteButton
             // 
@@ -139,31 +140,33 @@ namespace Proyek_UAS
             this.deleteButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.deleteButton.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteButton.ForeColor = System.Drawing.Color.White;
-            this.deleteButton.Location = new System.Drawing.Point(1058, 333);
+            this.deleteButton.Location = new System.Drawing.Point(1058, 449);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(267, 51);
             this.deleteButton.TabIndex = 22;
             this.deleteButton.Text = "DELETE ORDER";
             this.deleteButton.UseVisualStyleBackColor = false;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
-            // button2
+            // Save_Order_Button
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(138)))), ((int)(((byte)(111)))));
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(1058, 631);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(267, 51);
-            this.button2.TabIndex = 23;
-            this.button2.Text = "SAVE ORDER";
-            this.button2.UseVisualStyleBackColor = false;
+            this.Save_Order_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(138)))), ((int)(((byte)(111)))));
+            this.Save_Order_Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Save_Order_Button.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Save_Order_Button.ForeColor = System.Drawing.Color.White;
+            this.Save_Order_Button.Location = new System.Drawing.Point(1058, 631);
+            this.Save_Order_Button.Name = "Save_Order_Button";
+            this.Save_Order_Button.Size = new System.Drawing.Size(267, 51);
+            this.Save_Order_Button.TabIndex = 23;
+            this.Save_Order_Button.Text = "SAVE ORDER";
+            this.Save_Order_Button.UseVisualStyleBackColor = false;
+            this.Save_Order_Button.Click += new System.EventHandler(this.Save_Order_Button_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(406, 170);
+            this.label4.Location = new System.Drawing.Point(727, 176);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(110, 19);
             this.label4.TabIndex = 27;
@@ -173,7 +176,7 @@ namespace Proyek_UAS
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(931, 88);
+            this.label5.Location = new System.Drawing.Point(728, 86);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(70, 19);
             this.label5.TabIndex = 25;
@@ -183,7 +186,7 @@ namespace Proyek_UAS
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(731, 170);
+            this.label6.Location = new System.Drawing.Point(1055, 176);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(69, 19);
             this.label6.TabIndex = 31;
@@ -193,7 +196,7 @@ namespace Proyek_UAS
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(371, 86);
+            this.label7.Location = new System.Drawing.Point(395, 86);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(93, 19);
             this.label7.TabIndex = 29;
@@ -203,7 +206,7 @@ namespace Proyek_UAS
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(1055, 170);
+            this.label8.Location = new System.Drawing.Point(1055, 280);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(147, 19);
             this.label8.TabIndex = 35;
@@ -215,9 +218,9 @@ namespace Proyek_UAS
             this.label9.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(1055, 86);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(69, 19);
+            this.label9.Size = new System.Drawing.Size(80, 19);
             this.label9.TabIndex = 33;
-            this.label9.Text = "Bill Date";
+            this.label9.Text = "Sale Date";
             // 
             // label10
             // 
@@ -263,30 +266,13 @@ namespace Proyek_UAS
             this.pictureBox1.Size = new System.Drawing.Size(46, 40);
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // Product_Name_Box
-            // 
-            this.Product_Name_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
-            this.Product_Name_Box.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.Product_Name_Box.DropDownHeight = 110;
-            this.Product_Name_Box.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Product_Name_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F);
-            this.Product_Name_Box.FormattingEnabled = true;
-            this.Product_Name_Box.IntegralHeight = false;
-            this.Product_Name_Box.ItemHeight = 25;
-            this.Product_Name_Box.Location = new System.Drawing.Point(82, 194);
-            this.Product_Name_Box.MaxDropDownItems = 4;
-            this.Product_Name_Box.Name = "Product_Name_Box";
-            this.Product_Name_Box.Size = new System.Drawing.Size(266, 31);
-            this.Product_Name_Box.Sorted = true;
-            this.Product_Name_Box.TabIndex = 66;
+            this.pictureBox1.Click += new System.EventHandler(this.Back_Button_Click);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(407, 200);
+            this.label11.Location = new System.Drawing.Point(728, 206);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(29, 19);
             this.label11.TabIndex = 68;
@@ -296,17 +282,19 @@ namespace Proyek_UAS
             // 
             this.Product_Price_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
             this.Product_Price_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Product_Price_Box.Location = new System.Drawing.Point(442, 194);
+            this.Product_Price_Box.Location = new System.Drawing.Point(763, 200);
             this.Product_Price_Box.Multiline = true;
             this.Product_Price_Box.Name = "Product_Price_Box";
-            this.Product_Price_Box.Size = new System.Drawing.Size(234, 31);
+            this.Product_Price_Box.Size = new System.Drawing.Size(235, 35);
             this.Product_Price_Box.TabIndex = 67;
+            this.Product_Price_Box.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Only_Accept_Number_Key_Press);
+            this.Product_Price_Box.Leave += new System.EventHandler(this.Total_Box_Value_Textbox_Leave);
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(1055, 200);
+            this.label12.Location = new System.Drawing.Point(1055, 310);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(29, 19);
             this.label12.TabIndex = 70;
@@ -316,31 +304,33 @@ namespace Proyek_UAS
             // 
             this.Total_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(216)))), ((int)(((byte)(96)))));
             this.Total_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Total_Box.Location = new System.Drawing.Point(1090, 196);
+            this.Total_Box.Location = new System.Drawing.Point(1090, 306);
             this.Total_Box.Multiline = true;
             this.Total_Box.Name = "Total_Box";
-            this.Total_Box.Size = new System.Drawing.Size(235, 31);
+            this.Total_Box.Size = new System.Drawing.Size(235, 35);
             this.Total_Box.TabIndex = 69;
             // 
             // Quantity_Box
             // 
             this.Quantity_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
             this.Quantity_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Quantity_Box.Location = new System.Drawing.Point(734, 200);
+            this.Quantity_Box.Location = new System.Drawing.Point(1058, 200);
             this.Quantity_Box.Multiline = true;
             this.Quantity_Box.Name = "Quantity_Box";
-            this.Quantity_Box.Size = new System.Drawing.Size(267, 31);
+            this.Quantity_Box.Size = new System.Drawing.Size(267, 35);
             this.Quantity_Box.TabIndex = 71;
             this.Quantity_Box.Text = "0";
+            this.Quantity_Box.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Only_Accept_Number_Key_Press);
+            this.Quantity_Box.Leave += new System.EventHandler(this.Total_Box_Value_Textbox_Leave);
             // 
-            // Purchase_Date
+            // Sale_Date_Box
             // 
-            this.Purchase_Date.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
-            this.Purchase_Date.Font = new System.Drawing.Font("Roboto Condensed", 11.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Purchase_Date.Location = new System.Drawing.Point(1060, 110);
-            this.Purchase_Date.Name = "Purchase_Date";
-            this.Purchase_Date.Size = new System.Drawing.Size(267, 31);
-            this.Purchase_Date.TabIndex = 72;
+            this.Sale_Date_Box.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
+            this.Sale_Date_Box.Font = new System.Drawing.Font("Roboto Condensed", 11.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Sale_Date_Box.Location = new System.Drawing.Point(1060, 110);
+            this.Sale_Date_Box.Name = "Sale_Date_Box";
+            this.Sale_Date_Box.Size = new System.Drawing.Size(267, 31);
+            this.Sale_Date_Box.TabIndex = 72;
             // 
             // Username_Box
             // 
@@ -352,12 +342,13 @@ namespace Proyek_UAS
             this.Username_Box.FormattingEnabled = true;
             this.Username_Box.IntegralHeight = false;
             this.Username_Box.ItemHeight = 25;
-            this.Username_Box.Location = new System.Drawing.Point(375, 110);
+            this.Username_Box.Location = new System.Drawing.Point(399, 110);
             this.Username_Box.MaxDropDownItems = 4;
             this.Username_Box.Name = "Username_Box";
-            this.Username_Box.Size = new System.Drawing.Size(222, 31);
+            this.Username_Box.Size = new System.Drawing.Size(267, 31);
             this.Username_Box.Sorted = true;
             this.Username_Box.TabIndex = 73;
+            this.Username_Box.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.Username_Box_DrawItem);
             // 
             // Bill_Type_Box
             // 
@@ -370,18 +361,22 @@ namespace Proyek_UAS
             this.Bill_Type_Box.FormattingEnabled = true;
             this.Bill_Type_Box.IntegralHeight = false;
             this.Bill_Type_Box.ItemHeight = 25;
-            this.Bill_Type_Box.Location = new System.Drawing.Point(931, 110);
+            this.Bill_Type_Box.Items.AddRange(new object[] {
+            "CASH",
+            "CREDIT"});
+            this.Bill_Type_Box.Location = new System.Drawing.Point(731, 110);
             this.Bill_Type_Box.MaxDropDownItems = 4;
             this.Bill_Type_Box.Name = "Bill_Type_Box";
-            this.Bill_Type_Box.Size = new System.Drawing.Size(106, 31);
+            this.Bill_Type_Box.Size = new System.Drawing.Size(267, 31);
             this.Bill_Type_Box.Sorted = true;
             this.Bill_Type_Box.TabIndex = 74;
+            this.Bill_Type_Box.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.Bill_Type_Box_DrawItem);
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(618, 86);
+            this.label13.Location = new System.Drawing.Point(395, 176);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(88, 19);
             this.label13.TabIndex = 76;
@@ -391,12 +386,31 @@ namespace Proyek_UAS
             // 
             this.Product_ID_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
             this.Product_ID_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Product_ID_Box.Location = new System.Drawing.Point(622, 110);
+            this.Product_ID_Box.Location = new System.Drawing.Point(399, 200);
             this.Product_ID_Box.Multiline = true;
             this.Product_ID_Box.Name = "Product_ID_Box";
             this.Product_ID_Box.ReadOnly = true;
-            this.Product_ID_Box.Size = new System.Drawing.Size(267, 31);
+            this.Product_ID_Box.Size = new System.Drawing.Size(267, 35);
             this.Product_ID_Box.TabIndex = 75;
+            // 
+            // Product_Name_Box
+            // 
+            this.Product_Name_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
+            this.Product_Name_Box.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.Product_Name_Box.DropDownHeight = 110;
+            this.Product_Name_Box.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Product_Name_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F);
+            this.Product_Name_Box.FormattingEnabled = true;
+            this.Product_Name_Box.IntegralHeight = false;
+            this.Product_Name_Box.ItemHeight = 25;
+            this.Product_Name_Box.Location = new System.Drawing.Point(82, 200);
+            this.Product_Name_Box.MaxDropDownItems = 4;
+            this.Product_Name_Box.Name = "Product_Name_Box";
+            this.Product_Name_Box.Size = new System.Drawing.Size(266, 31);
+            this.Product_Name_Box.Sorted = true;
+            this.Product_Name_Box.TabIndex = 66;
+            this.Product_Name_Box.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.Product_Name_Box_DrawItem);
+            this.Product_Name_Box.SelectedIndexChanged += new System.EventHandler(this.Product_Name_Box_SelectionIndexChanged);
             // 
             // Sales
             // 
@@ -408,7 +422,7 @@ namespace Proyek_UAS
             this.Controls.Add(this.Product_ID_Box);
             this.Controls.Add(this.Bill_Type_Box);
             this.Controls.Add(this.Username_Box);
-            this.Controls.Add(this.Purchase_Date);
+            this.Controls.Add(this.Sale_Date_Box);
             this.Controls.Add(this.Quantity_Box);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.Total_Box);
@@ -424,17 +438,18 @@ namespace Proyek_UAS
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.Save_Order_Button);
             this.Controls.Add(this.deleteButton);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Add_Item_To_List);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.FirstNameBox);
+            this.Controls.Add(this.Customer_Box);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Name = "Sales";
             this.Text = "Sales";
+            this.Load += new System.EventHandler(this.Sales_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -448,11 +463,11 @@ namespace Proyek_UAS
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox FirstNameBox;
+        private System.Windows.Forms.TextBox Customer_Box;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Add_Item_To_List;
         private System.Windows.Forms.Button deleteButton;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button Save_Order_Button;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
@@ -462,16 +477,16 @@ namespace Proyek_UAS
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ComboBox Product_Name_Box;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox Product_Price_Box;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox Total_Box;
         private System.Windows.Forms.TextBox Quantity_Box;
-        private System.Windows.Forms.DateTimePicker Purchase_Date;
+        private System.Windows.Forms.DateTimePicker Sale_Date_Box;
         private System.Windows.Forms.ComboBox Username_Box;
         private System.Windows.Forms.ComboBox Bill_Type_Box;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox Product_ID_Box;
+        private System.Windows.Forms.ComboBox Product_Name_Box;
     }
 }
