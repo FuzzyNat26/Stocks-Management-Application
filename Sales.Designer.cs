@@ -241,6 +241,7 @@ namespace Proyek_UAS
             this.Total_Payment_Box.Name = "Total_Payment_Box";
             this.Total_Payment_Box.Size = new System.Drawing.Size(266, 31);
             this.Total_Payment_Box.TabIndex = 36;
+            this.Total_Payment_Box.Text = "0";
             // 
             // button3
             // 
@@ -287,6 +288,7 @@ namespace Proyek_UAS
             this.Product_Price_Box.Name = "Product_Price_Box";
             this.Product_Price_Box.Size = new System.Drawing.Size(235, 35);
             this.Product_Price_Box.TabIndex = 67;
+            this.Product_Price_Box.Text = "0";
             this.Product_Price_Box.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Only_Accept_Number_Key_Press);
             this.Product_Price_Box.Leave += new System.EventHandler(this.Total_Box_Value_Textbox_Leave);
             // 
@@ -309,6 +311,7 @@ namespace Proyek_UAS
             this.Total_Box.Name = "Total_Box";
             this.Total_Box.Size = new System.Drawing.Size(235, 35);
             this.Total_Box.TabIndex = 69;
+            this.Total_Box.Text = "0";
             // 
             // Quantity_Box
             // 

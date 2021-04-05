@@ -171,44 +171,51 @@ namespace Proyek_UAS
         //Add item to list
         private void button1_Click(object sender, EventArgs e)
         {
-            //Check quantity
-            int Form_Product_Quantity = Convert.ToInt32(Quantity_Box.Text);
-            int Stock_Product_Quantity = 0;
-
-            SqlCommand quantity = con.CreateCommand();
-            quantity.CommandType = CommandType.Text;
-            quantity.CommandText = "SELECT Product_Quantity FROM Product_Name WHERE Product_ID='" + Product_ID_Box.Text +"'";
-
-            DataTable dataTable_quantity = new DataTable();
-            SqlDataAdapter sqlDataAdapter_quantity = new SqlDataAdapter(quantity);
-            sqlDataAdapter_quantity.Fill(dataTable_quantity);
-
-            foreach(DataRow dr in dataTable_quantity.Rows)
+            if (this.Controls.OfType<TextBox>().Any(t => string.IsNullOrEmpty(t.Text))) //Apabila ada yang tidak diisi, lakukan ini
             {
-                Stock_Product_Quantity = Convert.ToInt32(dr["Product_Quantity"].ToString());
-            }
-
-            if (Form_Product_Quantity > Stock_Product_Quantity)
-            {
-                MessageBox.Show("There are only " + Convert.ToString(Stock_Product_Quantity) +" stocks left");
+                MessageBox.Show("All input must be filled!");
             }
             else
             {
-                DataRow temp_dr = temp_dataTable.NewRow();
-                temp_dr["Product_ID"] = Product_ID_Box.Text;
-                temp_dr["Product_Name"] = Product_Name_Box.Text;
-                temp_dr["Product_Price"] = Product_Price_Box.Text;
-                temp_dr["Quantity"] = Quantity_Box.Text;
-                temp_dr["Total_Price"] = Total_Box.Text;
+                //Check quantity
+                int Form_Product_Quantity = Convert.ToInt32(Quantity_Box.Text);
+                int Stock_Product_Quantity = 0;
 
-                temp_dataTable.Rows.Add(temp_dr);
-                dataGridView1.DataSource = temp_dataTable;
+                SqlCommand quantity = con.CreateCommand();
+                quantity.CommandType = CommandType.Text;
+                quantity.CommandText = "SELECT Product_Quantity FROM Product_Name WHERE Product_ID='" + Product_ID_Box.Text + "'";
 
-                Total = Total + Convert.ToInt32(temp_dr["Total_Price"].ToString());
-                Total_Payment_Box.Text = Convert.ToString(Total);
+                DataTable dataTable_quantity = new DataTable();
+                SqlDataAdapter sqlDataAdapter_quantity = new SqlDataAdapter(quantity);
+                sqlDataAdapter_quantity.Fill(dataTable_quantity);
 
-                //Menunjukkan data sudah added
-                MessageBox.Show("New Data Added!");
+                foreach (DataRow dr in dataTable_quantity.Rows)
+                {
+                    Stock_Product_Quantity = Convert.ToInt32(dr["Product_Quantity"].ToString());
+                }
+
+                if (Form_Product_Quantity > Stock_Product_Quantity)
+                {
+                    MessageBox.Show("There are only " + Convert.ToString(Stock_Product_Quantity) + " stocks left");
+                }
+                else
+                {
+                    DataRow temp_dr = temp_dataTable.NewRow();
+                    temp_dr["Product_ID"] = Product_ID_Box.Text;
+                    temp_dr["Product_Name"] = Product_Name_Box.Text;
+                    temp_dr["Product_Price"] = Product_Price_Box.Text;
+                    temp_dr["Quantity"] = Quantity_Box.Text;
+                    temp_dr["Total_Price"] = Total_Box.Text;
+
+                    temp_dataTable.Rows.Add(temp_dr);
+                    dataGridView1.DataSource = temp_dataTable;
+
+                    Total = Total + Convert.ToInt32(temp_dr["Total_Price"].ToString());
+                    Total_Payment_Box.Text = Convert.ToString(Total);
+
+                    //Menunjukkan data sudah added
+                    MessageBox.Show("New Data Added!");
+                }
             }
         }
 
@@ -231,66 +238,77 @@ namespace Proyek_UAS
         //Save order to database
         private void Save_Order_Button_Click(object sender, EventArgs e)
         {
-            var confirmResult = MessageBox.Show("Confirm Order?", "Confirmation", MessageBoxButtons.YesNo);
-            if (confirmResult == DialogResult.Yes)
+            if (this.Controls.OfType<TextBox>().Any(t => string.IsNullOrEmpty(t.Text))) //Apabila ada yang tidak diisi, lakukan ini
             {
-                //input ke sales_history
-                SqlCommand input = con.CreateCommand();
-                input.CommandType = CommandType.Text;
-                input.CommandText = "INSERT INTO Sales_History VALUES('" + Customer_Box.Text + "','"
-                                                                         + Total_Box.Text + "', '"
-                                                                         + Sale_Date_Box.Text + "', '"
-                                                                         + Username_Box.Text + "', '"
-                                                                         + Bill_Type_Box.Text + "')";
-                input.ExecuteNonQuery();
-
-                //input ke sales_id_and_product_history dengan mengambil sales_id dari tabel sales_History
-                int Sales_ID = 0;
-
-                SqlCommand input2 = con.CreateCommand();
-                input2.CommandType = CommandType.Text;
-                input2.CommandText = "SELECT TOP 1 * FROM Sales_History ORDER BY Sales_ID DESC";
-                input2.ExecuteNonQuery();
-                DataTable dataTable2 = new DataTable();
-                SqlDataAdapter dataAdapter2 = new SqlDataAdapter(input2);
-                dataAdapter2.Fill(dataTable2);
-
-                foreach (DataRow dataRow2 in dataTable2.Rows)
+                MessageBox.Show("All input must be filled!");
+            }
+            else
+            {
+                var confirmResult = MessageBox.Show("Confirm Order?", "Confirmation", MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
                 {
-                    Sales_ID = Convert.ToInt32(dataRow2["Sales_ID"].ToString());
+                    //input ke sales_history
+                    SqlCommand input = con.CreateCommand();
+                    input.CommandType = CommandType.Text;
+                    input.CommandText = "INSERT INTO Sales_History VALUES('" + Customer_Box.Text + "','"
+                                                                             + Total_Box.Text + "', '"
+                                                                             + Sale_Date_Box.Text + "', '"
+                                                                             + Username_Box.Text + "', '"
+                                                                             + Bill_Type_Box.Text + "')";
+                    input.ExecuteNonQuery();
+
+                    //input ke sales_id_and_product_history dengan mengambil sales_id dari tabel sales_History
+                    int Sales_ID = 0;
+
+                    SqlCommand input2 = con.CreateCommand();
+                    input2.CommandType = CommandType.Text;
+                    input2.CommandText = "SELECT TOP 1 * FROM Sales_History ORDER BY Sales_ID DESC";
+                    input2.ExecuteNonQuery();
+                    DataTable dataTable2 = new DataTable();
+                    SqlDataAdapter dataAdapter2 = new SqlDataAdapter(input2);
+                    dataAdapter2.Fill(dataTable2);
+
+                    foreach (DataRow dataRow2 in dataTable2.Rows)
+                    {
+                        Sales_ID = Convert.ToInt32(dataRow2["Sales_ID"].ToString());
+                    }
+
+                    foreach (DataRow temp_dataRow in temp_dataTable.Rows)
+                    {
+                        SqlCommand temp = con.CreateCommand();
+                        temp.CommandType = CommandType.Text;
+                        temp.CommandText = "INSERT INTO Sales_ID_And_Product_History VALUES('" + Sales_ID + "','"
+                                                                                               + temp_dataRow["Product_ID"] + "', '"
+                                                                                               + temp_dataRow["Product_Name"] + "', '"
+                                                                                               + temp_dataRow["Product_Price"] + "', '"
+                                                                                               + temp_dataRow["Quantity"] + "', '"
+                                                                                               + temp_dataRow["Total_Price"] + "')";
+
+                        temp.ExecuteNonQuery();
+
+                        //Kurangkan quantity
+                        int Quantity = Convert.ToInt32(temp_dataRow["Quantity"].ToString());
+                        string Product_ID = temp_dataRow["Product_ID"].ToString();
+
+                        SqlCommand temp1 = con.CreateCommand();
+                        temp1.CommandType = CommandType.Text;
+                        temp1.CommandText = "UPDATE Product_Name SET Product_Quantity = Product_Quantity - "
+                            + Quantity + " WHERE Product_ID = '" + Product_ID.ToString() + "'";
+
+                        temp1.ExecuteNonQuery();
+                    }
+
+                    //Reset Textbox
+                    Customer_Box.Text = ""; Username_Box.Text = ""; Bill_Type_Box.Text = "";
+                    Product_Name_Box.Text = ""; Product_ID_Box.Text = ""; Quantity_Box.Text = "0";
+                    Product_Price_Box.Text = ""; Total_Box.Text = ""; Total_Payment_Box.Text = "";
+
+                    //Reset datagrid
+                    temp_dataTable.Clear();
+                    dataGridView1.DataSource = temp_dataTable;
+
+                    MessageBox.Show("Sales Added!");
                 }
-
-                foreach (DataRow temp_dataRow in temp_dataTable.Rows)
-                {
-                    SqlCommand temp = con.CreateCommand();
-                    temp.CommandType = CommandType.Text;
-                    temp.CommandText = "INSERT INTO Sales_ID_And_Product_History VALUES('" + Sales_ID + "','"
-                                                                                           + temp_dataRow["Product_ID"] + "', '"
-                                                                                           + temp_dataRow["Product_Name"] + "', '"
-                                                                                           + temp_dataRow["Product_Price"] + "', '"
-                                                                                           + temp_dataRow["Quantity"] + "', '"
-                                                                                           + temp_dataRow["Total_Price"] + "')";
-
-                    //Kurangkan quantity
-                    int Quantity = Convert.ToInt32(temp_dataRow["Quantity"].ToString());
-                    string Product_ID = temp_dataRow["Product_ID"].ToString();
-
-                    SqlCommand temp1 = con.CreateCommand();
-                    temp1.CommandType = CommandType.Text;
-                    temp1.CommandText = "UPDATE Product_Name SET Product_Quantity = Product_Quantity - "
-                        + Quantity + " WHERE Product_ID = '" + Product_ID.ToString() + "'";
-                }
-
-                //Reset Textbox
-                Customer_Box.Text = ""; Username_Box.Text = ""; Bill_Type_Box.Text = "";
-                Product_Name_Box.Text = ""; Product_ID_Box.Text = ""; Quantity_Box.Text = "0";
-                Product_Price_Box.Text = "";
-
-                //Reset datagrid
-                temp_dataTable.Clear();
-                dataGridView1.DataSource = temp_dataTable;
-
-                MessageBox.Show("Sales Added!");
             }
         }
 
