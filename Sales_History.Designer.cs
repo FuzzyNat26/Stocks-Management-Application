@@ -51,7 +51,7 @@ namespace Proyek_UAS
             this.Data_Sales_History_View.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Data_Sales_History_View.Size = new System.Drawing.Size(567, 417);
             this.Data_Sales_History_View.TabIndex = 71;
-            this.Data_Sales_History_View.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Data_Sales_History_View_CellContentClick);
+            this.Data_Sales_History_View.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Data_Sales_History_View_CellClick);
             // 
             // pictureBox1
             // 
@@ -104,9 +104,9 @@ namespace Proyek_UAS
             this.label5.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(716, 112);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(103, 19);
+            this.label5.Size = new System.Drawing.Size(96, 19);
             this.label5.TabIndex = 69;
-            this.label5.Text = "Sold Product";
+            this.label5.Text = "Product List";
             // 
             // deleteButton
             // 
@@ -120,6 +120,7 @@ namespace Proyek_UAS
             this.deleteButton.TabIndex = 77;
             this.deleteButton.Text = "DELETE SALES";
             this.deleteButton.UseVisualStyleBackColor = false;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // Sales_History
             // 

@@ -55,7 +55,67 @@ namespace Proyek_UAS
             Data_Sales_History_View.DataSource = sales_history;
         }
 
-        private void Data_Sales_History_View_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Are you sure you want to delete this sales?", "Confirmation", MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                //Delete data from Sales_History
+                var Sales_ID = Data_Sales_History_View.SelectedCells[0].Value.ToString();
+
+                SqlCommand del = con.CreateCommand();
+                del.CommandType = CommandType.Text;
+                del.CommandText = "DELETE FROM Sales_History WHERE Sales_ID ='" + Sales_ID + "'";
+                del.ExecuteNonQuery();
+
+                //Delete data from Sales_ID_And_Product_History
+                SqlCommand del1 = con.CreateCommand();
+                del1.CommandType = CommandType.Text;
+                del1.CommandText = "DELETE FROM Sales_ID_And_Product_History WHERE Sales_ID ='" + Sales_ID + "'";
+                del1.ExecuteNonQuery();
+
+
+
+                //Return Sold Quantity
+                //Temporary Datatable
+                DataTable temp_data = new DataTable();
+                temp_data.Columns.Add("Product_ID");
+                temp_data.Columns.Add("Quantity");
+
+                DataRow temp_dr = null;
+                foreach (DataGridViewRow row in Data_SalesID_ProductHistory_View.Rows)
+                {
+                    temp_dr = temp_data.NewRow();
+                    temp_dr["Product_ID"] = row.Cells["Product_ID"].Value;
+                    temp_dr["Quantity"] = row.Cells["Quantity"].Value;
+                    temp_data.Rows.Add(temp_dr);
+                }
+
+                foreach (DataRow temp_dataRow in temp_data.Rows)
+                {
+                    int Quantity = Convert.ToInt32(temp_dataRow["Quantity"].ToString());
+                    string Product_ID = temp_dataRow["Product_ID"].ToString();
+
+                    SqlCommand temp1 = con.CreateCommand();
+                    temp1.CommandType = CommandType.Text;
+                    temp1.CommandText = "UPDATE Product_Name SET Product_Quantity = Product_Quantity + "
+                        + Quantity + " WHERE Product_ID = '" + Product_ID.ToString() + "'";
+
+                    temp1.ExecuteNonQuery();
+                }
+
+
+
+
+                //refresh view
+                call_sales_history();
+
+                MessageBox.Show("User deleted!");
+            }
+        }
+
+        private void Data_Sales_History_View_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             SqlCommand temp_sales_id = con.CreateCommand();
             temp_sales_id.CommandType = CommandType.Text;
@@ -75,14 +135,14 @@ namespace Proyek_UAS
 
             SqlCommand find = con.CreateCommand();
             find.CommandType = CommandType.Text;
-            find.CommandText = "SELECT Product_ID, Product_Name, " +
-                "Product_Price, Quantity, Total_Price FROM Sales_ID_And_Product_History WHERE Sales_ID = '" + Sales_ID + "'";
+            find.CommandText = "SELECT Product_ID, Product_Name, Product_Price, Quantity, Total_Price " +
+                "FROM Sales_ID_And_Product_History WHERE Sales_ID = '" + Sales_ID + "'";
             find.ExecuteNonQuery();
 
             DataTable found = new DataTable();
             SqlDataAdapter da_found = new SqlDataAdapter(find);
             da_found.Fill(found);
-            Data_Sales_History_View.DataSource = found;
+            Data_SalesID_ProductHistory_View.DataSource = found;
         }
     }
 }
