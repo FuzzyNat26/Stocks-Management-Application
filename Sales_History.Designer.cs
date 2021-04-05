@@ -36,13 +36,16 @@ namespace Proyek_UAS
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.deleteButton = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.Data_Sales_History_View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Data_SalesID_ProductHistory_View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // Data_Sales_History_View
             // 
+            this.Data_Sales_History_View.AllowUserToAddRows = false;
             this.Data_Sales_History_View.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Data_Sales_History_View.Location = new System.Drawing.Point(85, 134);
             this.Data_Sales_History_View.Name = "Data_Sales_History_View";
@@ -79,13 +82,14 @@ namespace Proyek_UAS
             // 
             // Data_SalesID_ProductHistory_View
             // 
+            this.Data_SalesID_ProductHistory_View.AllowUserToAddRows = false;
             this.Data_SalesID_ProductHistory_View.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Data_SalesID_ProductHistory_View.Location = new System.Drawing.Point(720, 134);
             this.Data_SalesID_ProductHistory_View.Name = "Data_SalesID_ProductHistory_View";
             this.Data_SalesID_ProductHistory_View.RowHeadersWidth = 51;
             this.Data_SalesID_ProductHistory_View.RowTemplate.Height = 24;
             this.Data_SalesID_ProductHistory_View.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Data_SalesID_ProductHistory_View.Size = new System.Drawing.Size(567, 490);
+            this.Data_SalesID_ProductHistory_View.Size = new System.Drawing.Size(567, 194);
             this.Data_SalesID_ProductHistory_View.TabIndex = 76;
             // 
             // label3
@@ -122,12 +126,25 @@ namespace Proyek_UAS
             this.deleteButton.UseVisualStyleBackColor = false;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(720, 357);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(567, 222);
+            this.dataGridView1.TabIndex = 79;
+            // 
             // Sales_History
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
             this.ClientSize = new System.Drawing.Size(1328, 658);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.Data_SalesID_ProductHistory_View);
             this.Controls.Add(this.Data_Sales_History_View);
@@ -141,6 +158,7 @@ namespace Proyek_UAS
             ((System.ComponentModel.ISupportInitialize)(this.Data_Sales_History_View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Data_SalesID_ProductHistory_View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -154,5 +172,6 @@ namespace Proyek_UAS
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

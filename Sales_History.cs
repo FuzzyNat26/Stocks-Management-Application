@@ -76,31 +76,28 @@ namespace Proyek_UAS
                 del1.ExecuteNonQuery();
 
 
-
                 //Return Sold Quantity
                 //Temporary Datatable
                 DataTable temp_data = new DataTable();
                 temp_data.Columns.Add("Product_ID");
                 temp_data.Columns.Add("Quantity");
-
-                DataRow temp_dr = null;
                 foreach (DataGridViewRow row in Data_SalesID_ProductHistory_View.Rows)
                 {
-                    temp_dr = temp_data.NewRow();
+                    DataRow temp_dr = temp_data.NewRow();
                     temp_dr["Product_ID"] = row.Cells["Product_ID"].Value;
-                    temp_dr["Quantity"] = row.Cells["Quantity"].Value;
+                    temp_dr["Quantity"] = Convert.ToInt32(row.Cells["Quantity"].Value);
                     temp_data.Rows.Add(temp_dr);
                 }
 
                 foreach (DataRow temp_dataRow in temp_data.Rows)
                 {
-                    int Quantity = Convert.ToInt32(temp_dataRow["Quantity"].ToString());
-                    string Product_ID = temp_dataRow["Product_ID"].ToString();
+                    var Quantity = temp_dataRow["Quantity"].ToString();
+                    var Product_ID = temp_dataRow["Product_ID"].ToString();
 
                     SqlCommand temp1 = con.CreateCommand();
                     temp1.CommandType = CommandType.Text;
                     temp1.CommandText = "UPDATE Product_Name SET Product_Quantity = Product_Quantity + "
-                        + Quantity + " WHERE Product_ID = '" + Product_ID.ToString() + "'";
+                        + Convert.ToInt32(Quantity) + " WHERE Product_ID = '" + Product_ID.ToString() + "'";
 
                     temp1.ExecuteNonQuery();
                 }
