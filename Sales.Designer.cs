@@ -44,7 +44,7 @@ namespace Proyek_UAS
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.Total_Payment_Box = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -232,15 +232,15 @@ namespace Proyek_UAS
             this.label10.TabIndex = 37;
             this.label10.Text = "Total Payment";
             // 
-            // textBox7
+            // Total_Payment_Box
             // 
-            this.textBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(216)))), ((int)(((byte)(96)))));
-            this.textBox7.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(1060, 581);
-            this.textBox7.Multiline = true;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(266, 31);
-            this.textBox7.TabIndex = 36;
+            this.Total_Payment_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(216)))), ((int)(((byte)(96)))));
+            this.Total_Payment_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Total_Payment_Box.Location = new System.Drawing.Point(1060, 581);
+            this.Total_Payment_Box.Multiline = true;
+            this.Total_Payment_Box.Name = "Total_Payment_Box";
+            this.Total_Payment_Box.Size = new System.Drawing.Size(266, 31);
+            this.Total_Payment_Box.TabIndex = 36;
             // 
             // button3
             // 
@@ -334,10 +334,11 @@ namespace Proyek_UAS
             // 
             // Username_Box
             // 
+            this.Username_Box.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.Username_Box.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.Username_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
             this.Username_Box.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.Username_Box.DropDownHeight = 110;
-            this.Username_Box.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Username_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F);
             this.Username_Box.FormattingEnabled = true;
             this.Username_Box.IntegralHeight = false;
@@ -395,10 +396,11 @@ namespace Proyek_UAS
             // 
             // Product_Name_Box
             // 
+            this.Product_Name_Box.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.Product_Name_Box.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.Product_Name_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
             this.Product_Name_Box.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.Product_Name_Box.DropDownHeight = 110;
-            this.Product_Name_Box.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Product_Name_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F);
             this.Product_Name_Box.FormattingEnabled = true;
             this.Product_Name_Box.IntegralHeight = false;
@@ -431,7 +433,7 @@ namespace Proyek_UAS
             this.Controls.Add(this.Product_Name_Box);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.textBox7);
+            this.Controls.Add(this.Total_Payment_Box);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label6);
@@ -475,7 +477,7 @@ namespace Proyek_UAS
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox Total_Payment_Box;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox Product_Price_Box;

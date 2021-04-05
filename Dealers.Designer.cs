@@ -231,10 +231,11 @@ namespace Proyek_UAS
             // 
             // Inserted_By_Box
             // 
+            this.Inserted_By_Box.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.Inserted_By_Box.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.Inserted_By_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
             this.Inserted_By_Box.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.Inserted_By_Box.DropDownHeight = 110;
-            this.Inserted_By_Box.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Inserted_By_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F);
             this.Inserted_By_Box.FormattingEnabled = true;
             this.Inserted_By_Box.IntegralHeight = false;

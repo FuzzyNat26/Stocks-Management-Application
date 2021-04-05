@@ -22,7 +22,6 @@ namespace Proyek_UAS
 
         int Total = 0;
 
-
         public Sales()
         {
             InitializeComponent();
@@ -206,7 +205,7 @@ namespace Proyek_UAS
                 dataGridView1.DataSource = temp_dataTable;
 
                 Total = Total + Convert.ToInt32(temp_dr["Total_Price"].ToString());
-                Total_Box.Text = Convert.ToString(Total);
+                Total_Payment_Box.Text = Convert.ToString(Total);
 
                 //Menunjukkan data sudah added
                 MessageBox.Show("New Data Added!");
@@ -246,7 +245,7 @@ namespace Proyek_UAS
                 input.ExecuteNonQuery();
 
                 //input ke sales_id_and_product_history dengan mengambil sales_id dari tabel sales_History
-                string Sales_ID = "";
+                int Sales_ID = 0;
 
                 SqlCommand input2 = con.CreateCommand();
                 input2.CommandType = CommandType.Text;
@@ -258,7 +257,7 @@ namespace Proyek_UAS
 
                 foreach (DataRow dataRow2 in dataTable2.Rows)
                 {
-                    Sales_ID = dataRow2["Sales_ID"].ToString();
+                    Sales_ID = Convert.ToInt32(dataRow2["Sales_ID"].ToString());
                 }
 
                 foreach (DataRow temp_dataRow in temp_dataTable.Rows)

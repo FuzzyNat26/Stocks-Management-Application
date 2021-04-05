@@ -240,10 +240,11 @@ namespace Proyek_UAS
             // 
             // Username_Box
             // 
+            this.Username_Box.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.Username_Box.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.Username_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
             this.Username_Box.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.Username_Box.DropDownHeight = 110;
-            this.Username_Box.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Username_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F);
             this.Username_Box.FormattingEnabled = true;
             this.Username_Box.IntegralHeight = false;
@@ -281,6 +282,8 @@ namespace Proyek_UAS
             // 
             // Dealer_Name_Box
             // 
+            this.Dealer_Name_Box.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.Dealer_Name_Box.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.Dealer_Name_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
             this.Dealer_Name_Box.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.Dealer_Name_Box.DropDownHeight = 110;
@@ -299,10 +302,11 @@ namespace Proyek_UAS
             // 
             // Product_Name_Box
             // 
+            this.Product_Name_Box.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.Product_Name_Box.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.Product_Name_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
             this.Product_Name_Box.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.Product_Name_Box.DropDownHeight = 110;
-            this.Product_Name_Box.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Product_Name_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F);
             this.Product_Name_Box.FormattingEnabled = true;
             this.Product_Name_Box.IntegralHeight = false;
