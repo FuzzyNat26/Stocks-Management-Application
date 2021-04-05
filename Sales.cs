@@ -264,6 +264,7 @@ namespace Proyek_UAS
                     input2.CommandType = CommandType.Text;
                     input2.CommandText = "SELECT TOP 1 * FROM Sales_History ORDER BY Sales_ID DESC";
                     input2.ExecuteNonQuery();
+
                     DataTable dataTable2 = new DataTable();
                     SqlDataAdapter dataAdapter2 = new SqlDataAdapter(input2);
                     dataAdapter2.Fill(dataTable2);
