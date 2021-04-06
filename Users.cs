@@ -16,6 +16,7 @@ namespace Proyek_UAS
         SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;
                             AttachDbFilename=C:\PROJECT C DRIVE\VS 2019\Proyek UAS\Inventory.mdf;
                             Integrated Security=True");
+
         public Users()
         {
             InitializeComponent();
