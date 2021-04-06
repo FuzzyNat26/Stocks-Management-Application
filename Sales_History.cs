@@ -102,9 +102,6 @@ namespace Proyek_UAS
                     temp1.ExecuteNonQuery();
                 }
 
-
-
-
                 //refresh view
                 call_sales_history();
 
@@ -114,21 +111,10 @@ namespace Proyek_UAS
 
         private void Data_Sales_History_View_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            SqlCommand temp_sales_id = con.CreateCommand();
-            temp_sales_id.CommandType = CommandType.Text;
-            temp_sales_id.CommandText = "SELECT Sales_ID FROM Sales_History";
-            temp_sales_id.ExecuteNonQuery();
+            Data_SalesID_ProductHistory_View.DataSource = null;
+            Data_SalesID_ProductHistory_View.Rows.Clear();
 
-            DataTable temp_dataTable = new DataTable();
-            SqlDataAdapter temp_dataAdapter = new SqlDataAdapter(temp_sales_id);
-            temp_dataAdapter.Fill(temp_dataTable);
-
-            int Sales_ID = 0;
-
-            foreach (DataRow temp in temp_dataTable.Rows)
-            {
-                Sales_ID = Convert.ToInt32(temp["Sales_ID"].ToString());
-            }
+            int Sales_ID = Convert.ToInt32(Data_Sales_History_View.SelectedCells[0].Value.ToString());
 
             SqlCommand find = con.CreateCommand();
             find.CommandType = CommandType.Text;

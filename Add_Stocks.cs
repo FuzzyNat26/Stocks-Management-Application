@@ -109,6 +109,7 @@ namespace Proyek_UAS
             fill.CommandText = "SELECT Product_ID FROM Product_Name WHERE Product_Name='"
                 + Product_Name_Box.Text + "'";
             fill.ExecuteNonQuery();
+
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(fill);
             da.Fill(dt);
