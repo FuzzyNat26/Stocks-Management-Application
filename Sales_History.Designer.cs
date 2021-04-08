@@ -36,6 +36,7 @@ namespace Proyek_UAS
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.deleteButton = new System.Windows.Forms.Button();
+            this.Print_Button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Data_Sales_History_View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Data_SalesID_ProductHistory_View)).BeginInit();
@@ -97,7 +98,7 @@ namespace Proyek_UAS
             this.Data_SalesID_ProductHistory_View.RowHeadersWidth = 51;
             this.Data_SalesID_ProductHistory_View.RowTemplate.Height = 24;
             this.Data_SalesID_ProductHistory_View.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Data_SalesID_ProductHistory_View.Size = new System.Drawing.Size(567, 490);
+            this.Data_SalesID_ProductHistory_View.Size = new System.Drawing.Size(567, 546);
             this.Data_SalesID_ProductHistory_View.TabIndex = 76;
             // 
             // label3
@@ -126,7 +127,7 @@ namespace Proyek_UAS
             this.deleteButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.deleteButton.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteButton.ForeColor = System.Drawing.Color.White;
-            this.deleteButton.Location = new System.Drawing.Point(85, 573);
+            this.deleteButton.Location = new System.Drawing.Point(85, 567);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(567, 51);
             this.deleteButton.TabIndex = 77;
@@ -134,12 +135,27 @@ namespace Proyek_UAS
             this.deleteButton.UseVisualStyleBackColor = false;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
+            // Print_Button
+            // 
+            this.Print_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(204)))), ((int)(((byte)(236)))));
+            this.Print_Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Print_Button.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Print_Button.ForeColor = System.Drawing.Color.White;
+            this.Print_Button.Location = new System.Drawing.Point(85, 629);
+            this.Print_Button.Name = "Print_Button";
+            this.Print_Button.Size = new System.Drawing.Size(567, 51);
+            this.Print_Button.TabIndex = 78;
+            this.Print_Button.Text = "PRINT SELECTED";
+            this.Print_Button.UseVisualStyleBackColor = false;
+            this.Print_Button.Click += new System.EventHandler(this.Print_Button_Click);
+            // 
             // Sales_History
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
-            this.ClientSize = new System.Drawing.Size(1328, 658);
+            this.ClientSize = new System.Drawing.Size(1328, 713);
+            this.Controls.Add(this.Print_Button);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.Data_SalesID_ProductHistory_View);
             this.Controls.Add(this.Data_Sales_History_View);
@@ -166,5 +182,6 @@ namespace Proyek_UAS
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.Button Print_Button;
     }
 }

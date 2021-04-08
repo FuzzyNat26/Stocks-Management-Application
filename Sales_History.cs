@@ -127,5 +127,18 @@ namespace Proyek_UAS
             da_found.Fill(found);
             Data_SalesID_ProductHistory_View.DataSource = found;
         }
+
+        private void Print_Button_Click(object sender, EventArgs e)
+        {
+            //Kalau mau print order
+            var confirmResult1 = MessageBox.Show("Do you want to print this sales?", "Confirmation", MessageBoxButtons.YesNo);
+            if (confirmResult1 == DialogResult.Yes)
+            {
+                int Sales_ID = Convert.ToInt32(Data_Sales_History_View.SelectedCells[0].Value.ToString());
+                Sales_Report report = new Sales_Report();
+                report.Get_Sales_ID(Convert.ToInt32(Sales_ID.ToString()));
+                report.Show();
+            }
+        }
     }
 }
