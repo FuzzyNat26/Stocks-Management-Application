@@ -310,7 +310,13 @@ namespace Proyek_UAS
 
                     MessageBox.Show("Sales Added!");
                 }
-            }
+
+                var confirmResult1 = MessageBox.Show("Confirm Order?", "Confirmation", MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
+                {
+
+                }
+                }
         }
 
         private void Product_Name_Box_DrawItem(object sender, DrawItemEventArgs e)

@@ -120,7 +120,7 @@ namespace Proyek_UAS
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.ShowEditingIcon = false;
-            this.dataGridView1.Size = new System.Drawing.Size(920, 476);
+            this.dataGridView1.Size = new System.Drawing.Size(920, 508);
             this.dataGridView1.TabIndex = 21;
             // 
             // Add_Item_To_List
@@ -157,11 +157,11 @@ namespace Proyek_UAS
             this.Save_Order_Button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Save_Order_Button.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Save_Order_Button.ForeColor = System.Drawing.Color.White;
-            this.Save_Order_Button.Location = new System.Drawing.Point(1058, 631);
+            this.Save_Order_Button.Location = new System.Drawing.Point(1058, 632);
             this.Save_Order_Button.Name = "Save_Order_Button";
-            this.Save_Order_Button.Size = new System.Drawing.Size(267, 51);
+            this.Save_Order_Button.Size = new System.Drawing.Size(267, 78);
             this.Save_Order_Button.TabIndex = 23;
-            this.Save_Order_Button.Text = "SAVE ORDER";
+            this.Save_Order_Button.Text = "SAVE AND\r\nPRINT ORDER";
             this.Save_Order_Button.UseVisualStyleBackColor = false;
             this.Save_Order_Button.Click += new System.EventHandler(this.Save_Order_Button_Click);
             // 
@@ -229,7 +229,7 @@ namespace Proyek_UAS
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(1057, 557);
+            this.label10.Location = new System.Drawing.Point(1056, 551);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(110, 19);
             this.label10.TabIndex = 37;
@@ -239,7 +239,7 @@ namespace Proyek_UAS
             // 
             this.Total_Payment_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(216)))), ((int)(((byte)(96)))));
             this.Total_Payment_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Total_Payment_Box.Location = new System.Drawing.Point(1060, 581);
+            this.Total_Payment_Box.Location = new System.Drawing.Point(1059, 575);
             this.Total_Payment_Box.Multiline = true;
             this.Total_Payment_Box.Name = "Total_Payment_Box";
             this.Total_Payment_Box.Size = new System.Drawing.Size(266, 31);
@@ -252,7 +252,7 @@ namespace Proyek_UAS
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(1058, 705);
+            this.button3.Location = new System.Drawing.Point(1058, 737);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(267, 51);
             this.button3.TabIndex = 48;
@@ -425,7 +425,7 @@ namespace Proyek_UAS
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
-            this.ClientSize = new System.Drawing.Size(1372, 778);
+            this.ClientSize = new System.Drawing.Size(1372, 819);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.Product_ID_Box);
             this.Controls.Add(this.Bill_Type_Box);

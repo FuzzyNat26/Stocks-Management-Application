@@ -120,6 +120,24 @@ namespace Proyek_UAS
             }   
         }
 
+        private void Dealer_Name_Box_SelectionIndexChanged(object sender, EventArgs e)
+        {
+            SqlCommand fill1 = con.CreateCommand();
+            fill1.CommandType = CommandType.Text;
+            fill1.CommandText = "SELECT Dealer_ID FROM Dealers WHERE Dealer_Name='"
+                + Dealer_Name_Box.Text + "'";
+            fill1.ExecuteNonQuery();
+
+            DataTable dt1 = new DataTable();
+            SqlDataAdapter da1 = new SqlDataAdapter(fill1);
+            da1.Fill(dt1);
+
+            foreach (DataRow dr in dt1.Rows)
+            {
+                Dealer_ID_Box.Text = Convert.ToString(dr["Dealer_ID"]);
+            }
+        }
+
         private void Only_Accept_Number_Key_Press (object sender, KeyPressEventArgs e)
         {
             if (char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar))
@@ -245,6 +263,7 @@ namespace Proyek_UAS
                                                                          + Product_Name_Box.Text + "', '"
                                                                          + Quantity_Box.Text + "', '"
                                                                          + Product_Price_Box.Text + "', '"
+                                                                         + Dealer_ID_Box.Text + "', '"
                                                                          + Dealer_Name_Box.Text + "', '"
                                                                          + Username_Box.Text + "', '"
                                                                          + Purchase_Date.Value.Date + "', '"
@@ -260,8 +279,9 @@ namespace Proyek_UAS
                     //Menghapus teks yang ada di textbox
                     Product_ID_Box.Text = ""; Product_Name_Box.Text = "";
                     Quantity_Box.Text = ""; Product_Price_Box.Text = "";
-                    Dealer_Name_Box.Text = ""; Username_Box.Text = "";
-                    Purchase_Date.Text = ""; Total_Box.Text = "";
+                    Dealer_ID_Box.Text = ""; Dealer_Name_Box.Text = "";
+                    Username_Box.Text = ""; Purchase_Date.Text = "";
+                    Total_Box.Text = "";
 
                     //Refresh Table
                     display();

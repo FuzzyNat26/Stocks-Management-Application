@@ -53,6 +53,8 @@ namespace Proyek_UAS
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.Dealer_ID_Box = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -61,7 +63,7 @@ namespace Proyek_UAS
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(1065, 173);
+            this.label8.Location = new System.Drawing.Point(1064, 261);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(41, 19);
             this.label8.TabIndex = 59;
@@ -71,10 +73,10 @@ namespace Proyek_UAS
             // 
             this.Total_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(216)))), ((int)(((byte)(96)))));
             this.Total_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Total_Box.Location = new System.Drawing.Point(1100, 197);
+            this.Total_Box.Location = new System.Drawing.Point(1099, 285);
             this.Total_Box.Multiline = true;
             this.Total_Box.Name = "Total_Box";
-            this.Total_Box.Size = new System.Drawing.Size(235, 35);
+            this.Total_Box.Size = new System.Drawing.Size(236, 35);
             this.Total_Box.TabIndex = 58;
             this.Total_Box.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Only_Accept_Number_Key_Press);
             // 
@@ -92,7 +94,7 @@ namespace Proyek_UAS
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(741, 173);
+            this.label6.Location = new System.Drawing.Point(1069, 175);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(69, 19);
             this.label6.TabIndex = 55;
@@ -102,7 +104,7 @@ namespace Proyek_UAS
             // 
             this.Quantity_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
             this.Quantity_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Quantity_Box.Location = new System.Drawing.Point(744, 197);
+            this.Quantity_Box.Location = new System.Drawing.Point(1068, 199);
             this.Quantity_Box.Multiline = true;
             this.Quantity_Box.Name = "Quantity_Box";
             this.Quantity_Box.Size = new System.Drawing.Size(267, 35);
@@ -136,7 +138,7 @@ namespace Proyek_UAS
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(416, 173);
+            this.label4.Location = new System.Drawing.Point(744, 175);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(110, 19);
             this.label4.TabIndex = 51;
@@ -146,10 +148,10 @@ namespace Proyek_UAS
             // 
             this.Product_Price_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
             this.Product_Price_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Product_Price_Box.Location = new System.Drawing.Point(451, 195);
+            this.Product_Price_Box.Location = new System.Drawing.Point(779, 197);
             this.Product_Price_Box.Multiline = true;
             this.Product_Price_Box.Name = "Product_Price_Box";
-            this.Product_Price_Box.Size = new System.Drawing.Size(234, 35);
+            this.Product_Price_Box.Size = new System.Drawing.Size(232, 35);
             this.Product_Price_Box.TabIndex = 50;
             this.Product_Price_Box.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Only_Accept_Number_Key_Press);
             this.Product_Price_Box.Leave += new System.EventHandler(this.Total_Box_Value_Textbox_Leave);
@@ -170,7 +172,7 @@ namespace Proyek_UAS
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(1068, 262);
+            this.button1.Location = new System.Drawing.Point(1068, 345);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(267, 51);
             this.button1.TabIndex = 45;
@@ -198,7 +200,7 @@ namespace Proyek_UAS
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(88, 173);
+            this.label2.Location = new System.Drawing.Point(416, 175);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(113, 19);
             this.label2.TabIndex = 43;
@@ -263,7 +265,7 @@ namespace Proyek_UAS
             this.deleteButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.deleteButton.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteButton.ForeColor = System.Drawing.Color.White;
-            this.deleteButton.Location = new System.Drawing.Point(1068, 341);
+            this.deleteButton.Location = new System.Drawing.Point(1068, 417);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(267, 51);
             this.deleteButton.TabIndex = 62;
@@ -299,6 +301,7 @@ namespace Proyek_UAS
             this.Dealer_Name_Box.Sorted = true;
             this.Dealer_Name_Box.TabIndex = 64;
             this.Dealer_Name_Box.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.Dealer_Name_Box_DrawItem);
+            this.Dealer_Name_Box.SelectedIndexChanged += new System.EventHandler(this.Dealer_Name_Box_SelectionIndexChanged);
             // 
             // Product_Name_Box
             // 
@@ -311,7 +314,7 @@ namespace Proyek_UAS
             this.Product_Name_Box.FormattingEnabled = true;
             this.Product_Name_Box.IntegralHeight = false;
             this.Product_Name_Box.ItemHeight = 25;
-            this.Product_Name_Box.Location = new System.Drawing.Point(91, 197);
+            this.Product_Name_Box.Location = new System.Drawing.Point(419, 199);
             this.Product_Name_Box.MaxDropDownItems = 4;
             this.Product_Name_Box.Name = "Product_Name_Box";
             this.Product_Name_Box.Size = new System.Drawing.Size(266, 31);
@@ -324,7 +327,7 @@ namespace Proyek_UAS
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(416, 201);
+            this.label10.Location = new System.Drawing.Point(744, 203);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(29, 19);
             this.label10.TabIndex = 66;
@@ -334,7 +337,7 @@ namespace Proyek_UAS
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(1065, 201);
+            this.label11.Location = new System.Drawing.Point(1064, 289);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(29, 19);
             this.label11.TabIndex = 67;
@@ -346,13 +349,34 @@ namespace Proyek_UAS
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(1068, 425);
+            this.button2.Location = new System.Drawing.Point(1068, 533);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(267, 273);
+            this.button2.Size = new System.Drawing.Size(267, 165);
             this.button2.TabIndex = 47;
             this.button2.Text = "PRODUCT\r\nNAME LIST";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(87, 175);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(79, 19);
+            this.label12.TabIndex = 69;
+            this.label12.Text = "Dealer ID";
+            // 
+            // Dealer_ID_Box
+            // 
+            this.Dealer_ID_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
+            this.Dealer_ID_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Dealer_ID_Box.Location = new System.Drawing.Point(90, 199);
+            this.Dealer_ID_Box.Multiline = true;
+            this.Dealer_ID_Box.Name = "Dealer_ID_Box";
+            this.Dealer_ID_Box.ReadOnly = true;
+            this.Dealer_ID_Box.Size = new System.Drawing.Size(267, 35);
+            this.Dealer_ID_Box.TabIndex = 68;
             // 
             // Add_Stocks
             // 
@@ -360,6 +384,8 @@ namespace Proyek_UAS
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
             this.ClientSize = new System.Drawing.Size(1372, 726);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.Dealer_ID_Box);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.Product_Name_Box);
@@ -419,5 +445,7 @@ namespace Proyek_UAS
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox Dealer_ID_Box;
     }
 }
