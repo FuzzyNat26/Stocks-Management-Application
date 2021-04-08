@@ -257,7 +257,7 @@ namespace Proyek_UAS
                                                                              + Bill_Type_Box.Text + "')";
                     input.ExecuteNonQuery();
 
-                    //input ke sales_id_and_product_history dengan mengambil sales_id dari tabel sales_History
+                    //input ke Sold_Product_History dengan mengambil sales_id dari tabel sales_History
                     int Sales_ID = 0;
 
                     SqlCommand input2 = con.CreateCommand();
@@ -278,7 +278,7 @@ namespace Proyek_UAS
                     {
                         SqlCommand temp = con.CreateCommand();
                         temp.CommandType = CommandType.Text;
-                        temp.CommandText = "INSERT INTO Sales_ID_And_Product_History VALUES('" + Sales_ID + "','"
+                        temp.CommandText = "INSERT INTO Sold_Product_History VALUES('" + Sales_ID + "','"
                                                                                                + temp_dataRow["Product_ID"] + "', '"
                                                                                                + temp_dataRow["Product_Name"] + "', '"
                                                                                                + temp_dataRow["Product_Price"] + "', '"
@@ -309,14 +309,17 @@ namespace Proyek_UAS
                     dataGridView1.DataSource = temp_dataTable;
 
                     MessageBox.Show("Sales Added!");
-                }
 
-                var confirmResult1 = MessageBox.Show("Confirm Order?", "Confirmation", MessageBoxButtons.YesNo);
-                if (confirmResult == DialogResult.Yes)
-                {
-
+                    //Kalau mau print order
+                    var confirmResult1 = MessageBox.Show("Do you want to print this sales?", "Confirmation", MessageBoxButtons.YesNo);
+                    if (confirmResult1 == DialogResult.Yes)
+                    {
+                        Sales_Report report = new Sales_Report();
+                        report.Get_Sales_ID(Convert.ToInt32(Sales_ID.ToString()));
+                        report.Show();
+                    }
                 }
-                }
+            }
         }
 
         private void Product_Name_Box_DrawItem(object sender, DrawItemEventArgs e)

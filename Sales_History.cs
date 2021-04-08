@@ -69,10 +69,10 @@ namespace Proyek_UAS
                 del.CommandText = "DELETE FROM Sales_History WHERE Sales_ID ='" + Sales_ID + "'";
                 del.ExecuteNonQuery();
 
-                //Delete data from Sales_ID_And_Product_History
+                //Delete data from Sold_Product_History
                 SqlCommand del1 = con.CreateCommand();
                 del1.CommandType = CommandType.Text;
-                del1.CommandText = "DELETE FROM Sales_ID_And_Product_History WHERE Sales_ID ='" + Sales_ID + "'";
+                del1.CommandText = "DELETE FROM Sold_Product_History WHERE Sales_ID ='" + Sales_ID + "'";
                 del1.ExecuteNonQuery();
 
 
@@ -119,7 +119,7 @@ namespace Proyek_UAS
             SqlCommand find = con.CreateCommand();
             find.CommandType = CommandType.Text;
             find.CommandText = "SELECT Product_ID, Product_Name, Product_Price, Quantity, Total_Price " +
-                "FROM Sales_ID_And_Product_History WHERE Sales_ID = '" + Sales_ID + "'";
+                "FROM Sold_Product_History WHERE Sales_ID = '" + Sales_ID + "'";
             find.ExecuteNonQuery();
 
             DataTable found = new DataTable();
