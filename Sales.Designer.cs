@@ -48,7 +48,6 @@ namespace Proyek_UAS
             this.button3 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.Product_Price_Box = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.Total_Box = new System.Windows.Forms.TextBox();
             this.Quantity_Box = new System.Windows.Forms.TextBox();
@@ -58,6 +57,7 @@ namespace Proyek_UAS
             this.label13 = new System.Windows.Forms.Label();
             this.Product_ID_Box = new System.Windows.Forms.TextBox();
             this.Product_Name_Box = new System.Windows.Forms.ComboBox();
+            this.Product_Price_Box = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -120,7 +120,7 @@ namespace Proyek_UAS
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.ShowEditingIcon = false;
-            this.dataGridView1.Size = new System.Drawing.Size(920, 508);
+            this.dataGridView1.Size = new System.Drawing.Size(917, 508);
             this.dataGridView1.TabIndex = 21;
             // 
             // Add_Item_To_List
@@ -282,19 +282,6 @@ namespace Proyek_UAS
             this.label11.TabIndex = 68;
             this.label11.Text = "Rp";
             // 
-            // Product_Price_Box
-            // 
-            this.Product_Price_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
-            this.Product_Price_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Product_Price_Box.Location = new System.Drawing.Point(763, 200);
-            this.Product_Price_Box.Multiline = true;
-            this.Product_Price_Box.Name = "Product_Price_Box";
-            this.Product_Price_Box.Size = new System.Drawing.Size(235, 35);
-            this.Product_Price_Box.TabIndex = 67;
-            this.Product_Price_Box.Text = "0";
-            this.Product_Price_Box.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Only_Accept_Number_Key_Press);
-            this.Product_Price_Box.Leave += new System.EventHandler(this.Total_Box_Value_Textbox_Leave);
-            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -420,12 +407,33 @@ namespace Proyek_UAS
             this.Product_Name_Box.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.Product_Name_Box_DrawItem);
             this.Product_Name_Box.SelectedIndexChanged += new System.EventHandler(this.Product_Name_Box_SelectionIndexChanged);
             // 
+            // Product_Price_Box
+            // 
+            this.Product_Price_Box.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.Product_Price_Box.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.Product_Price_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
+            this.Product_Price_Box.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.Product_Price_Box.DropDownHeight = 110;
+            this.Product_Price_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F);
+            this.Product_Price_Box.FormattingEnabled = true;
+            this.Product_Price_Box.IntegralHeight = false;
+            this.Product_Price_Box.ItemHeight = 25;
+            this.Product_Price_Box.Location = new System.Drawing.Point(763, 200);
+            this.Product_Price_Box.MaxDropDownItems = 4;
+            this.Product_Price_Box.Name = "Product_Price_Box";
+            this.Product_Price_Box.Size = new System.Drawing.Size(235, 31);
+            this.Product_Price_Box.Sorted = true;
+            this.Product_Price_Box.TabIndex = 77;
+            this.Product_Price_Box.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.Product_Price_Box_DrawItem);
+            this.Product_Price_Box.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Only_Accept_Number_Key_Press);
+            // 
             // Sales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
             this.ClientSize = new System.Drawing.Size(1372, 819);
+            this.Controls.Add(this.Product_Price_Box);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.Product_ID_Box);
             this.Controls.Add(this.Bill_Type_Box);
@@ -435,7 +443,6 @@ namespace Proyek_UAS
             this.Controls.Add(this.label12);
             this.Controls.Add(this.Total_Box);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.Product_Price_Box);
             this.Controls.Add(this.Product_Name_Box);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label10);
@@ -486,7 +493,6 @@ namespace Proyek_UAS
         private System.Windows.Forms.TextBox Total_Payment_Box;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox Product_Price_Box;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox Total_Box;
         private System.Windows.Forms.TextBox Quantity_Box;
@@ -496,5 +502,6 @@ namespace Proyek_UAS
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox Product_ID_Box;
         private System.Windows.Forms.ComboBox Product_Name_Box;
+        private System.Windows.Forms.ComboBox Product_Price_Box;
     }
 }

@@ -62,6 +62,15 @@ namespace Proyek_UAS
             }
         }
 
+        private void Product_Price_Box_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            e.DrawBackground();
+            if (e.Index > -1)
+            {
+                e.Graphics.DrawString(Product_Price_Box.Items[e.Index].ToString(), e.Font, new SolidBrush(e.ForeColor), e.Bounds);
+            }
+        }
+
         //Atur Combo Box
 
         public void fill_username_box()
@@ -98,6 +107,23 @@ namespace Proyek_UAS
             }
         }
 
+        public void fill_product_price_box()
+        {
+            Product_Price_Box.Items.Clear();
+            SqlCommand fill = con.CreateCommand();
+            fill.CommandType = CommandType.Text;
+            fill.CommandText = "SELECT Product_Price FROM Add_Stocks WHERE Product_ID ='" + Product_ID_Box.Text + "'";
+            fill.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(fill);
+            da.Fill(dt);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                Product_Price_Box.Items.Add(dr["Product_Price"].ToString());
+            }
+        }
+
         private void Product_Name_Box_SelectionIndexChanged(object sender, EventArgs e)
         {
             SqlCommand fill = con.CreateCommand();
@@ -113,6 +139,17 @@ namespace Proyek_UAS
             {
                 Product_ID_Box.Text = Convert.ToString(dr["Product_ID"]);
             }
+
+            SqlCommand fill1 = con.CreateCommand();
+            fill1.CommandType = CommandType.Text;
+            fill1.CommandText = "SELECT Product_Price FROM Add_Stocks WHERE Product_ID='"
+                + Product_ID_Box.Text + "'";
+            fill1.ExecuteNonQuery();
+            DataTable dt1 = new DataTable();
+            SqlDataAdapter da1 = new SqlDataAdapter(fill1);
+            da1.Fill(dt1);
+
+            fill_product_price_box();
         }
 
         private void Only_Accept_Number_Key_Press(object sender, KeyPressEventArgs e)
