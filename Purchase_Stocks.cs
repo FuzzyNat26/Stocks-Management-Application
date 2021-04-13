@@ -32,14 +32,6 @@ namespace Proyek_UAS
             }
         }
 
-        private void Username_Box_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            e.DrawBackground();
-            if (e.Index > -1)
-            {
-                e.Graphics.DrawString(Username_Box.Items[e.Index].ToString(), e.Font, new SolidBrush(e.ForeColor), e.Bounds);
-            }
-        }
 
         private void Dealer_Name_Box_DrawItem(object sender, DrawItemEventArgs e)
         {
@@ -56,7 +48,7 @@ namespace Proyek_UAS
             Product_Name_Box.Items.Clear();
             SqlCommand fill = con.CreateCommand();
             fill.CommandType = CommandType.Text;
-            fill.CommandText = "SELECT * FROM Product_Name";
+            fill.CommandText = "SELECT * FROM Stocks";
             fill.ExecuteNonQuery();
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(fill);
@@ -85,28 +77,11 @@ namespace Proyek_UAS
             }
         }
 
-        public void fill_username_box()
-        {
-            Username_Box.Items.Clear();
-            SqlCommand fill = con.CreateCommand();
-            fill.CommandType = CommandType.Text;
-            fill.CommandText = "SELECT * FROM Users";
-            fill.ExecuteNonQuery();
-            DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter(fill);
-            da.Fill(dt);
-
-            foreach (DataRow dr in dt.Rows)
-            {
-                Username_Box.Items.Add(dr["Username"].ToString());
-            }
-        }
-
         private void Product_Name_Box_SelectionIndexChanged (object sender, EventArgs e)
         {
             SqlCommand fill = con.CreateCommand();
             fill.CommandType = CommandType.Text;
-            fill.CommandText = "SELECT Product_ID FROM Product_Name WHERE Product_Name='"
+            fill.CommandText = "SELECT Product_ID FROM Stocks WHERE Product_Name='"
                 + Product_Name_Box.Text + "'";
             fill.ExecuteNonQuery();
 
@@ -138,6 +113,7 @@ namespace Proyek_UAS
             }
         }
 
+
         private void Only_Accept_Number_Key_Press (object sender, KeyPressEventArgs e)
         {
             if (char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar))
@@ -152,11 +128,12 @@ namespace Proyek_UAS
 
         private void Total_Box_Value_Textbox_Leave(object sender, EventArgs e)
         {
-            bool a = string.IsNullOrEmpty(Product_Price_Box.Text); //true
+            bool a = string.IsNullOrEmpty(Purchase_Price_Box.Text); //true
             bool b = string.IsNullOrEmpty(Quantity_Box.Text); //true
             if (a)
             {
-                Product_Price_Box.Text = "0";
+                Purchase_Price_Box.Text = "0";
+                Selling_Price_Box.Text = "0";
             } 
 
             if (b)
@@ -166,21 +143,49 @@ namespace Proyek_UAS
 
             if (a || b == false)
             {
-                Total_Box.Text = Convert.ToString(Convert.ToInt32(Product_Price_Box.Text) * Convert.ToInt32(Quantity_Box.Text));
+                Total_Box.Text = Convert.ToString(Convert.ToInt32(Purchase_Price_Box.Text) * Convert.ToInt32(Quantity_Box.Text));
+                Selling_Price_Box.Text = Convert.ToString(Purchase_Price_Box.Text);
             }
+        }
 
+        private void Selling_Price_Leave(object sender, EventArgs e)
+        {
+            if (!(string.IsNullOrEmpty(Selling_Price_Box.Text) || string.IsNullOrEmpty(Purchase_Price_Box.Text)))
+            {
+                int sell_price = Convert.ToInt32(Selling_Price_Box.Text);
+                int purchase_price = Convert.ToInt32(Purchase_Price_Box.Text);
+                if (sell_price < purchase_price)
+                {
+                    MessageBox.Show("Selling price must higher than Purchase price!");
+                    Selling_Price_Box.Text = Purchase_Price_Box.Text;
+                }
+            }
         }
 
         public void display()
         {
             SqlCommand display = con.CreateCommand();
             display.CommandType = CommandType.Text;
-            display.CommandText = "SELECT * FROM Add_Stocks";
+            display.CommandText = "SELECT Purchase.Purchase_ID," +
+                                          "Purchase_Stock.Product_ID," +
+                                          "Stocks.Product_Name," +
+                                          "Purchase.Purchase_Price," +
+                                          "Purchase.Quantity," +
+                                          "Purchase.Total," +
+                                          "Purchase.Sell_Price," +
+                                          "Purchase.Purchase_Date," +
+                                          "Purchase.Dealer_ID," +
+                                          "Dealers.Dealer_Name " +
+                                  "FROM Dealers, Purchase, Purchase_Stock, Stocks " +
+                                  "WHERE Purchase_Stock.Purchase_ID = Purchase.Purchase_ID " +
+                                          "AND Purchase_Stock.Product_ID = Stocks.Product_ID " +
+                                          "AND Dealers.Dealer_ID = Purchase.Dealer_ID";
             display.ExecuteNonQuery();
 
             DataTable dataTable = new DataTable();
             SqlDataAdapter dataAdapter = new SqlDataAdapter(display);
             dataAdapter.Fill(dataTable);
+
             dataGridView1.DataSource = dataTable;
         }
 
@@ -211,7 +216,6 @@ namespace Proyek_UAS
 
             //Combo Box
             fill_product_name_box();
-            fill_username_box();
             fill_dealer_name_box();
         }
 
@@ -228,18 +232,28 @@ namespace Proyek_UAS
                 LinkedList<string> confirm = new LinkedList<string>();
                 confirm.AddLast("Product ID:");
                 confirm.AddLast(Product_ID_Box.Text);
+
                 confirm.AddLast("Product Name:");
                 confirm.AddLast(Product_Name_Box.Text);
+
+                confirm.AddLast("Purchase Price:");
+                confirm.AddLast(Purchase_Price_Box.Text);
+
                 confirm.AddLast("Quantity:");
                 confirm.AddLast(Quantity_Box.Text);
-                confirm.AddLast("Product Price:");
-                confirm.AddLast(Product_Price_Box.Text);
+
+                confirm.AddLast("Dealer ID:");
+                confirm.AddLast(Dealer_ID_Box.Text);
+
                 confirm.AddLast("Dealer Name:");
                 confirm.AddLast(Dealer_Name_Box.Text);
-                confirm.AddLast("Inserted By:");
-                confirm.AddLast(Username_Box.Text);
+
+                confirm.AddLast("Selling Price:");
+                confirm.AddLast(Selling_Price_Box.Text);
+
                 confirm.AddLast("Purchase Date:");
                 confirm.AddLast(Purchase_Date.Text);
+
                 confirm.AddLast("Total:");
                 confirm.AddLast(Total_Box.Text);
 
@@ -256,62 +270,87 @@ namespace Proyek_UAS
                 var confirmResult = MessageBox.Show(Texts, "Confirmation", MessageBoxButtons.YesNo);
                 if (confirmResult == DialogResult.Yes)
                 {
-                    //Insert data yang ada di textbox ke dalam database
-                    SqlCommand cmd = con.CreateCommand();
-                    cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "INSERT INTO Add_Stocks VALUES ('" + Product_ID_Box.Text + "','"
-                                                                         + Product_Name_Box.Text + "', '"
-                                                                         + Quantity_Box.Text + "', '"
-                                                                         + Product_Price_Box.Text + "', '"
-                                                                         + Dealer_ID_Box.Text + "', '"
-                                                                         + Dealer_Name_Box.Text + "', '"
-                                                                         + Username_Box.Text + "', '"
-                                                                         + Purchase_Date.Value.Date + "', '"
-                                                                         + Total_Box.Text + "')";
-                    cmd.ExecuteNonQuery();
+                    //Insert data ke dalam PURCHASE
+                    SqlCommand purchase = con.CreateCommand();
+                    purchase.CommandType = CommandType.Text;
+                    purchase.CommandText = "INSERT INTO Purchase VALUES ('" + Purchase_Price_Box.Text + "','"
+                                                                            + Quantity_Box.Text + "', '"
+                                                                            + Total_Box.Text + "', '"
+                                                                            + Purchase_Date.Value.Date + "', '"
+                                                                            + Dealer_ID_Box.Text + "')";
+                    purchase.ExecuteNonQuery();
 
-                    SqlCommand cmd1 = con.CreateCommand();
-                    cmd1.CommandType = CommandType.Text;
-                    cmd1.CommandText = "UPDATE Product_Name SET Product_Quantity = Product_Quantity + "
+                    //Insert data ke dalam Purchase Stocks
+                    int Purchase_ID = 0;
+                    SqlCommand temp = con.CreateCommand();
+                    temp.CommandType = CommandType.Text;
+                    temp.CommandText = "SELECT TOP 1 Purchase_ID FROM Purchase ORDER BY Purchase_ID DESC";
+                    temp.ExecuteNonQuery();
+
+                    DataTable temp_table = new DataTable();
+                    SqlDataAdapter temp_da = new SqlDataAdapter(temp);
+                    temp_da.Fill(temp_table);
+
+                    foreach (DataRow dr in temp_table.Rows)
+                    {
+                        Purchase_ID = Convert.ToInt32(dr["Purchase_ID"]);
+                    }
+
+                    SqlCommand purchase_stock = con.CreateCommand();
+                    purchase_stock.CommandType = CommandType.Text;
+                    purchase_stock.CommandText = "INSERT INTO Purchase_Stock VALUES ('" + Purchase_ID + "','"
+                                                                                        + Product_ID_Box.Text + "')";
+                    purchase_stock.ExecuteNonQuery();
+
+                    //Add Quantity
+                    SqlCommand quantity = con.CreateCommand();
+                    quantity.CommandType = CommandType.Text;
+                    quantity.CommandText = "UPDATE Stocks SET Product_Quantity = Product_Quantity + "
                         + Quantity_Box.Text + " WHERE Product_ID = '" + Product_ID_Box.Text + "'";
-                    cmd1.ExecuteNonQuery();
+                    quantity.ExecuteNonQuery();
 
                     //Menghapus teks yang ada di textbox
                     Product_ID_Box.Text = ""; Product_Name_Box.Text = "";
-                    Quantity_Box.Text = ""; Product_Price_Box.Text = "";
+                    Quantity_Box.Text = ""; Purchase_Price_Box.Text = "";
                     Dealer_ID_Box.Text = ""; Dealer_Name_Box.Text = "";
-                    Username_Box.Text = ""; Purchase_Date.Text = "";
+                    Selling_Price_Box.Text = ""; Purchase_Date.Text = "";
                     Total_Box.Text = "";
 
                     //Refresh Table
                     display();
 
                     //Menunjukkan data sudah added
-                    MessageBox.Show("New Data Added!");
+                    MessageBox.Show("New Purchase Added!");
                 }
                 else
                 {
-                    //Menunjukkan ada username yang sama
-                    MessageBox.Show("Try Again");
-                };
+                    MessageBox.Show("Oops! Try Again!");
+                }
             }
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            var confirmResult = MessageBox.Show("Are you sure you want to delete this item?",
+            var confirmResult = MessageBox.Show("Are you sure you want to delete this purchase?",
                 "Confirmation", MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
+                //Hapus dari Purchase
                 var Purchase_ID = dataGridView1.SelectedCells[0].Value.ToString();
-                SqlCommand cmd = con.CreateCommand();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "DELETE FROM Add_Stocks where Purchase_ID='" + Purchase_ID + "'";
-                cmd.ExecuteNonQuery();
+                SqlCommand purchase = con.CreateCommand();
+                purchase.CommandType = CommandType.Text;
+                purchase.CommandText = "DELETE FROM Purchase where Purchase_ID='" + Purchase_ID + "'";
+                purchase.ExecuteNonQuery();
+
+                //Hapus dari Purchase_Stock
+                SqlCommand purchase_stock = con.CreateCommand();
+                purchase_stock.CommandType = CommandType.Text;
+                purchase_stock.CommandText = "DELETE FROM Purchase_Stock where Purchase_ID='" + Purchase_ID + "'";
+                purchase_stock.ExecuteNonQuery();
 
                 //Hapus quantity di tabel Product_Name
                 var Product_ID = dataGridView1.SelectedCells[1].Value.ToString();
-                var Quantity = dataGridView1.SelectedCells[3].Value.ToString();
+                var Quantity = dataGridView1.SelectedCells[4].Value.ToString();
                 SqlCommand cmd1 = con.CreateCommand();
                 cmd1.CommandType = CommandType.Text;
                 cmd1.CommandText = "UPDATE Product_Name SET Product_Quantity = Product_Quantity - "
