@@ -14,9 +14,9 @@ namespace Proyek_UAS
     public partial class Dealers : Form
     {
         //Establish koneksi sama database
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;
-                            AttachDbFilename=C:\PROJECT C DRIVE\VS 2019\Proyek UAS\Inventory.mdf;
-                            Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source =(LocalDB)\MSSQLLocalDB;
+                                                AttachDbFilename='C:\PROJECT C DRIVE\VS 2019\Proyek UAS\R_Inventory.mdf';
+                                                Integrated Security = True");
 
         public Dealers()
         {
@@ -97,8 +97,6 @@ namespace Proyek_UAS
             else //Apabila semua berisi, lakukan ini
             {
                 LinkedList<string> confirm = new LinkedList<string>();
-                confirm.AddLast("Dealer ID:");
-                confirm.AddLast(DealerIDBox.Text);
                 confirm.AddLast("Dealer Name:");
                 confirm.AddLast(DealerNameBox.Text);
                 confirm.AddLast("Dealer Email Address:");
@@ -123,51 +121,31 @@ namespace Proyek_UAS
                 var confirmResult = MessageBox.Show(Texts, "Confirmation", MessageBoxButtons.YesNo);
                 if (confirmResult == DialogResult.Yes)
                 {
-                    int i = 0;
+                    //Insert data yang ada di textbox ke dalam database
+                    SqlCommand cmd = con.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = "INSERT INTO Dealers VALUES ('" + DealerNameBox.Text + "','" +
+                                                                        DealerEmailBox.Text + "','" +
+                                                                        DealerAddressBox.Text + "','" +
+                                                                        DealerPhoneBox.Text + "','" +
+                                                                        Inserted_By_Box.Text + "')";
+                    cmd.ExecuteNonQuery();
 
-                    //Membuat command untuk mencari apakah ada Dealer ID yang sama
-                    SqlCommand check = con.CreateCommand();
-                    check.CommandType = CommandType.Text;
-                    check.CommandText = "SELECT * from Dealers where Dealer_ID='" + DealerIDBox.Text + "'";
-                    check.ExecuteNonQuery();
+                    //Menghapus teks yang ada di textbox
+                    DealerNameBox.Text = ""; DealerEmailBox.Text = "";
+                    DealerAddressBox.Text = ""; DealerPhoneBox.Text = "";
+                    Inserted_By_Box.Text = "";
 
-                    DataTable dataTable = new DataTable();
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter(check);
-                    dataAdapter.Fill(dataTable);
-                    i = Convert.ToInt32(dataTable.Rows.Count.ToString());
+                    //Refresh Table
+                    display();
 
-                    if (i == 0) //Apabila tidak ada, lanjut ke sini.
-                    {
-                        //Insert data yang ada di textbox ke dalam database
-                        SqlCommand cmd = con.CreateCommand();
-                        cmd.CommandType = CommandType.Text;
-                        cmd.CommandText = "insert into Dealers values ('" + DealerIDBox.Text        + "','" + 
-                                                                            DealerNameBox.Text      + "','" + 
-                                                                            DealerEmailBox.Text     + "','" + 
-                                                                            DealerAddressBox.Text   + "','" +
-                                                                            DealerPhoneBox.Text     + "','" +
-                                                                            Inserted_By_Box.Text    + "')";
-                        cmd.ExecuteNonQuery();
-
-                        //Menghapus teks yang ada di textbox
-                        DealerIDBox.Text = ""; DealerNameBox.Text = ""; DealerEmailBox.Text = "";
-                        DealerAddressBox.Text = ""; DealerPhoneBox.Text = "";
-
-                        //Refresh Table
-                        display();
-
-                        //Menunjukkan data sudah added
-                        MessageBox.Show("New Dealer Added!");
-                    }
-                    else //Apabila ada, lanjut ke sini.
-                    {
-                        //Menunjukkan ada Dealer ID yang sama
-                        MessageBox.Show("Oops! Seems like there is already a similar Dealer ID. Try another one!");
-                    }
+                    //Menunjukkan data sudah added
+                    MessageBox.Show("New Dealer Added!");
                 }
-                else
+                else //Apabila ada, lanjut ke sini.
                 {
-                    MessageBox.Show("Try again!");
+                    //Menunjukkan ada Dealer ID yang sama
+                    MessageBox.Show("Oops! Try Again!");
                 }
             }
         }

@@ -11,14 +11,14 @@ using System.Data.SqlClient;
 
 namespace Proyek_UAS
 {
-    public partial class Add_Stocks : Form
+    public partial class Purchase_Stocks : Form
     {
         //Establish koneksi sama database
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;
-                            AttachDbFilename=C:\PROJECT C DRIVE\VS 2019\Proyek UAS\Inventory.mdf;
-                            Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source =(LocalDB)\MSSQLLocalDB;
+                                                AttachDbFilename='C:\PROJECT C DRIVE\VS 2019\Proyek UAS\R_Inventory.mdf';
+                                                Integrated Security = True");
 
-        public Add_Stocks()
+        public Purchase_Stocks()
         {
             InitializeComponent();
         }
@@ -194,7 +194,7 @@ namespace Proyek_UAS
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form Stocks_Name = new Stocks_Name();
+            Form Stocks_Name = new Stocks_List();
             Stocks_Name.Show();
         }
 

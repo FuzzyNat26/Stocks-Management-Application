@@ -1,7 +1,7 @@
 ﻿
 namespace Proyek_UAS
 {
-    partial class Add_Stocks
+    partial class Purchase_Stocks
     {
         /// <summary>
         /// Required designer variable.

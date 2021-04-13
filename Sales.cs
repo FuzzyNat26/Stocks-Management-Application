@@ -14,9 +14,9 @@ namespace Proyek_UAS
     public partial class Sales : Form
     {
         //Establish koneksi sama database
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;
-                            AttachDbFilename=C:\PROJECT C DRIVE\VS 2019\Proyek UAS\Inventory.mdf;
-                            Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source =(LocalDB)\MSSQLLocalDB;
+                                                AttachDbFilename='C:\PROJECT C DRIVE\VS 2019\Proyek UAS\R_Inventory.mdf';
+                                                Integrated Security = True");
 
         DataTable temp_dataTable = new DataTable();
 
@@ -106,8 +106,6 @@ namespace Proyek_UAS
                 Product_Name_Box.Items.Add(dr["Product_Name"].ToString());
             }
         }
-
-        //test
 
         public void fill_product_price_box()
         {
@@ -323,7 +321,6 @@ namespace Proyek_UAS
                                                                                                + temp_dataRow["Product_Price"] + "', '"
                                                                                                + temp_dataRow["Quantity"] + "', '"
                                                                                                + temp_dataRow["Total_Price"] + "')";
-
                         temp.ExecuteNonQuery();
 
                         //Kurangkan quantity

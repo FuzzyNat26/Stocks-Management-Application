@@ -13,9 +13,9 @@ namespace Proyek_UAS
 {
     public partial class Users : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;
-                            AttachDbFilename=C:\PROJECT C DRIVE\VS 2019\Proyek UAS\Inventory.mdf;
-                            Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source =(LocalDB)\MSSQLLocalDB;
+                                                AttachDbFilename='C:\PROJECT C DRIVE\VS 2019\Proyek UAS\R_Inventory.mdf';
+                                                Integrated Security = True");
 
         public Users()
         {
