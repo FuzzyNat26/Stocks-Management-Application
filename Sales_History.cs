@@ -46,7 +46,7 @@ namespace Proyek_UAS
         {
             SqlCommand call_sales = con.CreateCommand();
             call_sales.CommandType = CommandType.Text;
-            call_sales.CommandText = "SELECT * FROM Sales_History";
+            call_sales.CommandText = "SELECT * FROM Orders";
             call_sales.ExecuteNonQuery();
 
             DataTable sales_history = new DataTable();
@@ -66,13 +66,13 @@ namespace Proyek_UAS
 
                 SqlCommand del = con.CreateCommand();
                 del.CommandType = CommandType.Text;
-                del.CommandText = "DELETE FROM Sales_History WHERE Sales_ID ='" + Sales_ID + "'";
+                del.CommandText = "DELETE FROM Orders WHERE Sales_ID ='" + Sales_ID + "'";
                 del.ExecuteNonQuery();
 
                 //Delete data from Sold_Product_History
                 SqlCommand del1 = con.CreateCommand();
                 del1.CommandType = CommandType.Text;
-                del1.CommandText = "DELETE FROM Sold_Product_History WHERE Sales_ID ='" + Sales_ID + "'";
+                del1.CommandText = "DELETE FROM Sell WHERE Sales_ID ='" + Sales_ID + "'";
                 del1.ExecuteNonQuery();
 
 
@@ -96,9 +96,8 @@ namespace Proyek_UAS
 
                     SqlCommand temp1 = con.CreateCommand();
                     temp1.CommandType = CommandType.Text;
-                    temp1.CommandText = "UPDATE Product_Name SET Product_Quantity = Product_Quantity + "
+                    temp1.CommandText = "UPDATE Products SET Product_Quantity = Product_Quantity + "
                         + Convert.ToInt32(Quantity) + " WHERE Product_ID = '" + Product_ID.ToString() + "'";
-
                     temp1.ExecuteNonQuery();
                 }
 
@@ -118,13 +117,22 @@ namespace Proyek_UAS
 
             SqlCommand find = con.CreateCommand();
             find.CommandType = CommandType.Text;
-            find.CommandText = "SELECT Product_ID, Product_Name, Product_Price, Quantity, Total_Price " +
-                "FROM Sold_Product_History WHERE Sales_ID = '" + Sales_ID + "'";
+            find.CommandText = "SELECT A.Product_ID, B.Product_Name, A.Quantity, A.Total " +
+                                    "FROM Sell AS A, Products AS B " +
+                                    "WHERE A.Product_ID = B.Product_ID AND A.Sales_ID ='" + Sales_ID +"'";
             find.ExecuteNonQuery();
 
             DataTable found = new DataTable();
             SqlDataAdapter da_found = new SqlDataAdapter(find);
             da_found.Fill(found);
+
+            found.Columns.Add("Sell_Price");
+
+            foreach (DataRow temp_dr in found.Rows)
+            {
+                temp_dr["Sell_Price"] = Convert.ToInt32(temp_dr["Total"])/Convert.ToInt32(temp_dr["Quantity"]);
+            }
+
             Data_SalesID_ProductHistory_View.DataSource = found;
         }
 

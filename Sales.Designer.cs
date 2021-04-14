@@ -57,7 +57,7 @@ namespace Proyek_UAS
             this.label13 = new System.Windows.Forms.Label();
             this.Product_ID_Box = new System.Windows.Forms.TextBox();
             this.Product_Name_Box = new System.Windows.Forms.ComboBox();
-            this.Product_Price_Box = new System.Windows.Forms.ComboBox();
+            this.Sell_Price_Box = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -171,9 +171,9 @@ namespace Proyek_UAS
             this.label4.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(727, 176);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(110, 19);
+            this.label4.Size = new System.Drawing.Size(101, 19);
             this.label4.TabIndex = 27;
-            this.label4.Text = "Product Price";
+            this.label4.Text = "Selling Price";
             // 
             // label5
             // 
@@ -407,25 +407,18 @@ namespace Proyek_UAS
             this.Product_Name_Box.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.Product_Name_Box_DrawItem);
             this.Product_Name_Box.SelectedIndexChanged += new System.EventHandler(this.Product_Name_Box_SelectionIndexChanged);
             // 
-            // Product_Price_Box
+            // Sell_Price_Box
             // 
-            this.Product_Price_Box.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.Product_Price_Box.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.Product_Price_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
-            this.Product_Price_Box.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.Product_Price_Box.DropDownHeight = 110;
-            this.Product_Price_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F);
-            this.Product_Price_Box.FormattingEnabled = true;
-            this.Product_Price_Box.IntegralHeight = false;
-            this.Product_Price_Box.ItemHeight = 25;
-            this.Product_Price_Box.Location = new System.Drawing.Point(763, 200);
-            this.Product_Price_Box.MaxDropDownItems = 4;
-            this.Product_Price_Box.Name = "Product_Price_Box";
-            this.Product_Price_Box.Size = new System.Drawing.Size(235, 31);
-            this.Product_Price_Box.Sorted = true;
-            this.Product_Price_Box.TabIndex = 77;
-            this.Product_Price_Box.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.Product_Price_Box_DrawItem);
-            this.Product_Price_Box.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Only_Accept_Number_Key_Press);
+            this.Sell_Price_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
+            this.Sell_Price_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Sell_Price_Box.Location = new System.Drawing.Point(763, 198);
+            this.Sell_Price_Box.Multiline = true;
+            this.Sell_Price_Box.Name = "Sell_Price_Box";
+            this.Sell_Price_Box.ReadOnly = true;
+            this.Sell_Price_Box.Size = new System.Drawing.Size(235, 35);
+            this.Sell_Price_Box.TabIndex = 77;
+            this.Sell_Price_Box.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Only_Accept_Number_Key_Press);
+            this.Sell_Price_Box.Leave += new System.EventHandler(this.Total_Box_Value_Textbox_Leave);
             // 
             // Sales
             // 
@@ -433,7 +426,7 @@ namespace Proyek_UAS
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
             this.ClientSize = new System.Drawing.Size(1372, 819);
-            this.Controls.Add(this.Product_Price_Box);
+            this.Controls.Add(this.Sell_Price_Box);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.Product_ID_Box);
             this.Controls.Add(this.Bill_Type_Box);
@@ -502,6 +495,6 @@ namespace Proyek_UAS
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox Product_ID_Box;
         private System.Windows.Forms.ComboBox Product_Name_Box;
-        private System.Windows.Forms.ComboBox Product_Price_Box;
+        private System.Windows.Forms.TextBox Sell_Price_Box;
     }
 }

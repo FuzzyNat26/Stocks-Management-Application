@@ -48,7 +48,7 @@ namespace Proyek_UAS
             Product_Name_Box.Items.Clear();
             SqlCommand fill = con.CreateCommand();
             fill.CommandType = CommandType.Text;
-            fill.CommandText = "SELECT * FROM Stocks";
+            fill.CommandText = "SELECT * FROM Products";
             fill.ExecuteNonQuery();
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(fill);
@@ -81,7 +81,7 @@ namespace Proyek_UAS
         {
             SqlCommand fill = con.CreateCommand();
             fill.CommandType = CommandType.Text;
-            fill.CommandText = "SELECT Product_ID FROM Stocks WHERE Product_Name='"
+            fill.CommandText = "SELECT Product_ID FROM Products WHERE Product_Name='"
                 + Product_Name_Box.Text + "'";
             fill.ExecuteNonQuery();
 
@@ -144,7 +144,15 @@ namespace Proyek_UAS
             if (a || b == false)
             {
                 Total_Box.Text = Convert.ToString(Convert.ToInt32(Purchase_Price_Box.Text) * Convert.ToInt32(Quantity_Box.Text));
-                Selling_Price_Box.Text = Convert.ToString(Purchase_Price_Box.Text);
+                if (string.IsNullOrEmpty(Selling_Price_Box.Text))
+                {
+                    Selling_Price_Box.Text = Convert.ToString(Purchase_Price_Box.Text);
+                }
+
+                if (Convert.ToInt32(Selling_Price_Box.Text) < Convert.ToInt32(Purchase_Price_Box.Text))
+                {
+                    Selling_Price_Box.Text = Purchase_Price_Box.Text;
+                }
             }
         }
 
@@ -166,20 +174,20 @@ namespace Proyek_UAS
         {
             SqlCommand display = con.CreateCommand();
             display.CommandType = CommandType.Text;
-            display.CommandText = "SELECT Purchase.Purchase_ID," +
-                                          "Purchase_Stock.Product_ID," +
-                                          "Stocks.Product_Name," +
-                                          "Purchase.Purchase_Price," +
-                                          "Purchase.Quantity," +
-                                          "Purchase.Total," +
-                                          "Purchase.Sell_Price," +
-                                          "Purchase.Purchase_Date," +
-                                          "Purchase.Dealer_ID," +
+            display.CommandText = "SELECT Purchases.Purchase_ID," +
+                                          "Purchase_Product.Product_ID," +
+                                          "Products.Product_Name," +
+                                          "Purchases.Purchase_Price," +
+                                          "Purchases.Quantity," +
+                                          "Purchases.Total," +
+                                          "Purchases.Sell_Price," +
+                                          "Purchases.Purchase_Date," +
+                                          "Purchases.Dealer_ID," +
                                           "Dealers.Dealer_Name " +
-                                  "FROM Dealers, Purchase, Purchase_Stock, Stocks " +
-                                  "WHERE Purchase_Stock.Purchase_ID = Purchase.Purchase_ID " +
-                                          "AND Purchase_Stock.Product_ID = Stocks.Product_ID " +
-                                          "AND Dealers.Dealer_ID = Purchase.Dealer_ID";
+                                  "FROM Dealers, Purchases, Purchase_Product, Products " +
+                                  "WHERE Purchase_Product.Purchase_ID = Purchases.Purchase_ID " +
+                                          "AND Purchase_Product.Product_ID = Products.Product_ID " +
+                                          "AND Dealers.Dealer_ID = Purchases.Dealer_ID";
             display.ExecuteNonQuery();
 
             DataTable dataTable = new DataTable();
@@ -273,9 +281,10 @@ namespace Proyek_UAS
                     //Insert data ke dalam PURCHASE
                     SqlCommand purchase = con.CreateCommand();
                     purchase.CommandType = CommandType.Text;
-                    purchase.CommandText = "INSERT INTO Purchase VALUES ('" + Purchase_Price_Box.Text + "','"
+                    purchase.CommandText = "INSERT INTO Purchases VALUES ('" + Purchase_Price_Box.Text + "','"
                                                                             + Quantity_Box.Text + "', '"
                                                                             + Total_Box.Text + "', '"
+                                                                            + Selling_Price_Box.Text + "', '"
                                                                             + Purchase_Date.Value.Date + "', '"
                                                                             + Dealer_ID_Box.Text + "')";
                     purchase.ExecuteNonQuery();
@@ -339,13 +348,13 @@ namespace Proyek_UAS
                 var Purchase_ID = dataGridView1.SelectedCells[0].Value.ToString();
                 SqlCommand purchase = con.CreateCommand();
                 purchase.CommandType = CommandType.Text;
-                purchase.CommandText = "DELETE FROM Purchase where Purchase_ID='" + Purchase_ID + "'";
+                purchase.CommandText = "DELETE FROM Purchases where Purchase_ID='" + Purchase_ID + "'";
                 purchase.ExecuteNonQuery();
 
                 //Hapus dari Purchase_Stock
                 SqlCommand purchase_stock = con.CreateCommand();
                 purchase_stock.CommandType = CommandType.Text;
-                purchase_stock.CommandText = "DELETE FROM Purchase_Stock where Purchase_ID='" + Purchase_ID + "'";
+                purchase_stock.CommandText = "DELETE FROM Purchase_Product where Purchase_ID='" + Purchase_ID + "'";
                 purchase_stock.ExecuteNonQuery();
 
                 //Hapus quantity di tabel Product_Name
@@ -353,7 +362,7 @@ namespace Proyek_UAS
                 var Quantity = dataGridView1.SelectedCells[4].Value.ToString();
                 SqlCommand cmd1 = con.CreateCommand();
                 cmd1.CommandType = CommandType.Text;
-                cmd1.CommandText = "UPDATE Product_Name SET Product_Quantity = Product_Quantity - "
+                cmd1.CommandText = "UPDATE Products SET Product_Quantity = Product_Quantity - "
                     + Quantity + " WHERE Product_ID = '" + Product_ID + "'";
                 cmd1.ExecuteNonQuery();
 

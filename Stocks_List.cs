@@ -30,15 +30,42 @@ namespace Proyek_UAS
             }
             con.Open();
 
+            fill_username_box();
+
             //Call table
             display();
+        }
+
+        public void fill_username_box()
+        {
+            Username_Box.Items.Clear();
+            SqlCommand fill = con.CreateCommand();
+            fill.CommandType = CommandType.Text;
+            fill.CommandText = "SELECT Username FROM Users";
+            fill.ExecuteNonQuery();
+
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(fill);
+            da.Fill(dt);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                Username_Box.Items.Add(dr["Username"].ToString());
+            }
         }
 
         public void display()
         {
             SqlCommand display = con.CreateCommand();
             display.CommandType = CommandType.Text;
-            display.CommandText = "SELECT * FROM Stocks";
+            display.CommandText = "SELECT D.Product_ID, D.Product_Name, D.Product_Quantity, D.Input_Date, D.Inserted_By, E.Sell_Price " +
+                "                       FROM Products AS D " +
+                "                           LEFT OUTER JOIN (SELECT B.Product_ID, Sell_Price " +
+                "                                               FROM Purchases AS A " +
+                "                                                   INNER JOIN (SELECT MAX(Purchase_ID) AS Purchase_ID, Product_ID AS Product_ID " +
+                "                                                       FROM Purchase_Product GROUP BY Product_ID) AS B ON A.Purchase_ID = B.Purchase_ID, " +
+                "                                           Products AS C WHERE C.Product_ID = B.Product_ID) " +
+                "                   AS E ON D.Product_ID = E.Product_ID";
             display.ExecuteNonQuery();
 
             DataTable dataTable = new DataTable();
@@ -91,7 +118,6 @@ namespace Proyek_UAS
 
                 Texts = "Are all the data correct?" + Environment.NewLine + Texts;
 
-
                 //Check if the datas are correct
                 var confirmResult = MessageBox.Show(Texts, "Confirmation", MessageBoxButtons.YesNo);
                 if (confirmResult == DialogResult.Yes)
@@ -99,10 +125,10 @@ namespace Proyek_UAS
                     //Insert data yang ada di textbox ke dalam database
                     SqlCommand cmd = con.CreateCommand();
                     cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "INSERT INTO Stocks (Product_Name, Product_Quantity, Input_Date, Inserted_By)" +
+                    cmd.CommandText = "INSERT INTO Products (Product_Name, Product_Quantity, Input_Date, Inserted_By)" +
                         "VALUES ('" + Product_Name_Box.Text + "','"
                                     + 0 + "','"
-                                    + Input_Date_Box.Text + "','"
+                                    + Input_Date_Box.Value.Date + "','"
                                     + Username_Box.Text + "')";
                     cmd.ExecuteNonQuery();
 
@@ -131,7 +157,7 @@ namespace Proyek_UAS
                 var Product_ID = dataGridView1.SelectedCells[0].Value.ToString();
                 SqlCommand cmd = con.CreateCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "DELETE FROM Stocks WHERE Product_ID='" + Product_ID + "'";
+                cmd.CommandText = "DELETE FROM Products WHERE Product_ID='" + Product_ID + "'";
                 cmd.ExecuteNonQuery();
 
                 display();

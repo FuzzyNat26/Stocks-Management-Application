@@ -241,17 +241,17 @@ namespace Proyek_UAS
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(267, 51);
             this.deleteButton.TabIndex = 62;
-            this.deleteButton.Text = "DELETE PURCHASE";
+            this.deleteButton.Text = "DELETE";
             this.deleteButton.UseVisualStyleBackColor = false;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // Purchase_Date
             // 
             this.Purchase_Date.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
-            this.Purchase_Date.Font = new System.Drawing.Font("Roboto Condensed", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Purchase_Date.Font = new System.Drawing.Font("Roboto Condensed", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Purchase_Date.Location = new System.Drawing.Point(748, 113);
             this.Purchase_Date.Name = "Purchase_Date";
-            this.Purchase_Date.Size = new System.Drawing.Size(267, 30);
+            this.Purchase_Date.Size = new System.Drawing.Size(267, 28);
             this.Purchase_Date.TabIndex = 63;
             // 
             // Dealer_Name_Box

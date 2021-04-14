@@ -62,17 +62,7 @@ namespace Proyek_UAS
             }
         }
 
-        private void Product_Price_Box_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            e.DrawBackground();
-            if (e.Index > -1)
-            {
-                e.Graphics.DrawString(Product_Price_Box.Items[e.Index].ToString(), e.Font, new SolidBrush(e.ForeColor), e.Bounds);
-            }
-        }
-
         //Atur Combo Box
-
         public void fill_username_box()
         {
             Username_Box.Items.Clear();
@@ -95,8 +85,9 @@ namespace Proyek_UAS
             Product_Name_Box.Items.Clear();
             SqlCommand fill = con.CreateCommand();
             fill.CommandType = CommandType.Text;
-            fill.CommandText = "SELECT Product_Name FROM Product_Name";
+            fill.CommandText = "SELECT Product_Name FROM Products";
             fill.ExecuteNonQuery();
+
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(fill);
             da.Fill(dt);
@@ -107,28 +98,12 @@ namespace Proyek_UAS
             }
         }
 
-        public void fill_product_price_box()
-        {
-            Product_Price_Box.Items.Clear();
-            SqlCommand fill = con.CreateCommand();
-            fill.CommandType = CommandType.Text;
-            fill.CommandText = "SELECT Product_Price FROM Add_Stocks WHERE Product_ID ='" + Product_ID_Box.Text + "'";
-            fill.ExecuteNonQuery();
-            DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter(fill);
-            da.Fill(dt);
-
-            foreach (DataRow dr in dt.Rows)
-            {
-                Product_Price_Box.Items.Add(dr["Product_Price"].ToString());
-            }
-        }
 
         private void Product_Name_Box_SelectionIndexChanged(object sender, EventArgs e)
         {
             SqlCommand fill = con.CreateCommand();
             fill.CommandType = CommandType.Text;
-            fill.CommandText = "SELECT Product_ID FROM Product_Name WHERE Product_Name='"
+            fill.CommandText = "SELECT Product_ID FROM Products WHERE Product_Name='"
                 + Product_Name_Box.Text + "'";
             fill.ExecuteNonQuery();
             DataTable dt = new DataTable();
@@ -142,14 +117,18 @@ namespace Proyek_UAS
 
             SqlCommand fill1 = con.CreateCommand();
             fill1.CommandType = CommandType.Text;
-            fill1.CommandText = "SELECT Product_Price FROM Add_Stocks WHERE Product_ID='"
+            fill1.CommandText = "SELECT Sell_Price FROM Purchases, Purchase_Product " +
+                "WHERE Purchases.Purchase_ID = Purchase_Product.Purchase_ID AND Purchase_Product.Product_ID = '"
                 + Product_ID_Box.Text + "'";
             fill1.ExecuteNonQuery();
             DataTable dt1 = new DataTable();
             SqlDataAdapter da1 = new SqlDataAdapter(fill1);
             da1.Fill(dt1);
 
-            fill_product_price_box();
+            foreach (DataRow dr in dt1.Rows)
+            {
+                Sell_Price_Box.Text = Convert.ToString(dr["Sell_Price"].ToString());
+            }
         }
 
         private void Only_Accept_Number_Key_Press(object sender, KeyPressEventArgs e)
@@ -167,11 +146,11 @@ namespace Proyek_UAS
 
         private void Total_Box_Value_Textbox_Leave(object sender, EventArgs e)
         {
-            bool a = string.IsNullOrEmpty(Product_Price_Box.Text); //true
+            bool a = string.IsNullOrEmpty(Sell_Price_Box.Text); //true
             bool b = string.IsNullOrEmpty(Quantity_Box.Text); //true
             if (a)
             {
-                Product_Price_Box.Text = "0";
+                Sell_Price_Box.Text = "0";
             }
 
             if (b)
@@ -181,9 +160,8 @@ namespace Proyek_UAS
 
             if (a || b == false)
             {
-                Total_Box.Text = Convert.ToString(Convert.ToInt32(Product_Price_Box.Text) * Convert.ToInt32(Quantity_Box.Text));
+                Total_Box.Text = Convert.ToString(Convert.ToInt32(Sell_Price_Box.Text) * Convert.ToInt32(Quantity_Box.Text));
             }
-
         }
 
         private void Sales_Load(object sender, EventArgs e)
@@ -220,7 +198,7 @@ namespace Proyek_UAS
 
                 SqlCommand quantity = con.CreateCommand();
                 quantity.CommandType = CommandType.Text;
-                quantity.CommandText = "SELECT Product_Quantity FROM Product_Name WHERE Product_ID='" + Product_ID_Box.Text + "'";
+                quantity.CommandText = "SELECT Product_Quantity FROM Products WHERE Product_ID='" + Product_ID_Box.Text + "'";
 
                 DataTable dataTable_quantity = new DataTable();
                 SqlDataAdapter sqlDataAdapter_quantity = new SqlDataAdapter(quantity);
@@ -240,7 +218,7 @@ namespace Proyek_UAS
                     DataRow temp_dr = temp_dataTable.NewRow();
                     temp_dr["Product_ID"] = Product_ID_Box.Text;
                     temp_dr["Product_Name"] = Product_Name_Box.Text;
-                    temp_dr["Product_Price"] = Product_Price_Box.Text;
+                    temp_dr["Product_Price"] = Sell_Price_Box.Text;
                     temp_dr["Quantity"] = Quantity_Box.Text;
                     temp_dr["Total_Price"] = Total_Box.Text;
 
@@ -287,19 +265,19 @@ namespace Proyek_UAS
                     //input ke sales_history
                     SqlCommand input = con.CreateCommand();
                     input.CommandType = CommandType.Text;
-                    input.CommandText = "INSERT INTO Sales_History VALUES('" + Customer_Box.Text + "','"
-                                                                             + Total_Box.Text + "', '"
-                                                                             + Sale_Date_Box.Text + "', '"
-                                                                             + Username_Box.Text + "', '"
-                                                                             + Bill_Type_Box.Text + "')";
+                    input.CommandText = "INSERT INTO Orders VALUES('" + Customer_Box.Text + "','"
+                                                                     + Total_Box.Text + "', '"
+                                                                     + Sale_Date_Box.Text + "', '"
+                                                                     + Username_Box.Text + "', '"
+                                                                     + Bill_Type_Box.Text + "')";
                     input.ExecuteNonQuery();
 
-                    //input ke Sold_Product_History dengan mengambil sales_id dari tabel sales_History
+                    //input ke Sell dengan mengambil sales_id dari tabel Orders
                     int Sales_ID = 0;
 
                     SqlCommand input2 = con.CreateCommand();
                     input2.CommandType = CommandType.Text;
-                    input2.CommandText = "SELECT TOP 1 * FROM Sales_History ORDER BY Sales_ID DESC";
+                    input2.CommandText = "SELECT TOP 1 * FROM Orders ORDER BY Sales_ID DESC";
                     input2.ExecuteNonQuery();
 
                     DataTable dataTable2 = new DataTable();
@@ -315,12 +293,10 @@ namespace Proyek_UAS
                     {
                         SqlCommand temp = con.CreateCommand();
                         temp.CommandType = CommandType.Text;
-                        temp.CommandText = "INSERT INTO Sold_Product_History VALUES('" + Sales_ID + "','"
-                                                                                               + temp_dataRow["Product_ID"] + "', '"
-                                                                                               + temp_dataRow["Product_Name"] + "', '"
-                                                                                               + temp_dataRow["Product_Price"] + "', '"
-                                                                                               + temp_dataRow["Quantity"] + "', '"
-                                                                                               + temp_dataRow["Total_Price"] + "')";
+                        temp.CommandText = "INSERT INTO Sell VALUES('" + Sales_ID + "','"
+                                                                    + temp_dataRow["Product_ID"] + "', '"
+                                                                    + temp_dataRow["Quantity"] + "', '"
+                                                                    + temp_dataRow["Total_Price"] + "')";
                         temp.ExecuteNonQuery();
 
                         //Kurangkan quantity
@@ -329,16 +305,15 @@ namespace Proyek_UAS
 
                         SqlCommand temp1 = con.CreateCommand();
                         temp1.CommandType = CommandType.Text;
-                        temp1.CommandText = "UPDATE Product_Name SET Product_Quantity = Product_Quantity - "
+                        temp1.CommandText = "UPDATE Products SET Product_Quantity = Product_Quantity - "
                             + Quantity + " WHERE Product_ID = '" + Product_ID.ToString() + "'";
-
                         temp1.ExecuteNonQuery();
                     }
 
                     //Reset Textbox
                     Customer_Box.Text = ""; Username_Box.Text = ""; Bill_Type_Box.Text = "";
                     Product_Name_Box.Text = ""; Product_ID_Box.Text = ""; Quantity_Box.Text = "0";
-                    Product_Price_Box.Text = ""; Total_Box.Text = ""; Total_Payment_Box.Text = "";
+                    Sell_Price_Box.Text = "0"; Total_Box.Text = ""; Total_Payment_Box.Text = "";
 
                     //Reset datagrid
                     temp_dataTable.Clear();
