@@ -42,6 +42,15 @@ namespace Proyek_UAS
             call_sales_history();
         }
 
+        private void AdjustColumnOrder()
+        {
+            Data_SalesID_ProductHistory_View.Columns["Product_ID"].DisplayIndex = 0;
+            Data_SalesID_ProductHistory_View.Columns["Product_Name"].DisplayIndex = 1;
+            Data_SalesID_ProductHistory_View.Columns["Sell_Price"].DisplayIndex = 2;
+            Data_SalesID_ProductHistory_View.Columns["Quantity"].DisplayIndex = 3;
+            Data_SalesID_ProductHistory_View.Columns["Total"].DisplayIndex = 4;
+        }
+
         private void call_sales_history()
         {
             SqlCommand call_sales = con.CreateCommand();
@@ -134,6 +143,8 @@ namespace Proyek_UAS
             }
 
             Data_SalesID_ProductHistory_View.DataSource = found;
+
+            AdjustColumnOrder();
         }
 
         private void Print_Button_Click(object sender, EventArgs e)

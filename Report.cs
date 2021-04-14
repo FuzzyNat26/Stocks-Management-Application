@@ -43,24 +43,22 @@ namespace Proyek_UAS
             //Sales_History
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT * FROM Sales_History WHERE Sales_ID = " + j + "";
+            cmd.CommandText = "SELECT * FROM Orders WHERE Sales_ID = " + j + "";
             cmd.ExecuteNonQuery();
 
-            //DataTable dataTable = new DataTable();
             SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
-            dataAdapter.Fill(dataset.Sales_History);
-            //dataAdapter.Fill(dataTable);
+            dataAdapter.Fill(dataset.Orders);
 
             //Sold_Product_History
             SqlCommand cmd1 = con.CreateCommand();
             cmd1.CommandType = CommandType.Text;
-            cmd1.CommandText = "SELECT * FROM Sold_Product_History WHERE Sales_ID = " + j + "";
+            cmd1.CommandText = "SELECT A.Product_ID, B.Product_Name, A.Quantity, A.Total, A.Sales_ID, A.Total/A.Quantity AS Sell_Price " +
+                                    "FROM Sell AS A, Products AS B " +
+                                    "WHERE A.Product_ID = B.Product_ID AND A.Sales_ID ='" + j + "'";
             cmd1.ExecuteNonQuery();
 
-            //DataTable dataTable1 = new DataTable();
             SqlDataAdapter dataAdapter1 = new SqlDataAdapter(cmd1);
-            dataAdapter1.Fill(dataset.Sold_Product_History);
-            //dataAdapter1.Fill(dataTable1);
+            dataAdapter1.Fill(dataset.Sell);
 
             CrystalReport1 Report = new CrystalReport1();
             Report.SetDataSource(dataset);
