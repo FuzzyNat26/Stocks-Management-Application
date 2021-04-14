@@ -266,7 +266,7 @@ namespace Proyek_UAS
                     SqlCommand input = con.CreateCommand();
                     input.CommandType = CommandType.Text;
                     input.CommandText = "INSERT INTO Orders VALUES('" + Customer_Box.Text + "','"
-                                                                     + Total_Box.Text + "', '"
+                                                                     + Total_Payment_Box.Text + "', '"
                                                                      + Sale_Date_Box.Text + "', '"
                                                                      + Username_Box.Text + "', '"
                                                                      + Bill_Type_Box.Text + "')";
