@@ -13,13 +13,15 @@ namespace Proyek_UAS
 {
     public partial class Sales : Form
     {
-        //Establish koneksi sama database
+        //Establish connection to database
         SqlConnection con = new SqlConnection(@"Data Source =(LocalDB)\MSSQLLocalDB;
                                                 AttachDbFilename='C:\PROJECT C DRIVE\VS 2019\Proyek UAS\R_Inventory.mdf';
                                                 Integrated Security = True");
 
+        //Temporary datatable for datagridview
         DataTable temp_dataTable = new DataTable();
 
+        //Set default total to 0
         int Total = 0;
 
         public Sales()
@@ -27,13 +29,24 @@ namespace Proyek_UAS
             InitializeComponent();
         }
 
-        //Return to Home
-
-        private void Back_Button_Click(object sender, EventArgs e)
+        //Run when loading
+        private void Sales_Load(object sender, EventArgs e)
         {
-            this.Hide();
-            Form Home = new Home();
-            Home.Show();
+            if (con.State == ConnectionState.Open)
+            {
+                con.Close();
+            }
+            con.Open();
+            
+            fill_username_box();
+            fill_product_name_box();
+
+            temp_dataTable.Clear();
+            temp_dataTable.Columns.Add("Product_ID");
+            temp_dataTable.Columns.Add("Product_Name");
+            temp_dataTable.Columns.Add("Product_Price");
+            temp_dataTable.Columns.Add("Quantity");
+            temp_dataTable.Columns.Add("Total_Price");
         }
 
         //Go to sales history
@@ -44,6 +57,15 @@ namespace Proyek_UAS
             Sales_History.Show();
         }
 
+        //Return to Home
+        private void Back_Button_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form Home = new Home();
+            Home.Show();
+        }
+
+        //Set drawitem event
         private void Username_Box_DrawItem(object sender, DrawItemEventArgs e)
         {
             e.DrawBackground();
@@ -62,7 +84,16 @@ namespace Proyek_UAS
             }
         }
 
-        //Atur Combo Box
+        private void Product_Name_Box_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            e.DrawBackground();
+            if (e.Index > -1)
+            {
+                e.Graphics.DrawString(Product_Name_Box.Items[e.Index].ToString(), e.Font, new SolidBrush(e.ForeColor), e.Bounds);
+            }
+        }
+
+        //Set Combo Box
         public void fill_username_box()
         {
             Username_Box.Items.Clear();
@@ -98,7 +129,7 @@ namespace Proyek_UAS
             }
         }
 
-
+        //Set Product ID and Product Price according to what product name selected.
         private void Product_Name_Box_SelectionIndexChanged(object sender, EventArgs e)
         {
             SqlCommand fill = con.CreateCommand();
@@ -131,6 +162,7 @@ namespace Proyek_UAS
             }
         }
 
+        //Only accept number for some textbox
         private void Only_Accept_Number_Key_Press(object sender, KeyPressEventArgs e)
         {
             if (char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar))
@@ -144,6 +176,7 @@ namespace Proyek_UAS
             }
         }
 
+        //Auto count total when leaving one of the textbox
         private void Total_Box_Value_Textbox_Leave(object sender, EventArgs e)
         {
             bool a = string.IsNullOrEmpty(Sell_Price_Box.Text); //true
@@ -162,25 +195,6 @@ namespace Proyek_UAS
             {
                 Total_Box.Text = Convert.ToString(Convert.ToInt32(Sell_Price_Box.Text) * Convert.ToInt32(Quantity_Box.Text));
             }
-        }
-
-        private void Sales_Load(object sender, EventArgs e)
-        {
-            if (con.State == ConnectionState.Open)
-            {
-                con.Close();
-            }
-            con.Open();
-            
-            fill_username_box();
-            fill_product_name_box();
-
-            temp_dataTable.Clear();
-            temp_dataTable.Columns.Add("Product_ID");
-            temp_dataTable.Columns.Add("Product_Name");
-            temp_dataTable.Columns.Add("Product_Price");
-            temp_dataTable.Columns.Add("Quantity");
-            temp_dataTable.Columns.Add("Total_Price");
         }
 
         //Add item to list
@@ -330,15 +344,6 @@ namespace Proyek_UAS
                         report.Show();
                     }
                 }
-            }
-        }
-
-        private void Product_Name_Box_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            e.DrawBackground();
-            if (e.Index > -1)
-            {
-                e.Graphics.DrawString(Product_Name_Box.Items[e.Index].ToString(), e.Font, new SolidBrush(e.ForeColor), e.Bounds);
             }
         }
     }

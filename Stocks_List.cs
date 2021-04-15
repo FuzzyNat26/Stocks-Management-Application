@@ -21,9 +21,10 @@ namespace Proyek_UAS
         {
             InitializeComponent();
         }
+
+        //Run when loading
         private void Stocks_Name_Load(object sender, EventArgs e)
         {
-            //If connection buka, tutup dulu baru buka kembali
             if (con.State == ConnectionState.Open)
             {
                 con.Close();
@@ -36,6 +37,47 @@ namespace Proyek_UAS
             display();
         }
 
+        //Display
+        public void display()
+        {
+            SqlCommand display = con.CreateCommand();
+            display.CommandType = CommandType.Text;
+            display.CommandText = "SELECT D.Product_ID, D.Product_Name, D.Product_Quantity, D.Input_Date, D.Inserted_By, E.Sell_Price " +
+                "                       FROM Products AS D " +
+                "                           LEFT OUTER JOIN (SELECT B.Product_ID, Sell_Price " +
+                "                                               FROM Purchases AS A " +
+                "                                                   INNER JOIN (SELECT MAX(Purchase_ID) AS Purchase_ID, Product_ID AS Product_ID " +
+                "                                                       FROM Purchase_Product GROUP BY Product_ID) " +
+                "                                                       AS B ON A.Purchase_ID = B.Purchase_ID, " +
+                "                                           Products AS C WHERE C.Product_ID = B.Product_ID) " +
+                "                   AS E ON D.Product_ID = E.Product_ID";
+            display.ExecuteNonQuery();
+
+            DataTable dataTable = new DataTable();
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(display);
+            dataAdapter.Fill(dataTable);
+            dataGridView1.DataSource = dataTable;
+        }
+
+        //Return Purchase_Stocks
+        private void Back_Button_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form stocks = new Purchase_Stocks();
+            stocks.Show();
+        }
+
+        //Set textbox drawitem
+        private void Username_Box_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            e.DrawBackground();
+            if (e.Index > -1)
+            {
+                e.Graphics.DrawString(Username_Box.Items[e.Index].ToString(), e.Font, new SolidBrush(e.ForeColor), e.Bounds);
+            }
+        }
+
+        //Fill combo box
         public void fill_username_box()
         {
             Username_Box.Items.Clear();
@@ -54,53 +96,15 @@ namespace Proyek_UAS
             }
         }
 
-        public void display()
-        {
-            SqlCommand display = con.CreateCommand();
-            display.CommandType = CommandType.Text;
-            display.CommandText = "SELECT D.Product_ID, D.Product_Name, D.Product_Quantity, D.Input_Date, D.Inserted_By, E.Sell_Price " +
-                "                       FROM Products AS D " +
-                "                           LEFT OUTER JOIN (SELECT B.Product_ID, Sell_Price " +
-                "                                               FROM Purchases AS A " +
-                "                                                   INNER JOIN (SELECT MAX(Purchase_ID) AS Purchase_ID, Product_ID AS Product_ID " +
-                "                                                       FROM Purchase_Product GROUP BY Product_ID) AS B ON A.Purchase_ID = B.Purchase_ID, " +
-                "                                           Products AS C WHERE C.Product_ID = B.Product_ID) " +
-                "                   AS E ON D.Product_ID = E.Product_ID";
-            display.ExecuteNonQuery();
-
-            DataTable dataTable = new DataTable();
-            SqlDataAdapter dataAdapter = new SqlDataAdapter(display);
-            dataAdapter.Fill(dataTable);
-            dataGridView1.DataSource = dataTable;
-        }
-
-        //Return Home
-        private void Back_Button_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Form stocks = new Purchase_Stocks();
-            stocks.Show();
-        }
-
-
-        private void Username_Box_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            e.DrawBackground();
-            if (e.Index > -1)
-            {
-                e.Graphics.DrawString(Username_Box.Items[e.Index].ToString(), e.Font, new SolidBrush(e.ForeColor), e.Bounds);
-            }
-        }
-
         //Add Item Name
         private void button1_Click(object sender, EventArgs e)
         {
-            //Apakah textbox terisi?
-            if (!(String.IsNullOrEmpty(Product_Name_Box.Text)) == false) //Kalau tidak, lakukan ini.
+            //Do all textbox empty
+            if (!((String.IsNullOrEmpty(Product_Name_Box.Text))|| string.IsNullOrEmpty(Username_Box.Text)) == false) //Kalau tidak, lakukan ini.
             {
                 MessageBox.Show("All input must be filled!");
             }
-            else //Apabila semua berisi, lakukan ini
+            else
             {
                 LinkedList<string> confirm = new LinkedList<string>();
                 confirm.AddLast("Product Name:");
@@ -122,7 +126,7 @@ namespace Proyek_UAS
                 var confirmResult = MessageBox.Show(Texts, "Confirmation", MessageBoxButtons.YesNo);
                 if (confirmResult == DialogResult.Yes)
                 {
-                    //Insert data yang ada di textbox ke dalam database
+                    //Insert data into Products Table
                     SqlCommand cmd = con.CreateCommand();
                     cmd.CommandType = CommandType.Text;
                     cmd.CommandText = "INSERT INTO Products (Product_Name, Product_Quantity, Input_Date, Inserted_By)" +
@@ -132,22 +136,22 @@ namespace Proyek_UAS
                                     + Username_Box.Text + "')";
                     cmd.ExecuteNonQuery();
 
-                    //Menghapus teks yang ada di textbox
+                    //Reset text
                     Product_Name_Box.Text = ""; Username_Box.Text = ""; Input_Date_Box.Text = "";
 
                     //Refresh Table
                     display();
 
-                    //Menunjukkan data sudah added
                     MessageBox.Show("New Product Name Added!");
                 }
-                else //Apabila ada, lanjut ke sini.
+                else
                 {
                     MessageBox.Show("Oops! Try Again!");
                 }
             }
         }
 
+        //Delete Item
         private void deleteButton_Click(object sender, EventArgs e)
         {
             var confirmResult = MessageBox.Show("Are you sure you want to delete this item?",

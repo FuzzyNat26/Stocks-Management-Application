@@ -13,7 +13,7 @@ namespace Proyek_UAS
 {
     public partial class Dealers : Form
     {
-        //Establish koneksi sama database
+        //Establish connection with database
         SqlConnection con = new SqlConnection(@"Data Source =(LocalDB)\MSSQLLocalDB;
                                                 AttachDbFilename='C:\PROJECT C DRIVE\VS 2019\Proyek UAS\R_Inventory.mdf';
                                                 Integrated Security = True");
@@ -23,7 +23,7 @@ namespace Proyek_UAS
             InitializeComponent();
         }
 
-        //Buka koneksi saat form Dealers open
+        //Run when loading
         private void Dealers_Load(object sender, EventArgs e)
         {
             if (con.State == ConnectionState.Open)
@@ -38,15 +38,7 @@ namespace Proyek_UAS
             fill_combobox();
         }
 
-        private void Inserted_By_Box_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            e.DrawBackground();
-            if (e.Index > -1)
-            {
-                e.Graphics.DrawString(Inserted_By_Box.Items[e.Index].ToString(), e.Font, new SolidBrush(e.ForeColor), e.Bounds);
-            }
-        }
-
+        //Display
         public void display()
         {
             SqlCommand display = con.CreateCommand();
@@ -60,7 +52,25 @@ namespace Proyek_UAS
             dataGridView1.DataSource = dataTable;
         }
 
-        //Atur Combo Box
+        //Return to home
+        private void Back_Button_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form Home = new Home();
+            Home.Show();
+        }
+
+        //Set textbox drawitem
+        private void Inserted_By_Box_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            e.DrawBackground();
+            if (e.Index > -1)
+            {
+                e.Graphics.DrawString(Inserted_By_Box.Items[e.Index].ToString(), e.Font, new SolidBrush(e.ForeColor), e.Bounds);
+            }
+        }
+
+        //Fill combo box
         public void fill_combobox()
         {
             Inserted_By_Box.Items.Clear();
@@ -78,15 +88,7 @@ namespace Proyek_UAS
             }
         }
 
-        //Return to home
-        private void Back_Button_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Form Home = new Home();
-            Home.Show();
-        }
-
-        //Add Dealers ditekan
+        //Add Dealers
         private void addButton_Click(object sender, EventArgs e)
         {
             //Apakah semua control berbentuk textbox berisi?
@@ -150,6 +152,7 @@ namespace Proyek_UAS
             }
         }
 
+        //Delete dealers
         private void deleteButton_Click(object sender, EventArgs e)
         {
             var confirmResult = MessageBox.Show("Are you sure you want to delete this user?", "Confirmation", MessageBoxButtons.YesNo);

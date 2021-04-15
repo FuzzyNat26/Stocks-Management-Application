@@ -23,6 +23,68 @@ namespace Proyek_UAS
             InitializeComponent();
         }
 
+        //Run when loading
+        private void Add_Stocks_Load(object sender, EventArgs e)
+        {
+            if (con.State == ConnectionState.Open)
+            {
+                con.Close();
+            }
+            con.Open();
+
+            //Display data di tabel
+            display();
+
+            //Combo Box
+            fill_product_name_box();
+            fill_dealer_name_box();
+        }
+
+        //Display datagrid
+        public void display()
+        {
+            SqlCommand display = con.CreateCommand();
+            display.CommandType = CommandType.Text;
+            display.CommandText = "SELECT Purchases.Purchase_ID," +
+                                          "Purchase_Product.Product_ID," +
+                                          "Products.Product_Name," +
+                                          "Purchases.Purchase_Price," +
+                                          "Purchases.Quantity," +
+                                          "Purchases.Total," +
+                                          "Purchases.Sell_Price," +
+                                          "Purchases.Purchase_Date," +
+                                          "Purchases.Dealer_ID," +
+                                          "Dealers.Dealer_Name " +
+                                  "FROM Dealers, Purchases, Purchase_Product, Products " +
+                                  "WHERE Purchase_Product.Purchase_ID = Purchases.Purchase_ID " +
+                                          "AND Purchase_Product.Product_ID = Products.Product_ID " +
+                                          "AND Dealers.Dealer_ID = Purchases.Dealer_ID";
+            display.ExecuteNonQuery();
+
+            DataTable dataTable = new DataTable();
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(display);
+            dataAdapter.Fill(dataTable);
+
+            dataGridView1.DataSource = dataTable;
+        }
+
+        //Go to Stocks List
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form Stocks_Name = new Stocks_List();
+            Stocks_Name.Show();
+        }
+
+        //Back to Home
+        private void Back_Button_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form Home = new Home();
+            Home.Show();
+        }
+
+        //Set textbox drawitem
         private void Product_Name_Box_DrawItem(object sender, DrawItemEventArgs e)
         {
             e.DrawBackground();
@@ -31,7 +93,6 @@ namespace Proyek_UAS
                 e.Graphics.DrawString(Product_Name_Box.Items[e.Index].ToString(), e.Font, new SolidBrush(e.ForeColor), e.Bounds);
             }
         }
-
 
         private void Dealer_Name_Box_DrawItem(object sender, DrawItemEventArgs e)
         {
@@ -42,7 +103,7 @@ namespace Proyek_UAS
             }
         }
 
-        //Atur Combo Box
+        //Fill combo box
         public void fill_product_name_box()
         {
             Product_Name_Box.Items.Clear();
@@ -77,6 +138,7 @@ namespace Proyek_UAS
             }
         }
 
+        //Index changed
         private void Product_Name_Box_SelectionIndexChanged (object sender, EventArgs e)
         {
             SqlCommand fill = con.CreateCommand();
@@ -113,7 +175,7 @@ namespace Proyek_UAS
             }
         }
 
-
+        //Only accept number
         private void Only_Accept_Number_Key_Press (object sender, KeyPressEventArgs e)
         {
             if (char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar))
@@ -126,6 +188,7 @@ namespace Proyek_UAS
             }
         }
 
+        //Auto count
         private void Total_Box_Value_Textbox_Leave(object sender, EventArgs e)
         {
             bool a = string.IsNullOrEmpty(Purchase_Price_Box.Text); //true
@@ -170,64 +233,7 @@ namespace Proyek_UAS
             }
         }
 
-        public void display()
-        {
-            SqlCommand display = con.CreateCommand();
-            display.CommandType = CommandType.Text;
-            display.CommandText = "SELECT Purchases.Purchase_ID," +
-                                          "Purchase_Product.Product_ID," +
-                                          "Products.Product_Name," +
-                                          "Purchases.Purchase_Price," +
-                                          "Purchases.Quantity," +
-                                          "Purchases.Total," +
-                                          "Purchases.Sell_Price," +
-                                          "Purchases.Purchase_Date," +
-                                          "Purchases.Dealer_ID," +
-                                          "Dealers.Dealer_Name " +
-                                  "FROM Dealers, Purchases, Purchase_Product, Products " +
-                                  "WHERE Purchase_Product.Purchase_ID = Purchases.Purchase_ID " +
-                                          "AND Purchase_Product.Product_ID = Products.Product_ID " +
-                                          "AND Dealers.Dealer_ID = Purchases.Dealer_ID";
-            display.ExecuteNonQuery();
-
-            DataTable dataTable = new DataTable();
-            SqlDataAdapter dataAdapter = new SqlDataAdapter(display);
-            dataAdapter.Fill(dataTable);
-
-            dataGridView1.DataSource = dataTable;
-        }
-
-        private void Back_Button_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Form Home = new Home();
-            Home.Show();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Form Stocks_Name = new Stocks_List();
-            Stocks_Name.Show();
-        }
-
-        private void Add_Stocks_Load(object sender, EventArgs e)
-        {
-            if (con.State == ConnectionState.Open)
-            {
-                con.Close();
-            }
-            con.Open();
-
-            //Display data di tabel
-            display();
-
-            //Combo Box
-            fill_product_name_box();
-            fill_dealer_name_box();
-        }
-
-        //Add Item
+        //Add Stocks
         private void button1_Click(object sender, EventArgs e)
         {
             //Apakah semua control berbentuk textbox berisi?
@@ -338,6 +344,7 @@ namespace Proyek_UAS
             }
         }
 
+        //Delete Stocks
         private void deleteButton_Click(object sender, EventArgs e)
         {
             var confirmResult = MessageBox.Show("Are you sure you want to delete this purchase?",

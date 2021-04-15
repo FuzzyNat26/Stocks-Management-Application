@@ -21,12 +21,23 @@ namespace Proyek_UAS
             InitializeComponent();
         }
 
+        //Run when loading
+        private void Login_Load(object sender, EventArgs e)
+        {
+            if(con.State==ConnectionState.Open)
+            {
+                con.Close();
+            }
+            con.Open();
+        }
+
+        //Login button clicked
         private void loginButton_Click(object sender, EventArgs e)
         {
             int i = 0;
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT * from Users where Username='"+UsernameBox.Text+"' and Password='"+PasswordBox.Text+"'";
+            cmd.CommandText = "SELECT * FROM Users WHERE Username='" + UsernameBox.Text + "' AND Password='"+ PasswordBox.Text +"'";
             cmd.ExecuteNonQuery();
             DataTable dataTable = new DataTable();
             SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
@@ -43,15 +54,6 @@ namespace Proyek_UAS
                 Form form = new Home();
                 form.Show();
             }
-        }
-
-        private void Login_Load(object sender, EventArgs e)
-        {
-            if(con.State==ConnectionState.Open)
-            {
-                con.Close();
-            }
-            con.Open();
         }
      }
 }
