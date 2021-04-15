@@ -212,13 +212,6 @@
     <None Include="Resources\Login_Background.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Inventory.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Inventory_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>Inventory.mdf</DependentUpon>
-    </Content>
     <Content Include="R_Inventory.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
