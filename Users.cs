@@ -13,23 +13,62 @@ namespace Proyek_UAS
 {
     public partial class Users : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;
-                            AttachDbFilename=C:\PROJECT C DRIVE\VS 2019\Proyek UAS\Inventory.mdf;
-                            Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source =(LocalDB)\MSSQLLocalDB;
+                                                AttachDbFilename='C:\PROJECT C DRIVE\VS 2019\Proyek UAS\R_Inventory.mdf';
+                                                Integrated Security = True");
 
         public Users()
         {
             InitializeComponent();
         }
 
+        //Run when loading
+        private void Users_Load(object sender, EventArgs e)
+        {
+            //If connection are open, closed it
+            if (con.State == ConnectionState.Open)
+            {
+                con.Close();
+            }
+
+            //Open the connection
+            con.Open();
+
+            //Call table
+            display();
+        }
+
+        //Method for connecting datagrid with database
+        public void display()
+        {
+            SqlCommand display = con.CreateCommand();
+            display.CommandType = CommandType.Text;
+            display.CommandText = "SELECT * FROM Users";
+            display.ExecuteNonQuery();
+
+            DataTable dataTable = new DataTable();
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(display);
+            dataAdapter.Fill(dataTable);
+            dataGridView1.DataSource = dataTable;
+        }
+
+        //Return to home
+        private void Back_Button_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form Home = new Home();
+            Home.Show();
+        }
+
+        //Add Users
         private void addButton_Click(object sender, EventArgs e)
         {
-            //Apakah semua control berbentuk textbox berisi?
-            if (this.Controls.OfType<TextBox>().Any(t => string.IsNullOrEmpty(t.Text))) //Apabila ada yang tidak diisi, lakukan ini
+            //Do all textbox are filled?
+            if (this.Controls.OfType<TextBox>().Any(t => string.IsNullOrEmpty(t.Text))) //Do this when there's null or empty
             {
                 MessageBox.Show("All input must be filled!");
             }
-            else //Apabila semua berisi, lakukan ini
+            else //Do this when all textbox are filled
             {
                 LinkedList<string> confirm = new LinkedList<string>();
                 confirm.AddLast("First Name:");
@@ -60,10 +99,10 @@ namespace Proyek_UAS
                 {
                     int i = 0;
 
-                    //Membuat command untuk mencari apakah ada username yang sama
+                    //Check if there are the same username
                     SqlCommand check = con.CreateCommand();
                     check.CommandType = CommandType.Text;
-                    check.CommandText = "SELECT * from Users where Username='" + UsernameBox.Text + "'";
+                    check.CommandText = "SELECT * FROM Users WHERE Username='" + UsernameBox.Text + "'";
                     check.ExecuteNonQuery();
 
                     DataTable dataTable = new DataTable();
@@ -71,9 +110,9 @@ namespace Proyek_UAS
                     dataAdapter.Fill(dataTable);
                     i = Convert.ToInt32(dataTable.Rows.Count.ToString());
 
-                    if (i == 0) //Apabila tidak ada, lanjut ke sini.
+                    if (i == 0) //If no, do this
                     {
-                        //Insert data yang ada di textbox ke dalam database
+                        //Insert data to Users table
                         SqlCommand cmd = con.CreateCommand();
                         cmd.CommandType = CommandType.Text;
                         cmd.CommandText = "INSERT INTO Users VALUES ('" + FirstNameBox.Text + "','"
@@ -84,19 +123,18 @@ namespace Proyek_UAS
                                                                         + PhoneBox.Text + "')";
                         cmd.ExecuteNonQuery();
 
-                        //Menghapus teks yang ada di textbox
+                        //Reset text
                         FirstNameBox.Text = ""; LastNameBox.Text = ""; UsernameBox.Text = "";
                         PasswordBox.Text = ""; EmailBox.Text = ""; PhoneBox.Text = "";
 
                         //Refresh Table
                         display();
 
-                        //Menunjukkan data sudah added
+                        //Show user added
                         MessageBox.Show("New User Added!");
                     }
-                    else //Apabila ada, lanjut ke sini.
+                    else //If there is the same username, do this
                     {
-                        //Menunjukkan ada username yang sama
                         MessageBox.Show("Oops! Seems like there is already a similar username. Try another one!");
                     }
                 }
@@ -107,53 +145,16 @@ namespace Proyek_UAS
             }
         }
 
-        private void Users_Load(object sender, EventArgs e)
-        {
-            //If connection buka, tutup dulu baru buka kembali
-            if (con.State == ConnectionState.Open)
-            {
-                con.Close();
-            }
-            con.Open();
-
-            //Call table
-            display();
-        }
-
-        //Method for connecting datagrid with database
-        public void display()
-        {
-            SqlCommand display = con.CreateCommand();
-            display.CommandType = CommandType.Text;
-            display.CommandText = "SELECT * FROM Users";
-            display.ExecuteNonQuery();
-
-            DataTable dataTable = new DataTable();
-            SqlDataAdapter dataAdapter = new SqlDataAdapter(display);
-            dataAdapter.Fill(dataTable);
-            dataGridView1.DataSource = dataTable;
-        }
-
-        //Return to home
-
-        private void Back_Button_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Form Home = new Home();
-            Home.Show();
-        }
-
-
+        //Delete Users
         private void deleteButton_Click(object sender, EventArgs e)
         {
-
             var confirmResult = MessageBox.Show("Are you sure you want to delete this user?", "Confirmation", MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
                 var username = dataGridView1.SelectedCells[2].Value.ToString();
                 SqlCommand cmd = con.CreateCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "DELETE FROM Users where username='" + username + "';";
+                cmd.CommandText = "DELETE FROM Users WHERE username='" + username + "';";
                 cmd.ExecuteNonQuery();
 
                 display();
@@ -161,6 +162,5 @@ namespace Proyek_UAS
                 MessageBox.Show("User deleted!");
             }
         }
-
     }
 }

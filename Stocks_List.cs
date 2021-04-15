@@ -11,20 +11,19 @@ using System.Data.SqlClient;
 
 namespace Proyek_UAS
 {
-    public partial class Dealers : Form
+    public partial class Stocks_List : Form
     {
-        //Establish connection with database
         SqlConnection con = new SqlConnection(@"Data Source =(LocalDB)\MSSQLLocalDB;
                                                 AttachDbFilename='C:\PROJECT C DRIVE\VS 2019\Proyek UAS\R_Inventory.mdf';
                                                 Integrated Security = True");
 
-        public Dealers()
+        public Stocks_List()
         {
             InitializeComponent();
         }
 
         //Run when loading
-        private void Dealers_Load(object sender, EventArgs e)
+        private void Stocks_Name_Load(object sender, EventArgs e)
         {
             if (con.State == ConnectionState.Open)
             {
@@ -32,10 +31,10 @@ namespace Proyek_UAS
             }
             con.Open();
 
-            display();
+            fill_username_box();
 
-            //Combo Box
-            fill_combobox();
+            //Call table
+            display();
         }
 
         //Display
@@ -43,7 +42,15 @@ namespace Proyek_UAS
         {
             SqlCommand display = con.CreateCommand();
             display.CommandType = CommandType.Text;
-            display.CommandText = "SELECT * FROM Dealers";
+            display.CommandText = "SELECT D.Product_ID, D.Product_Name, D.Product_Quantity, D.Input_Date, D.Inserted_By, E.Sell_Price " +
+                "                       FROM Products AS D " +
+                "                           LEFT OUTER JOIN (SELECT B.Product_ID, Sell_Price " +
+                "                                               FROM Purchases AS A " +
+                "                                                   INNER JOIN (SELECT MAX(Purchase_ID) AS Purchase_ID, Product_ID AS Product_ID " +
+                "                                                       FROM Purchase_Product GROUP BY Product_ID) " +
+                "                                                       AS B ON A.Purchase_ID = B.Purchase_ID, " +
+                "                                           Products AS C WHERE C.Product_ID = B.Product_ID) " +
+                "                   AS E ON D.Product_ID = E.Product_ID";
             display.ExecuteNonQuery();
 
             DataTable dataTable = new DataTable();
@@ -52,63 +59,60 @@ namespace Proyek_UAS
             dataGridView1.DataSource = dataTable;
         }
 
-        //Return to home
+        //Return Purchase_Stocks
         private void Back_Button_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form Home = new Home();
-            Home.Show();
+            Form stocks = new Purchase_Stocks();
+            stocks.Show();
         }
 
         //Set textbox drawitem
-        private void Inserted_By_Box_DrawItem(object sender, DrawItemEventArgs e)
+        private void Username_Box_DrawItem(object sender, DrawItemEventArgs e)
         {
             e.DrawBackground();
             if (e.Index > -1)
             {
-                e.Graphics.DrawString(Inserted_By_Box.Items[e.Index].ToString(), e.Font, new SolidBrush(e.ForeColor), e.Bounds);
+                e.Graphics.DrawString(Username_Box.Items[e.Index].ToString(), e.Font, new SolidBrush(e.ForeColor), e.Bounds);
             }
         }
 
         //Fill combo box
-        public void fill_combobox()
+        public void fill_username_box()
         {
-            Inserted_By_Box.Items.Clear();
+            Username_Box.Items.Clear();
             SqlCommand fill = con.CreateCommand();
             fill.CommandType = CommandType.Text;
-            fill.CommandText = "SELECT * FROM Users";
+            fill.CommandText = "SELECT Username FROM Users";
             fill.ExecuteNonQuery();
+
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(fill);
             da.Fill(dt);
 
             foreach (DataRow dr in dt.Rows)
             {
-                Inserted_By_Box.Items.Add(dr["Username"].ToString());
+                Username_Box.Items.Add(dr["Username"].ToString());
             }
         }
 
-        //Add Dealers
-        private void addButton_Click(object sender, EventArgs e)
+        //Add Item Name
+        private void button1_Click(object sender, EventArgs e)
         {
-            //Do all textbox filled
-            if (this.Controls.OfType<TextBox>().Any(t => string.IsNullOrEmpty(t.Text))) //If no, do this
+            //Do all textbox empty
+            if (!((String.IsNullOrEmpty(Product_Name_Box.Text))|| string.IsNullOrEmpty(Username_Box.Text)) == false) //Kalau tidak, lakukan ini.
             {
                 MessageBox.Show("All input must be filled!");
             }
-            else //if yes, do this
+            else
             {
                 LinkedList<string> confirm = new LinkedList<string>();
-                confirm.AddLast("Dealer Name:");
-                confirm.AddLast(DealerNameBox.Text);
-                confirm.AddLast("Dealer Email Address:");
-                confirm.AddLast(DealerEmailBox.Text);
-                confirm.AddLast("Dealer Address:");
-                confirm.AddLast(DealerAddressBox.Text);
-                confirm.AddLast("Dealer Phone Number:");
-                confirm.AddLast(DealerPhoneBox.Text);
+                confirm.AddLast("Product Name:");
+                confirm.AddLast(Product_Name_Box.Text);
                 confirm.AddLast("Inserted By:");
-                confirm.AddLast(Inserted_By_Box.Text);
+                confirm.AddLast(Username_Box.Text);
+                confirm.AddLast("Input Date:");
+                confirm.AddLast(Input_Date_Box.Text);
 
                 var Texts = "";
                 foreach (var text in confirm)
@@ -118,53 +122,51 @@ namespace Proyek_UAS
 
                 Texts = "Are all the data correct?" + Environment.NewLine + Texts;
 
-
                 //Check if the datas are correct
                 var confirmResult = MessageBox.Show(Texts, "Confirmation", MessageBoxButtons.YesNo);
                 if (confirmResult == DialogResult.Yes)
                 {
-                    //Insert data to Dealers
+                    //Insert data into Products Table
                     SqlCommand cmd = con.CreateCommand();
                     cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "INSERT INTO Dealers VALUES ('" + DealerNameBox.Text + "','" +
-                                                                        DealerEmailBox.Text + "','" +
-                                                                        DealerAddressBox.Text + "','" +
-                                                                        DealerPhoneBox.Text + "','" +
-                                                                        Inserted_By_Box.Text + "')";
+                    cmd.CommandText = "INSERT INTO Products (Product_Name, Product_Quantity, Input_Date, Inserted_By)" +
+                        "VALUES ('" + Product_Name_Box.Text + "','"
+                                    + 0 + "','"
+                                    + Input_Date_Box.Value.Date + "','"
+                                    + Username_Box.Text + "')";
                     cmd.ExecuteNonQuery();
 
                     //Reset text
-                    DealerNameBox.Text = ""; DealerEmailBox.Text = "";
-                    DealerAddressBox.Text = ""; DealerPhoneBox.Text = "";
-                    Inserted_By_Box.Text = "";
+                    Product_Name_Box.Text = ""; Username_Box.Text = ""; Input_Date_Box.Text = "";
 
                     //Refresh Table
                     display();
 
-                    MessageBox.Show("New Dealer Added!");
+                    MessageBox.Show("New Product Name Added!");
                 }
-                else //If yes, do this
+                else
                 {
                     MessageBox.Show("Oops! Try Again!");
                 }
             }
         }
 
-        //Delete dealers
+        //Delete Item
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            var confirmResult = MessageBox.Show("Are you sure you want to delete this user?", "Confirmation", MessageBoxButtons.YesNo);
+            var confirmResult = MessageBox.Show("Are you sure you want to delete this item?",
+                "Confirmation", MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
-                var Dealer_ID = dataGridView1.SelectedCells[0].Value.ToString();
+                var Product_ID = dataGridView1.SelectedCells[0].Value.ToString();
                 SqlCommand cmd = con.CreateCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "DELETE FROM Dealers where Dealer_ID='" + Dealer_ID + "';";
+                cmd.CommandText = "DELETE FROM Products WHERE Product_ID='" + Product_ID + "'";
                 cmd.ExecuteNonQuery();
 
                 display();
 
-                MessageBox.Show("User deleted!");
+                MessageBox.Show("Item deleted!");
             }
         }
     }

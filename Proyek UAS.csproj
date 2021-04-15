@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -102,11 +102,11 @@
     <Compile Include="Sales_History.Designer.cs">
       <DependentUpon>Sales_History.cs</DependentUpon>
     </Compile>
-    <Compile Include="Stocks_Name.cs">
+    <Compile Include="Stocks_List.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Stocks_Name.Designer.cs">
-      <DependentUpon>Stocks_Name.cs</DependentUpon>
+    <Compile Include="Stocks_List.Designer.cs">
+      <DependentUpon>Stocks_List.cs</DependentUpon>
     </Compile>
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
@@ -128,11 +128,11 @@
     <Compile Include="Sales.Designer.cs">
       <DependentUpon>Sales.cs</DependentUpon>
     </Compile>
-    <Compile Include="Add_Stocks.cs">
+    <Compile Include="Purchase_Stocks.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Add_Stocks.Designer.cs">
-      <DependentUpon>Add_Stocks.cs</DependentUpon>
+    <Compile Include="Purchase_Stocks.Designer.cs">
+      <DependentUpon>Purchase_Stocks.cs</DependentUpon>
     </Compile>
     <Compile Include="Users.cs">
       <SubType>Form</SubType>
@@ -169,14 +169,14 @@
     <EmbeddedResource Include="Sales.resx">
       <DependentUpon>Sales.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Add_Stocks.resx">
-      <DependentUpon>Add_Stocks.cs</DependentUpon>
+    <EmbeddedResource Include="Purchase_Stocks.resx">
+      <DependentUpon>Purchase_Stocks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sales_History.resx">
       <DependentUpon>Sales_History.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Stocks_Name.resx">
-      <DependentUpon>Stocks_Name.cs</DependentUpon>
+    <EmbeddedResource Include="Stocks_List.resx">
+      <DependentUpon>Stocks_List.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users.resx">
       <DependentUpon>Users.cs</DependentUpon>
@@ -212,12 +212,12 @@
     <None Include="Resources\Login_Background.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Inventory.mdf">
+    <Content Include="R_Inventory.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Inventory_log.ldf">
+    <Content Include="R_Inventory_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>Inventory.mdf</DependentUpon>
+      <DependentUpon>R_Inventory.mdf</DependentUpon>
     </Content>
     <None Include="Resources\Back_Arrow_smallhitbox.png" />
     <None Include="Resources\Home_stocks.jpg" />

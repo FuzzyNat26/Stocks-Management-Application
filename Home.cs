@@ -17,22 +17,7 @@ namespace Proyek_UAS
             InitializeComponent();
         }
 
-        //Click untuk stocks
-        private void label3_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Form stocks = new Add_Stocks();
-            stocks.Show();
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Form stocks = new Add_Stocks();
-            stocks.Show();
-        }
-
-        //Click untuk Users
+        //To Users
         private void label7_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -47,7 +32,7 @@ namespace Proyek_UAS
             Users.Show();
         }
 
-        //Click untuk Dealers
+        //To Dealers
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -62,7 +47,22 @@ namespace Proyek_UAS
             Dealers.Show();
         }
 
-        //Click untuk Sales
+        //To Products
+        private void label3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form stocks = new Purchase_Stocks();
+            stocks.Show();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form stocks = new Purchase_Stocks();
+            stocks.Show();
+        }
+
+        //To Sales
         private void label5_Click(object sender, EventArgs e)
         {
             this.Hide();

@@ -38,8 +38,6 @@ namespace Proyek_UAS
             this.DealerEmailBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.DealerNameBox = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.DealerIDBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.deleteButton = new System.Windows.Forms.Button();
@@ -66,14 +64,14 @@ namespace Proyek_UAS
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.ShowEditingIcon = false;
-            this.dataGridView1.Size = new System.Drawing.Size(791, 551);
+            this.dataGridView1.Size = new System.Drawing.Size(791, 569);
             this.dataGridView1.TabIndex = 36;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(84, 473);
+            this.label6.Location = new System.Drawing.Point(82, 403);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(82, 19);
             this.label6.TabIndex = 32;
@@ -83,7 +81,7 @@ namespace Proyek_UAS
             // 
             this.DealerPhoneBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
             this.DealerPhoneBox.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DealerPhoneBox.Location = new System.Drawing.Point(87, 497);
+            this.DealerPhoneBox.Location = new System.Drawing.Point(85, 427);
             this.DealerPhoneBox.Multiline = true;
             this.DealerPhoneBox.Name = "DealerPhoneBox";
             this.DealerPhoneBox.Size = new System.Drawing.Size(323, 35);
@@ -93,7 +91,7 @@ namespace Proyek_UAS
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(84, 381);
+            this.label5.Location = new System.Drawing.Point(82, 311);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(69, 19);
             this.label5.TabIndex = 30;
@@ -103,7 +101,7 @@ namespace Proyek_UAS
             // 
             this.DealerAddressBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
             this.DealerAddressBox.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DealerAddressBox.Location = new System.Drawing.Point(87, 405);
+            this.DealerAddressBox.Location = new System.Drawing.Point(85, 335);
             this.DealerAddressBox.Multiline = true;
             this.DealerAddressBox.Name = "DealerAddressBox";
             this.DealerAddressBox.Size = new System.Drawing.Size(323, 35);
@@ -113,7 +111,7 @@ namespace Proyek_UAS
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(84, 288);
+            this.label4.Location = new System.Drawing.Point(82, 218);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(119, 19);
             this.label4.TabIndex = 28;
@@ -123,7 +121,7 @@ namespace Proyek_UAS
             // 
             this.DealerEmailBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
             this.DealerEmailBox.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DealerEmailBox.Location = new System.Drawing.Point(87, 312);
+            this.DealerEmailBox.Location = new System.Drawing.Point(85, 242);
             this.DealerEmailBox.Multiline = true;
             this.DealerEmailBox.Name = "DealerEmailBox";
             this.DealerEmailBox.Size = new System.Drawing.Size(323, 35);
@@ -133,7 +131,7 @@ namespace Proyek_UAS
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(84, 198);
+            this.label2.Location = new System.Drawing.Point(82, 128);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(104, 19);
             this.label2.TabIndex = 26;
@@ -143,32 +141,11 @@ namespace Proyek_UAS
             // 
             this.DealerNameBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
             this.DealerNameBox.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DealerNameBox.Location = new System.Drawing.Point(87, 222);
+            this.DealerNameBox.Location = new System.Drawing.Point(85, 152);
             this.DealerNameBox.Multiline = true;
             this.DealerNameBox.Name = "DealerNameBox";
             this.DealerNameBox.Size = new System.Drawing.Size(323, 35);
             this.DealerNameBox.TabIndex = 25;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(84, 108);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 19);
-            this.label3.TabIndex = 24;
-            this.label3.Text = "Dealer ID";
-            // 
-            // DealerIDBox
-            // 
-            this.DealerIDBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
-            this.DealerIDBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.DealerIDBox.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DealerIDBox.Location = new System.Drawing.Point(87, 132);
-            this.DealerIDBox.Multiline = true;
-            this.DealerIDBox.Name = "DealerIDBox";
-            this.DealerIDBox.Size = new System.Drawing.Size(323, 35);
-            this.DealerIDBox.TabIndex = 23;
             // 
             // label1
             // 
@@ -200,7 +177,7 @@ namespace Proyek_UAS
             this.deleteButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.deleteButton.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteButton.ForeColor = System.Drawing.Color.White;
-            this.deleteButton.Location = new System.Drawing.Point(89, 720);
+            this.deleteButton.Location = new System.Drawing.Point(87, 650);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(322, 51);
             this.deleteButton.TabIndex = 41;
@@ -214,7 +191,7 @@ namespace Proyek_UAS
             this.addButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addButton.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addButton.ForeColor = System.Drawing.Color.White;
-            this.addButton.Location = new System.Drawing.Point(87, 647);
+            this.addButton.Location = new System.Drawing.Point(85, 577);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(324, 51);
             this.addButton.TabIndex = 40;
@@ -226,7 +203,7 @@ namespace Proyek_UAS
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(85, 561);
+            this.label7.Location = new System.Drawing.Point(83, 491);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(98, 19);
             this.label7.TabIndex = 39;
@@ -243,7 +220,7 @@ namespace Proyek_UAS
             this.Inserted_By_Box.FormattingEnabled = true;
             this.Inserted_By_Box.IntegralHeight = false;
             this.Inserted_By_Box.ItemHeight = 25;
-            this.Inserted_By_Box.Location = new System.Drawing.Point(88, 585);
+            this.Inserted_By_Box.Location = new System.Drawing.Point(86, 515);
             this.Inserted_By_Box.MaxDropDownItems = 4;
             this.Inserted_By_Box.Name = "Inserted_By_Box";
             this.Inserted_By_Box.Size = new System.Drawing.Size(323, 31);
@@ -256,7 +233,7 @@ namespace Proyek_UAS
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
-            this.ClientSize = new System.Drawing.Size(1330, 819);
+            this.ClientSize = new System.Drawing.Size(1330, 731);
             this.Controls.Add(this.Inserted_By_Box);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.addButton);
@@ -270,8 +247,6 @@ namespace Proyek_UAS
             this.Controls.Add(this.DealerEmailBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.DealerNameBox);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.DealerIDBox);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Name = "Dealers";
@@ -294,8 +269,6 @@ namespace Proyek_UAS
         private System.Windows.Forms.TextBox DealerEmailBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox DealerNameBox;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox DealerIDBox;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button deleteButton;
