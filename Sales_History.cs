@@ -118,19 +118,19 @@ namespace Proyek_UAS
             var confirmResult = MessageBox.Show("Are you sure you want to delete this sales?", "Confirmation", MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
-                //Delete data from Sales_History
                 var Sales_ID = Data_Sales_History_View.SelectedCells[0].Value.ToString();
-
-                SqlCommand del = con.CreateCommand();
-                del.CommandType = CommandType.Text;
-                del.CommandText = "DELETE FROM Orders WHERE Sales_ID ='" + Sales_ID + "'";
-                del.ExecuteNonQuery();
 
                 //Delete data from Sold_Product_History
                 SqlCommand del1 = con.CreateCommand();
                 del1.CommandType = CommandType.Text;
                 del1.CommandText = "DELETE FROM Sell WHERE Sales_ID ='" + Sales_ID + "'";
                 del1.ExecuteNonQuery();
+
+                //Delete data from Orders
+                SqlCommand del = con.CreateCommand();
+                del.CommandType = CommandType.Text;
+                del.CommandText = "DELETE FROM Orders WHERE Sales_ID ='" + Sales_ID + "'";
+                del.ExecuteNonQuery();
 
 
                 //Return Sold Quantity

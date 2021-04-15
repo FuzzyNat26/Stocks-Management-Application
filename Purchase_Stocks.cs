@@ -299,7 +299,7 @@ namespace Proyek_UAS
                     int Purchase_ID = 0;
                     SqlCommand temp = con.CreateCommand();
                     temp.CommandType = CommandType.Text;
-                    temp.CommandText = "SELECT TOP 1 Purchase_ID FROM Purchase ORDER BY Purchase_ID DESC";
+                    temp.CommandText = "SELECT TOP 1 Purchase_ID FROM Purchases ORDER BY Purchase_ID DESC";
                     temp.ExecuteNonQuery();
 
                     DataTable temp_table = new DataTable();
@@ -313,14 +313,14 @@ namespace Proyek_UAS
 
                     SqlCommand purchase_stock = con.CreateCommand();
                     purchase_stock.CommandType = CommandType.Text;
-                    purchase_stock.CommandText = "INSERT INTO Purchase_Stock VALUES ('" + Purchase_ID + "','"
+                    purchase_stock.CommandText = "INSERT INTO Purchase_Product VALUES ('" + Purchase_ID + "','"
                                                                                         + Product_ID_Box.Text + "')";
                     purchase_stock.ExecuteNonQuery();
 
                     //Add Quantity
                     SqlCommand quantity = con.CreateCommand();
                     quantity.CommandType = CommandType.Text;
-                    quantity.CommandText = "UPDATE Stocks SET Product_Quantity = Product_Quantity + "
+                    quantity.CommandText = "UPDATE Products SET Product_Quantity = Product_Quantity + "
                         + Quantity_Box.Text + " WHERE Product_ID = '" + Product_ID_Box.Text + "'";
                     quantity.ExecuteNonQuery();
 
