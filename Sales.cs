@@ -242,8 +242,8 @@ namespace Proyek_UAS
                     Total = Total + Convert.ToInt32(temp_dr["Total_Price"].ToString());
                     Total_Payment_Box.Text = Convert.ToString(Total);
 
-                    //Menunjukkan data sudah added
-                    MessageBox.Show("New Data Added!");
+                    //Show data added
+                    MessageBox.Show("New order added to list!");
                 }
             }
         }
@@ -276,7 +276,7 @@ namespace Proyek_UAS
                 var confirmResult = MessageBox.Show("Confirm Order?", "Confirmation", MessageBoxButtons.YesNo);
                 if (confirmResult == DialogResult.Yes)
                 {
-                    //input ke sales_history
+                    //input to Orders
                     SqlCommand input = con.CreateCommand();
                     input.CommandType = CommandType.Text;
                     input.CommandText = "INSERT INTO Orders VALUES('" + Customer_Box.Text + "','"
@@ -286,7 +286,7 @@ namespace Proyek_UAS
                                                                      + Bill_Type_Box.Text + "')";
                     input.ExecuteNonQuery();
 
-                    //input ke Sell dengan mengambil sales_id dari tabel Orders
+                    //Input to Sell by taking Sales_ID from Orders
                     int Sales_ID = 0;
 
                     SqlCommand input2 = con.CreateCommand();
@@ -313,7 +313,7 @@ namespace Proyek_UAS
                                                                     + temp_dataRow["Total_Price"] + "')";
                         temp.ExecuteNonQuery();
 
-                        //Kurangkan quantity
+                        //Minus quantity
                         int Quantity = Convert.ToInt32(temp_dataRow["Quantity"].ToString());
                         string Product_ID = temp_dataRow["Product_ID"].ToString();
 
@@ -335,7 +335,7 @@ namespace Proyek_UAS
 
                     MessageBox.Show("Sales Added!");
 
-                    //Kalau mau print order
+                    //Check if users want to print order
                     var confirmResult1 = MessageBox.Show("Do you want to print this sales?", "Confirmation", MessageBoxButtons.YesNo);
                     if (confirmResult1 == DialogResult.Yes)
                     {

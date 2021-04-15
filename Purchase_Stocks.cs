@@ -32,7 +32,7 @@ namespace Proyek_UAS
             }
             con.Open();
 
-            //Display data di tabel
+            //Display data
             display();
 
             //Combo Box
@@ -236,12 +236,12 @@ namespace Proyek_UAS
         //Add Stocks
         private void button1_Click(object sender, EventArgs e)
         {
-            //Apakah semua control berbentuk textbox berisi?
-            if (this.Controls.OfType<TextBox>().Any(t => string.IsNullOrEmpty(t.Text))) //Apabila ada yang tidak diisi, lakukan ini
+            //Do all textbox filled
+            if (this.Controls.OfType<TextBox>().Any(t => string.IsNullOrEmpty(t.Text))) //If there is empty textbox, do this
             {
                 MessageBox.Show("All input must be filled!");
             }
-            else //Apabila semua berisi, lakukan ini
+            else //If all filled, do this
             {
                 LinkedList<string> confirm = new LinkedList<string>();
                 confirm.AddLast("Product ID:");
@@ -351,20 +351,20 @@ namespace Proyek_UAS
                 "Confirmation", MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
-                //Hapus dari Purchase
+                //Delete from Purchase
                 var Purchase_ID = dataGridView1.SelectedCells[0].Value.ToString();
                 SqlCommand purchase = con.CreateCommand();
                 purchase.CommandType = CommandType.Text;
                 purchase.CommandText = "DELETE FROM Purchases where Purchase_ID='" + Purchase_ID + "'";
                 purchase.ExecuteNonQuery();
 
-                //Hapus dari Purchase_Stock
+                //Delete from Purchase_Stock
                 SqlCommand purchase_stock = con.CreateCommand();
                 purchase_stock.CommandType = CommandType.Text;
                 purchase_stock.CommandText = "DELETE FROM Purchase_Product where Purchase_ID='" + Purchase_ID + "'";
                 purchase_stock.ExecuteNonQuery();
 
-                //Hapus quantity di tabel Product_Name
+                //Minus Quantity from Products
                 var Product_ID = dataGridView1.SelectedCells[1].Value.ToString();
                 var Quantity = dataGridView1.SelectedCells[4].Value.ToString();
                 SqlCommand cmd1 = con.CreateCommand();

@@ -91,12 +91,12 @@ namespace Proyek_UAS
         //Add Dealers
         private void addButton_Click(object sender, EventArgs e)
         {
-            //Apakah semua control berbentuk textbox berisi?
-            if (this.Controls.OfType<TextBox>().Any(t => string.IsNullOrEmpty(t.Text))) //Apabila ada yang tidak diisi, lakukan ini
+            //Do all textbox filled
+            if (this.Controls.OfType<TextBox>().Any(t => string.IsNullOrEmpty(t.Text))) //If no, do this
             {
                 MessageBox.Show("All input must be filled!");
             }
-            else //Apabila semua berisi, lakukan ini
+            else //if yes, do this
             {
                 LinkedList<string> confirm = new LinkedList<string>();
                 confirm.AddLast("Dealer Name:");
@@ -123,7 +123,7 @@ namespace Proyek_UAS
                 var confirmResult = MessageBox.Show(Texts, "Confirmation", MessageBoxButtons.YesNo);
                 if (confirmResult == DialogResult.Yes)
                 {
-                    //Insert data yang ada di textbox ke dalam database
+                    //Insert data to Dealers
                     SqlCommand cmd = con.CreateCommand();
                     cmd.CommandType = CommandType.Text;
                     cmd.CommandText = "INSERT INTO Dealers VALUES ('" + DealerNameBox.Text + "','" +
@@ -133,7 +133,7 @@ namespace Proyek_UAS
                                                                         Inserted_By_Box.Text + "')";
                     cmd.ExecuteNonQuery();
 
-                    //Menghapus teks yang ada di textbox
+                    //Reset text
                     DealerNameBox.Text = ""; DealerEmailBox.Text = "";
                     DealerAddressBox.Text = ""; DealerPhoneBox.Text = "";
                     Inserted_By_Box.Text = "";
@@ -141,12 +141,10 @@ namespace Proyek_UAS
                     //Refresh Table
                     display();
 
-                    //Menunjukkan data sudah added
                     MessageBox.Show("New Dealer Added!");
                 }
-                else //Apabila ada, lanjut ke sini.
+                else //If yes, do this
                 {
-                    //Menunjukkan ada Dealer ID yang sama
                     MessageBox.Show("Oops! Try Again!");
                 }
             }
