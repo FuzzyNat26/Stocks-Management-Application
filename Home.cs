@@ -90,6 +90,14 @@ namespace Proyek_UAS
             Form Login = new Login();
             Login.Show();
         }
+
+        //Team Member Page
+        private void label2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form Team_Member = new Team_Member();
+            Team_Member.Show();
+        }
     }
     
 }

@@ -29,6 +29,7 @@ namespace Proyek_UAS
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -69,6 +70,7 @@ namespace Proyek_UAS
             this.label2.Size = new System.Drawing.Size(298, 19);
             this.label2.TabIndex = 7;
             this.label2.Text = "Copyright 2021 by 2SIMA - Kelompok 1";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label7
             // 
@@ -176,9 +178,9 @@ namespace Proyek_UAS
             // label6
             // 
             this.label6.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(601, 11);
+            this.label6.Location = new System.Drawing.Point(27, 11);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(267, 29);
+            this.label6.Size = new System.Drawing.Size(841, 29);
             this.label6.TabIndex = 14;
             this.label6.Text = "Hello";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -225,6 +227,7 @@ namespace Proyek_UAS
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Home";
             this.Text = "Home";
             this.Load += new System.EventHandler(this.Home_Load);
