@@ -39,7 +39,7 @@ namespace Proyek_UAS
             this.label5 = new System.Windows.Forms.Label();
             this.Input_Date_Box = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
-            this.Username_Box = new System.Windows.Forms.ComboBox();
+            this.Username_Box = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -164,27 +164,20 @@ namespace Proyek_UAS
             // 
             // Username_Box
             // 
-            this.Username_Box.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.Username_Box.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.Username_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
-            this.Username_Box.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.Username_Box.DropDownHeight = 110;
-            this.Username_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F);
-            this.Username_Box.FormattingEnabled = true;
-            this.Username_Box.IntegralHeight = false;
-            this.Username_Box.ItemHeight = 25;
-            this.Username_Box.Location = new System.Drawing.Point(80, 223);
-            this.Username_Box.MaxDropDownItems = 4;
+            this.Username_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Username_Box.Location = new System.Drawing.Point(79, 223);
+            this.Username_Box.Multiline = true;
             this.Username_Box.Name = "Username_Box";
-            this.Username_Box.Size = new System.Drawing.Size(267, 31);
-            this.Username_Box.Sorted = true;
-            this.Username_Box.TabIndex = 75;
-            this.Username_Box.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.Username_Box_DrawItem);
+            this.Username_Box.ReadOnly = true;
+            this.Username_Box.Size = new System.Drawing.Size(267, 35);
+            this.Username_Box.TabIndex = 76;
             // 
             // Stocks_List
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
             this.ClientSize = new System.Drawing.Size(1240, 555);
             this.Controls.Add(this.Username_Box);
             this.Controls.Add(this.label2);
@@ -219,6 +212,6 @@ namespace Proyek_UAS
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker Input_Date_Box;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox Username_Box;
+        private System.Windows.Forms.TextBox Username_Box;
     }
 }

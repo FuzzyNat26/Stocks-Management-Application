@@ -47,6 +47,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Logo_Aplikasi.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -140,6 +143,7 @@
     <Compile Include="Users.Designer.cs">
       <DependentUpon>Users.cs</DependentUpon>
     </Compile>
+    <Compile Include="User_Log.cs" />
     <EmbeddedResource Include="Dealers.resx">
       <DependentUpon>Dealers.cs</DependentUpon>
     </EmbeddedResource>
@@ -212,6 +216,7 @@
     <None Include="Resources\Login_Background.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Logo_Aplikasi.ico" />
     <Content Include="R_Inventory.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

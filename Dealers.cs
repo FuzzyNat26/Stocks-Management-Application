@@ -34,8 +34,7 @@ namespace Proyek_UAS
 
             display();
 
-            //Combo Box
-            fill_combobox();
+            Inserted_By_Box.Text = User_Log.Username;
         }
 
         //Display
@@ -58,34 +57,6 @@ namespace Proyek_UAS
             this.Hide();
             Form Home = new Home();
             Home.Show();
-        }
-
-        //Set textbox drawitem
-        private void Inserted_By_Box_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            e.DrawBackground();
-            if (e.Index > -1)
-            {
-                e.Graphics.DrawString(Inserted_By_Box.Items[e.Index].ToString(), e.Font, new SolidBrush(e.ForeColor), e.Bounds);
-            }
-        }
-
-        //Fill combo box
-        public void fill_combobox()
-        {
-            Inserted_By_Box.Items.Clear();
-            SqlCommand fill = con.CreateCommand();
-            fill.CommandType = CommandType.Text;
-            fill.CommandText = "SELECT * FROM Users";
-            fill.ExecuteNonQuery();
-            DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter(fill);
-            da.Fill(dt);
-
-            foreach (DataRow dr in dt.Rows)
-            {
-                Inserted_By_Box.Items.Add(dr["Username"].ToString());
-            }
         }
 
         //Add Dealers

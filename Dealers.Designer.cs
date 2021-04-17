@@ -43,7 +43,7 @@ namespace Proyek_UAS
             this.deleteButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.Inserted_By_Box = new System.Windows.Forms.ComboBox();
+            this.Inserted_By_Box = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -211,22 +211,14 @@ namespace Proyek_UAS
             // 
             // Inserted_By_Box
             // 
-            this.Inserted_By_Box.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.Inserted_By_Box.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.Inserted_By_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
-            this.Inserted_By_Box.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.Inserted_By_Box.DropDownHeight = 110;
-            this.Inserted_By_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F);
-            this.Inserted_By_Box.FormattingEnabled = true;
-            this.Inserted_By_Box.IntegralHeight = false;
-            this.Inserted_By_Box.ItemHeight = 25;
-            this.Inserted_By_Box.Location = new System.Drawing.Point(86, 515);
-            this.Inserted_By_Box.MaxDropDownItems = 4;
+            this.Inserted_By_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Inserted_By_Box.Location = new System.Drawing.Point(85, 513);
+            this.Inserted_By_Box.Multiline = true;
             this.Inserted_By_Box.Name = "Inserted_By_Box";
-            this.Inserted_By_Box.Size = new System.Drawing.Size(323, 31);
-            this.Inserted_By_Box.Sorted = true;
+            this.Inserted_By_Box.ReadOnly = true;
+            this.Inserted_By_Box.Size = new System.Drawing.Size(323, 35);
             this.Inserted_By_Box.TabIndex = 42;
-            this.Inserted_By_Box.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.Inserted_By_Box_DrawItem);
             // 
             // Dealers
             // 
@@ -274,6 +266,6 @@ namespace Proyek_UAS
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox Inserted_By_Box;
+        private System.Windows.Forms.TextBox Inserted_By_Box;
     }
 }

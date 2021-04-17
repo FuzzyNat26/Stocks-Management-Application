@@ -37,8 +37,9 @@ namespace Proyek_UAS
                 con.Close();
             }
             con.Open();
-            
-            fill_username_box();
+
+            Username_Box.Text = User_Log.Username;
+
             fill_product_name_box();
 
             temp_dataTable.Clear();
@@ -66,14 +67,6 @@ namespace Proyek_UAS
         }
 
         //Set drawitem event
-        private void Username_Box_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            e.DrawBackground();
-            if (e.Index > -1)
-            {
-                e.Graphics.DrawString(Username_Box.Items[e.Index].ToString(), e.Font, new SolidBrush(e.ForeColor), e.Bounds);
-            }
-        }
 
         private void Bill_Type_Box_DrawItem(object sender, DrawItemEventArgs e)
         {
@@ -93,24 +86,7 @@ namespace Proyek_UAS
             }
         }
 
-        //Set Combo Box
-        public void fill_username_box()
-        {
-            Username_Box.Items.Clear();
-            SqlCommand fill = con.CreateCommand();
-            fill.CommandType = CommandType.Text;
-            fill.CommandText = "SELECT Username FROM Users";
-            fill.ExecuteNonQuery();
-            DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter(fill);
-            da.Fill(dt);
-
-            foreach (DataRow dr in dt.Rows)
-            {
-                Username_Box.Items.Add(dr["Username"].ToString());
-            }
-        }
-
+        //Fill Combo Box
         public void fill_product_name_box()
         {
             Product_Name_Box.Items.Clear();

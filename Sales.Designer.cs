@@ -52,12 +52,12 @@ namespace Proyek_UAS
             this.Total_Box = new System.Windows.Forms.TextBox();
             this.Quantity_Box = new System.Windows.Forms.TextBox();
             this.Sale_Date_Box = new System.Windows.Forms.DateTimePicker();
-            this.Username_Box = new System.Windows.Forms.ComboBox();
             this.Bill_Type_Box = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.Product_ID_Box = new System.Windows.Forms.TextBox();
             this.Product_Name_Box = new System.Windows.Forms.ComboBox();
             this.Sell_Price_Box = new System.Windows.Forms.TextBox();
+            this.Username_Box = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -327,25 +327,6 @@ namespace Proyek_UAS
             this.Sale_Date_Box.Size = new System.Drawing.Size(267, 31);
             this.Sale_Date_Box.TabIndex = 72;
             // 
-            // Username_Box
-            // 
-            this.Username_Box.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.Username_Box.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.Username_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
-            this.Username_Box.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.Username_Box.DropDownHeight = 110;
-            this.Username_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F);
-            this.Username_Box.FormattingEnabled = true;
-            this.Username_Box.IntegralHeight = false;
-            this.Username_Box.ItemHeight = 25;
-            this.Username_Box.Location = new System.Drawing.Point(399, 110);
-            this.Username_Box.MaxDropDownItems = 4;
-            this.Username_Box.Name = "Username_Box";
-            this.Username_Box.Size = new System.Drawing.Size(267, 31);
-            this.Username_Box.Sorted = true;
-            this.Username_Box.TabIndex = 73;
-            this.Username_Box.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.Username_Box_DrawItem);
-            // 
             // Bill_Type_Box
             // 
             this.Bill_Type_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
@@ -422,17 +403,28 @@ namespace Proyek_UAS
             this.Sell_Price_Box.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Only_Accept_Number_Key_Press);
             this.Sell_Price_Box.Leave += new System.EventHandler(this.Total_Box_Value_Textbox_Leave);
             // 
+            // Username_Box
+            // 
+            this.Username_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
+            this.Username_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Username_Box.Location = new System.Drawing.Point(399, 110);
+            this.Username_Box.Multiline = true;
+            this.Username_Box.Name = "Username_Box";
+            this.Username_Box.ReadOnly = true;
+            this.Username_Box.Size = new System.Drawing.Size(267, 35);
+            this.Username_Box.TabIndex = 78;
+            // 
             // Sales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
             this.ClientSize = new System.Drawing.Size(1372, 819);
+            this.Controls.Add(this.Username_Box);
             this.Controls.Add(this.Sell_Price_Box);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.Product_ID_Box);
             this.Controls.Add(this.Bill_Type_Box);
-            this.Controls.Add(this.Username_Box);
             this.Controls.Add(this.Sale_Date_Box);
             this.Controls.Add(this.Quantity_Box);
             this.Controls.Add(this.label12);
@@ -492,11 +484,11 @@ namespace Proyek_UAS
         private System.Windows.Forms.TextBox Total_Box;
         private System.Windows.Forms.TextBox Quantity_Box;
         private System.Windows.Forms.DateTimePicker Sale_Date_Box;
-        private System.Windows.Forms.ComboBox Username_Box;
         private System.Windows.Forms.ComboBox Bill_Type_Box;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox Product_ID_Box;
         private System.Windows.Forms.ComboBox Product_Name_Box;
         private System.Windows.Forms.TextBox Sell_Price_Box;
+        private System.Windows.Forms.TextBox Username_Box;
     }
 }

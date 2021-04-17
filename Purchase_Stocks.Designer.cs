@@ -105,7 +105,7 @@ namespace Proyek_UAS
             // 
             this.Quantity_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
             this.Quantity_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Quantity_Box.Location = new System.Drawing.Point(417, 287);
+            this.Quantity_Box.Location = new System.Drawing.Point(419, 287);
             this.Quantity_Box.Multiline = true;
             this.Quantity_Box.Name = "Quantity_Box";
             this.Quantity_Box.Size = new System.Drawing.Size(267, 35);
@@ -139,7 +139,7 @@ namespace Proyek_UAS
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(87, 259);
+            this.label4.Location = new System.Drawing.Point(88, 265);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(123, 19);
             this.label4.TabIndex = 51;
@@ -149,7 +149,7 @@ namespace Proyek_UAS
             // 
             this.Purchase_Price_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(243)))), ((int)(((byte)(247)))));
             this.Purchase_Price_Box.Font = new System.Drawing.Font("Roboto Condensed Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Purchase_Price_Box.Location = new System.Drawing.Point(122, 281);
+            this.Purchase_Price_Box.Location = new System.Drawing.Point(122, 287);
             this.Purchase_Price_Box.Multiline = true;
             this.Purchase_Price_Box.Name = "Purchase_Price_Box";
             this.Purchase_Price_Box.Size = new System.Drawing.Size(232, 35);
@@ -173,6 +173,8 @@ namespace Proyek_UAS
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeColumns = false;
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -299,7 +301,7 @@ namespace Proyek_UAS
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(87, 287);
+            this.label10.Location = new System.Drawing.Point(87, 291);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(29, 19);
             this.label10.TabIndex = 66;

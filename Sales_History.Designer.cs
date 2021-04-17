@@ -53,6 +53,7 @@ namespace Proyek_UAS
             this.Data_Sales_History_View.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Data_Sales_History_View.Location = new System.Drawing.Point(85, 134);
             this.Data_Sales_History_View.Name = "Data_Sales_History_View";
+            this.Data_Sales_History_View.ReadOnly = true;
             this.Data_Sales_History_View.RowHeadersWidth = 51;
             this.Data_Sales_History_View.RowTemplate.Height = 24;
             this.Data_Sales_History_View.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -95,6 +96,7 @@ namespace Proyek_UAS
             this.Data_SalesID_ProductHistory_View.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Data_SalesID_ProductHistory_View.Location = new System.Drawing.Point(720, 134);
             this.Data_SalesID_ProductHistory_View.Name = "Data_SalesID_ProductHistory_View";
+            this.Data_SalesID_ProductHistory_View.ReadOnly = true;
             this.Data_SalesID_ProductHistory_View.RowHeadersWidth = 51;
             this.Data_SalesID_ProductHistory_View.RowTemplate.Height = 24;
             this.Data_SalesID_ProductHistory_View.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;

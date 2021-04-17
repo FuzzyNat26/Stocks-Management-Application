@@ -31,7 +31,7 @@ namespace Proyek_UAS
             }
             con.Open();
 
-            fill_username_box();
+            Username_Box.Text = User_Log.Username;
 
             //Call table
             display();
@@ -65,35 +65,6 @@ namespace Proyek_UAS
             this.Hide();
             Form stocks = new Purchase_Stocks();
             stocks.Show();
-        }
-
-        //Set textbox drawitem
-        private void Username_Box_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            e.DrawBackground();
-            if (e.Index > -1)
-            {
-                e.Graphics.DrawString(Username_Box.Items[e.Index].ToString(), e.Font, new SolidBrush(e.ForeColor), e.Bounds);
-            }
-        }
-
-        //Fill combo box
-        public void fill_username_box()
-        {
-            Username_Box.Items.Clear();
-            SqlCommand fill = con.CreateCommand();
-            fill.CommandType = CommandType.Text;
-            fill.CommandText = "SELECT Username FROM Users";
-            fill.ExecuteNonQuery();
-
-            DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter(fill);
-            da.Fill(dt);
-
-            foreach (DataRow dr in dt.Rows)
-            {
-                Username_Box.Items.Add(dr["Username"].ToString());
-            }
         }
 
         //Add Item Name

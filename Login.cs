@@ -50,6 +50,8 @@ namespace Proyek_UAS
             }
             else
             {
+                User_Log.Username = UsernameBox.Text;
+
                 this.Hide();
                 Form form = new Home();
                 form.Show();
