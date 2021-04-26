@@ -21,7 +21,7 @@ namespace Proyek_UAS
                 Application.Run(new Login());
             } catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+                MessageBox.Show("Error Message " + e.Message + "." + Environment.NewLine + "Contact your app provider!");
             }
         }
     }
