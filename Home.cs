@@ -20,14 +20,15 @@ namespace Proyek_UAS
         //Hello <log in user>
         private void Home_Load(object sender, EventArgs e)
         {
-            label6.Text = "Hello " + FormHandler.Username;
+            label6.Text = "Hello " + User_Log.Username;
         }
 
         //To Users
         private void label7_Click(object sender, EventArgs e)
         {
-            FormHandler.Home.Hide();
-            FormHandler.Users.Show();
+            this.Hide();
+            Form Users = new Users();
+            Users.Show();
         }
 
         private void pictureBox5_Click(object sender, EventArgs e)

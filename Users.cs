@@ -56,9 +56,8 @@ namespace Proyek_UAS
         private void Back_Button_Click(object sender, EventArgs e)
         {
             this.Hide();
-            //Form Home = new Home();
-            //Home.Visible = true;
-            FormHandler.Home.Show();
+            Form Home = new Home();
+            Home.Show();
         }
 
         //Add Users
@@ -149,27 +148,19 @@ namespace Proyek_UAS
         //Delete Users
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            var username = dataGridView1.SelectedCells[2].Value.ToString();
-            if (FormHandler.Username == username)
+            var confirmResult = MessageBox.Show("Are you sure you want to delete this user?", "Confirmation", MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
             {
-                MessageBox.Show("You can't delete yourself!");
-            } else
-            {
-                var confirmResult = MessageBox.Show("Are you sure you want to delete this user?", "Confirmation", MessageBoxButtons.YesNo);
-                if (confirmResult == DialogResult.Yes)
-                {
-                    SqlCommand cmd = con.CreateCommand();
-                    cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "DELETE FROM Users WHERE username='" + username + "';";
-                    cmd.ExecuteNonQuery();
+                var username = dataGridView1.SelectedCells[2].Value.ToString();
+                SqlCommand cmd = con.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "DELETE FROM Users WHERE username='" + username + "';";
+                cmd.ExecuteNonQuery();
 
-                    display();
+                display();
 
-                    MessageBox.Show("User deleted!");
-                }
+                MessageBox.Show("User deleted!");
             }
-                ;
-
         }
     }
 }

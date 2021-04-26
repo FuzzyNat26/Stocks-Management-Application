@@ -34,7 +34,7 @@ namespace Proyek_UAS
 
             display();
 
-            Inserted_By_Box.Text = FormHandler.Username;
+            Inserted_By_Box.Text = User_Log.Username;
         }
 
         //Display
