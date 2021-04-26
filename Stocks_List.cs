@@ -31,7 +31,7 @@ namespace Proyek_UAS
             }
             con.Open();
 
-            Username_Box.Text = User_Log.Username;
+            Username_Box.Text = FormHandler.Username;
 
             //Call table
             display();

@@ -93,6 +93,7 @@
       <DependentUpon>CrystalReport1.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="FormHandler.cs" />
     <Compile Include="Team_Member.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -149,7 +150,6 @@
     <Compile Include="Users.Designer.cs">
       <DependentUpon>Users.cs</DependentUpon>
     </Compile>
-    <Compile Include="User_Log.cs" />
     <EmbeddedResource Include="Dealers.resx">
       <DependentUpon>Dealers.cs</DependentUpon>
     </EmbeddedResource>
