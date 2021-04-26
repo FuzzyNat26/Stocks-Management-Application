@@ -23,6 +23,11 @@ namespace Proyek_UAS
             InitializeComponent();
         }
 
+        private void Form_Closed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
         //Run when loading
         private void Sales_History_Load(object sender, EventArgs e)
         {

@@ -243,6 +243,7 @@ namespace Proyek_UAS
             this.Controls.Add(this.label1);
             this.Name = "Dealers";
             this.Text = "Dealers";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_Closed);
             this.Load += new System.EventHandler(this.Dealers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

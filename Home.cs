@@ -17,6 +17,11 @@ namespace Proyek_UAS
             InitializeComponent();
         }
 
+        private void Form_Closed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
         //Hello <log in user>
         private void Home_Load(object sender, EventArgs e)
         {
@@ -99,5 +104,4 @@ namespace Proyek_UAS
             Team_Member.Show();
         }
     }
-    
 }

@@ -192,6 +192,7 @@ namespace Proyek_UAS
             this.Controls.Add(this.label1);
             this.Name = "Stocks_List";
             this.Text = "Insert Stocks Name";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_Closed);
             this.Load += new System.EventHandler(this.Stocks_Name_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

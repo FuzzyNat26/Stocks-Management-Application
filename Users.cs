@@ -38,6 +38,11 @@ namespace Proyek_UAS
             display();
         }
 
+        private void Form_Closed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
         //Method for connecting datagrid with database
         public void display()
         {
@@ -148,18 +153,25 @@ namespace Proyek_UAS
         //Delete Users
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            var confirmResult = MessageBox.Show("Are you sure you want to delete this user?", "Confirmation", MessageBoxButtons.YesNo);
-            if (confirmResult == DialogResult.Yes)
+            var username = dataGridView1.SelectedCells[2].Value.ToString();
+            if (User_Log.Username == username)
             {
-                var username = dataGridView1.SelectedCells[2].Value.ToString();
-                SqlCommand cmd = con.CreateCommand();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "DELETE FROM Users WHERE username='" + username + "';";
-                cmd.ExecuteNonQuery();
+                MessageBox.Show("You can't delete yourself!");
+            }
+            else
+            {
+                var confirmResult = MessageBox.Show("Are you sure you want to delete this user?", "Confirmation", MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
+                {
+                    SqlCommand cmd = con.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = "DELETE FROM Users WHERE username='" + username + "';";
+                    cmd.ExecuteNonQuery();
 
-                display();
+                    display();
 
-                MessageBox.Show("User deleted!");
+                    MessageBox.Show("User deleted!");
+                }
             }
         }
     }
