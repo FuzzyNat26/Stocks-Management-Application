@@ -226,7 +226,7 @@ namespace Proyek_UAS
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(724, 51);
             this.deleteButton.TabIndex = 20;
-            this.deleteButton.Text = "DELETE USER";
+            this.deleteButton.Text = "DISABLE USER";
             this.deleteButton.UseVisualStyleBackColor = false;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 

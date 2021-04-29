@@ -48,7 +48,7 @@ namespace Proyek_UAS
         {
             SqlCommand display = con.CreateCommand();
             display.CommandType = CommandType.Text;
-            display.CommandText = "SELECT * FROM Users";
+            display.CommandText = "SELECT First_Name, Last_Name, Username, Password, Email, Phone FROM Users WHERE Status='TRUE'";
             display.ExecuteNonQuery();
 
             DataTable dataTable = new DataTable();
@@ -107,7 +107,7 @@ namespace Proyek_UAS
                     //Check if there are the same username
                     SqlCommand check = con.CreateCommand();
                     check.CommandType = CommandType.Text;
-                    check.CommandText = "SELECT * FROM Users WHERE Username='" + UsernameBox.Text + "'";
+                    check.CommandText = "SELECT Username, Status FROM Users WHERE Username='" + UsernameBox.Text + "'";
                     check.ExecuteNonQuery();
 
                     DataTable dataTable = new DataTable();
@@ -125,7 +125,8 @@ namespace Proyek_UAS
                                                                         + UsernameBox.Text + "', '"
                                                                         + PasswordBox.Text + "', '"
                                                                         + EmailBox.Text + "', '"
-                                                                        + PhoneBox.Text + "')";
+                                                                        + PhoneBox.Text + "', '"
+                                                                        + "TRUE" + "')";
                         cmd.ExecuteNonQuery();
 
                         //Reset text
@@ -140,7 +141,7 @@ namespace Proyek_UAS
                     }
                     else //If there is the same username, do this
                     {
-                        MessageBox.Show("Oops! Seems like there is already a similar username. Try another one!");
+                        MessageBox.Show("Oops! There is a similar or disabled username." + Environment.NewLine + "Try another one!");
                     }
                 }
                 else
@@ -165,12 +166,12 @@ namespace Proyek_UAS
                 {
                     SqlCommand cmd = con.CreateCommand();
                     cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "DELETE FROM Users WHERE username='" + username + "';";
+                    cmd.CommandText = "UPDATE Users SET Status = 'FALSE' WHERE username='" + username + "';";
                     cmd.ExecuteNonQuery();
 
                     display();
 
-                    MessageBox.Show("User deleted!");
+                    MessageBox.Show("User disabled!");
                 }
             }
         }

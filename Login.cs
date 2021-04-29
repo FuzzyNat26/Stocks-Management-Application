@@ -29,7 +29,7 @@ namespace Proyek_UAS
         //Run when loading
         private void Login_Load(object sender, EventArgs e)
         {
-            if(con.State==ConnectionState.Open)
+            if (con.State==ConnectionState.Open)
             {
                 con.Close();
             }
@@ -42,7 +42,7 @@ namespace Proyek_UAS
             int i = 0;
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT * FROM Users WHERE Username='" + UsernameBox.Text + "' AND Password='"+ PasswordBox.Text +"'";
+            cmd.CommandText = "SELECT Username, Password FROM Users WHERE Username='" + UsernameBox.Text + "' AND Password='"+ PasswordBox.Text +"' AND Status='TRUE'";
             cmd.ExecuteNonQuery();
             DataTable dataTable = new DataTable();
             SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
