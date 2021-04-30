@@ -71,6 +71,9 @@ namespace Proyek_UAS
             dataAdapter.Fill(dataTable);
 
             dataGridView1.DataSource = dataTable;
+            dataGridView1.Columns["Purchase_Price"].DefaultCellStyle.Format = "N2";
+            dataGridView1.Columns["Total"].DefaultCellStyle.Format = "N2";
+            dataGridView1.Columns["Sell_Price"].DefaultCellStyle.Format = "N2";
         }
 
         //Go to Stocks List
