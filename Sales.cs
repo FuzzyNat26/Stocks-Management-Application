@@ -220,6 +220,9 @@ namespace Proyek_UAS
                     temp_dataTable.Rows.Add(temp_dr);
                     dataGridView1.DataSource = temp_dataTable;
 
+                    dataGridView1.Columns["Product_Price"].DefaultCellStyle.Format = "N2";
+                    dataGridView1.Columns["Total_Price"].DefaultCellStyle.Format = "N2";
+
                     Total = Total + Convert.ToInt32(temp_dr["Total_Price"].ToString());
                     Total_Payment_Box.Text = Convert.ToString(Total);
 
