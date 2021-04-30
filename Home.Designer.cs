@@ -94,7 +94,7 @@ namespace Proyek_UAS
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(191, 100);
             this.label3.TabIndex = 8;
-            this.label3.Text = "Stocks";
+            this.label3.Text = "Products";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 

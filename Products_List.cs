@@ -11,13 +11,13 @@ using System.Data.SqlClient;
 
 namespace Proyek_UAS
 {
-    public partial class Stocks_List : Form
+    public partial class Products_List : Form
     {
         SqlConnection con = new SqlConnection(@"Data Source =(LocalDB)\MSSQLLocalDB;
                                                 AttachDbFilename='C:\PROJECT C DRIVE\VS 2019\Proyek UAS\R_Inventory.mdf';
                                                 Integrated Security = True");
 
-        public Stocks_List()
+        public Products_List()
         {
             InitializeComponent();
         }
@@ -68,7 +68,7 @@ namespace Proyek_UAS
         private void Back_Button_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form stocks = new Purchase_Stocks();
+            Form stocks = new Purchase_Product();
             stocks.Show();
         }
 

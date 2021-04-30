@@ -62,14 +62,14 @@ namespace Proyek_UAS
         private void label3_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form stocks = new Purchase_Stocks();
+            Form stocks = new Purchase_Product();
             stocks.Show();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form stocks = new Purchase_Stocks();
+            Form stocks = new Purchase_Product();
             stocks.Show();
         }
 
