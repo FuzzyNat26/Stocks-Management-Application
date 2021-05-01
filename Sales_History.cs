@@ -166,7 +166,7 @@ namespace Proyek_UAS
                 //refresh view
                 call_sales_history();
 
-                MessageBox.Show("User deleted!");
+                MessageBox.Show("Sales deleted!");
             }
         }
     }
