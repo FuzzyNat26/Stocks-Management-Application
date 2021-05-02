@@ -270,12 +270,12 @@ namespace Proyek_UAS
                                                                      + Bill_Type_Box.Text + "')";
                     input.ExecuteNonQuery();
 
-                    //Input to Sell by taking Sales_ID from Orders
-                    int Sales_ID = 0;
+                    //Input to Sell by taking Order_ID from Orders
+                    int Order_ID = 0;
 
                     SqlCommand input2 = con.CreateCommand();
                     input2.CommandType = CommandType.Text;
-                    input2.CommandText = "SELECT TOP 1 * FROM Orders ORDER BY Sales_ID DESC";
+                    input2.CommandText = "SELECT TOP 1 * FROM Orders ORDER BY Order_ID DESC";
                     input2.ExecuteNonQuery();
 
                     DataTable dataTable2 = new DataTable();
@@ -284,14 +284,14 @@ namespace Proyek_UAS
 
                     foreach (DataRow dataRow2 in dataTable2.Rows)
                     {
-                        Sales_ID = Convert.ToInt32(dataRow2["Sales_ID"].ToString());
+                        Order_ID = Convert.ToInt32(dataRow2["Order_ID"].ToString());
                     }
 
                     foreach (DataRow temp_dataRow in temp_dataTable.Rows)
                     {
                         SqlCommand temp = con.CreateCommand();
                         temp.CommandType = CommandType.Text;
-                        temp.CommandText = "INSERT INTO Sell VALUES('" + Sales_ID + "','"
+                        temp.CommandText = "INSERT INTO Sell VALUES('" + Order_ID + "','"
                                                                     + temp_dataRow["Product_ID"] + "', '"
                                                                     + temp_dataRow["Quantity"] + "', '"
                                                                     + temp_dataRow["Total_Price"] + "')";
@@ -324,7 +324,7 @@ namespace Proyek_UAS
                     if (confirmResult1 == DialogResult.Yes)
                     {
                         Sales_Report report = new Sales_Report();
-                        report.Get_Sales_ID(Convert.ToInt32(Sales_ID.ToString()));
+                        report.Get_Order_ID(Convert.ToInt32(Order_ID.ToString()));
                         report.Show();
                     }
                 }

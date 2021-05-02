@@ -18,18 +18,18 @@ namespace Proyek_UAS
                                                 AttachDbFilename='C:\PROJECT C DRIVE\VS 2019\Proyek UAS\R_Inventory.mdf';
                                                 Integrated Security = True");
 
-        //Set int as Sales_ID
-        int Sales_ID;
+        //Set int as Order_ID
+        int Order_ID;
 
         public Sales_Report()
         {
             InitializeComponent();
         }
 
-        //Get sales_id from Sales and Sales_History
-        public void Get_Sales_ID (int i)
+        //Get Order_ID from Sales and Sales_History
+        public void Get_Order_ID (int i)
         {
-            Sales_ID = i;
+            Order_ID = i;
         }
 
         //Load connection
@@ -47,7 +47,7 @@ namespace Proyek_UAS
             //Select Orders
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT * FROM Orders WHERE Sales_ID = " + Sales_ID + "";
+            cmd.CommandText = "SELECT * FROM Orders WHERE Order_ID = " + Order_ID + "";
             cmd.ExecuteNonQuery();
 
             //Fill table "Orders" in dataset
@@ -57,9 +57,9 @@ namespace Proyek_UAS
             //Select Sell and Products
             SqlCommand cmd1 = con.CreateCommand();
             cmd1.CommandType = CommandType.Text;
-            cmd1.CommandText = "SELECT A.Product_ID, B.Product_Name, A.Quantity, A.Total, A.Sales_ID, A.Total/A.Quantity AS Sell_Price " +
+            cmd1.CommandText = "SELECT A.Product_ID, B.Product_Name, A.Quantity, A.Total, A.Order_ID, A.Total/A.Quantity AS Sell_Price " +
                                     "FROM Sell AS A, Products AS B " +
-                                    "WHERE A.Product_ID = B.Product_ID AND A.Sales_ID ='" + Sales_ID + "'";
+                                    "WHERE A.Product_ID = B.Product_ID AND A.Order_ID ='" + Order_ID + "'";
             cmd1.ExecuteNonQuery();
 
             //Fill table "Sell" in dataset

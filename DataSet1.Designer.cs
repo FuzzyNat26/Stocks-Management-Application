@@ -314,7 +314,7 @@ namespace Proyek_UAS {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class OrdersDataTable : global::System.Data.TypedTableBase<OrdersRow> {
             
-            private global::System.Data.DataColumn columnSales_ID;
+            private global::System.Data.DataColumn columnOrder_ID;
             
             private global::System.Data.DataColumn columnCustomer_Name;
             
@@ -361,9 +361,9 @@ namespace Proyek_UAS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn Sales_IDColumn {
+            public global::System.Data.DataColumn Order_IDColumn {
                 get {
-                    return this.columnSales_ID;
+                    return this.columnOrder_ID;
                 }
             }
             
@@ -444,10 +444,10 @@ namespace Proyek_UAS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public OrdersRow AddOrdersRow(string Sales_ID, string Customer_Name, string Total, string Sales_Date, string Inserted_By, string Bill_Type) {
+            public OrdersRow AddOrdersRow(string Order_ID, string Customer_Name, string Total, string Sales_Date, string Inserted_By, string Bill_Type) {
                 OrdersRow rowOrdersRow = ((OrdersRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        Sales_ID,
+                        Order_ID,
                         Customer_Name,
                         Total,
                         Sales_Date,
@@ -475,7 +475,7 @@ namespace Proyek_UAS {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
-                this.columnSales_ID = base.Columns["Sales_ID"];
+                this.columnOrder_ID = base.Columns["Order_ID"];
                 this.columnCustomer_Name = base.Columns["Customer_Name"];
                 this.columnTotal = base.Columns["Total"];
                 this.columnSales_Date = base.Columns["Sales_Date"];
@@ -486,8 +486,8 @@ namespace Proyek_UAS {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnSales_ID = new global::System.Data.DataColumn("Sales_ID", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSales_ID);
+                this.columnOrder_ID = new global::System.Data.DataColumn("Order_ID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOrder_ID);
                 this.columnCustomer_Name = new global::System.Data.DataColumn("Customer_Name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCustomer_Name);
                 this.columnTotal = new global::System.Data.DataColumn("Total", typeof(string), null, global::System.Data.MappingType.Element);
@@ -639,7 +639,7 @@ namespace Proyek_UAS {
             
             private global::System.Data.DataColumn columnTotal;
             
-            private global::System.Data.DataColumn columnSales_ID;
+            private global::System.Data.DataColumn columnOrder_ID;
             
             private global::System.Data.DataColumn columnSell_Price;
             
@@ -710,9 +710,9 @@ namespace Proyek_UAS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn Sales_IDColumn {
+            public global::System.Data.DataColumn Order_IDColumn {
                 get {
-                    return this.columnSales_ID;
+                    return this.columnOrder_ID;
                 }
             }
             
@@ -761,14 +761,14 @@ namespace Proyek_UAS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public SellRow AddSellRow(string Product_ID, string Product_Name, string Quantity, string Total, string Sales_ID, string Sell_Price) {
+            public SellRow AddSellRow(string Product_ID, string Product_Name, string Quantity, string Total, string Order_ID, string Sell_Price) {
                 SellRow rowSellRow = ((SellRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Product_ID,
                         Product_Name,
                         Quantity,
                         Total,
-                        Sales_ID,
+                        Order_ID,
                         Sell_Price};
                 rowSellRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSellRow);
@@ -796,7 +796,7 @@ namespace Proyek_UAS {
                 this.columnProduct_Name = base.Columns["Product_Name"];
                 this.columnQuantity = base.Columns["Quantity"];
                 this.columnTotal = base.Columns["Total"];
-                this.columnSales_ID = base.Columns["Sales_ID"];
+                this.columnOrder_ID = base.Columns["Order_ID"];
                 this.columnSell_Price = base.Columns["Sell_Price"];
             }
             
@@ -811,8 +811,8 @@ namespace Proyek_UAS {
                 base.Columns.Add(this.columnQuantity);
                 this.columnTotal = new global::System.Data.DataColumn("Total", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTotal);
-                this.columnSales_ID = new global::System.Data.DataColumn("Sales_ID", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSales_ID);
+                this.columnOrder_ID = new global::System.Data.DataColumn("Order_ID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOrder_ID);
                 this.columnSell_Price = new global::System.Data.DataColumn("Sell_Price", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSell_Price);
             }
@@ -957,17 +957,17 @@ namespace Proyek_UAS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Sales_ID {
+            public string Order_ID {
                 get {
                     try {
-                        return ((string)(this[this.tableOrders.Sales_IDColumn]));
+                        return ((string)(this[this.tableOrders.Order_IDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Sales_ID\' in table \'Orders\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Order_ID\' in table \'Orders\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableOrders.Sales_IDColumn] = value;
+                    this[this.tableOrders.Order_IDColumn] = value;
                 }
             }
             
@@ -1053,14 +1053,14 @@ namespace Proyek_UAS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsSales_IDNull() {
-                return this.IsNull(this.tableOrders.Sales_IDColumn);
+            public bool IsOrder_IDNull() {
+                return this.IsNull(this.tableOrders.Order_IDColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetSales_IDNull() {
-                this[this.tableOrders.Sales_IDColumn] = global::System.Convert.DBNull;
+            public void SetOrder_IDNull() {
+                this[this.tableOrders.Order_IDColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1204,17 +1204,17 @@ namespace Proyek_UAS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Sales_ID {
+            public string Order_ID {
                 get {
                     try {
-                        return ((string)(this[this.tableSell.Sales_IDColumn]));
+                        return ((string)(this[this.tableSell.Order_IDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Sales_ID\' in table \'Sell\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Order_ID\' in table \'Sell\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSell.Sales_IDColumn] = value;
+                    this[this.tableSell.Order_IDColumn] = value;
                 }
             }
             
@@ -1284,14 +1284,14 @@ namespace Proyek_UAS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsSales_IDNull() {
-                return this.IsNull(this.tableSell.Sales_IDColumn);
+            public bool IsOrder_IDNull() {
+                return this.IsNull(this.tableSell.Order_IDColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetSales_IDNull() {
-                this[this.tableSell.Sales_IDColumn] = global::System.Convert.DBNull;
+            public void SetOrder_IDNull() {
+                this[this.tableSell.Order_IDColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

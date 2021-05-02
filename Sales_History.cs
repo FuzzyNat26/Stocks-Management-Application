@@ -61,13 +61,13 @@ namespace Proyek_UAS
             Data_SalesID_ProductHistory_View.DataSource = null;
             Data_SalesID_ProductHistory_View.Rows.Clear();
 
-            int Sales_ID = Convert.ToInt32(Data_Sales_History_View.SelectedCells[0].Value.ToString());
+            int Order_ID = Convert.ToInt32(Data_Sales_History_View.SelectedCells[0].Value.ToString());
 
             SqlCommand find = con.CreateCommand();
             find.CommandType = CommandType.Text;
             find.CommandText = "SELECT A.Product_ID, B.Product_Name, A.Quantity, A.Total " +
                                     "FROM Sell AS A, Products AS B " +
-                                    "WHERE A.Product_ID = B.Product_ID AND A.Sales_ID ='" + Sales_ID +"'";
+                                    "WHERE A.Product_ID = B.Product_ID AND A.Order_ID ='" + Order_ID +"'";
             find.ExecuteNonQuery();
 
             DataTable found = new DataTable();
@@ -110,9 +110,9 @@ namespace Proyek_UAS
             var confirmResult1 = MessageBox.Show("Do you want to print this sales?", "Confirmation", MessageBoxButtons.YesNo);
             if (confirmResult1 == DialogResult.Yes)
             {
-                int Sales_ID = Convert.ToInt32(Data_Sales_History_View.SelectedCells[0].Value.ToString());
+                int Order_ID = Convert.ToInt32(Data_Sales_History_View.SelectedCells[0].Value.ToString());
                 Sales_Report report = new Sales_Report();
-                report.Get_Sales_ID(Convert.ToInt32(Sales_ID.ToString()));
+                report.Get_Order_ID(Convert.ToInt32(Order_ID.ToString()));
                 report.Show();
             }
         }
@@ -123,18 +123,18 @@ namespace Proyek_UAS
             var confirmResult = MessageBox.Show("Are you sure you want to delete this sales?", "Confirmation", MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
-                var Sales_ID = Data_Sales_History_View.SelectedCells[0].Value.ToString();
+                var Order_ID = Data_Sales_History_View.SelectedCells[0].Value.ToString();
 
                 //Delete data from Sold_Product_History
                 SqlCommand del1 = con.CreateCommand();
                 del1.CommandType = CommandType.Text;
-                del1.CommandText = "DELETE FROM Sell WHERE Sales_ID ='" + Sales_ID + "'";
+                del1.CommandText = "DELETE FROM Sell WHERE Order_ID ='" + Order_ID + "'";
                 del1.ExecuteNonQuery();
 
                 //Delete data from Orders
                 SqlCommand del = con.CreateCommand();
                 del.CommandType = CommandType.Text;
-                del.CommandText = "DELETE FROM Orders WHERE Sales_ID ='" + Sales_ID + "'";
+                del.CommandText = "DELETE FROM Orders WHERE Order_ID ='" + Order_ID + "'";
                 del.ExecuteNonQuery();
 
 
