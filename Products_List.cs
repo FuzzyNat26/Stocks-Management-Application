@@ -113,7 +113,7 @@ namespace Proyek_UAS
                     cmd.ExecuteNonQuery();
 
                     //Reset text
-                    Product_Name_Box.Text = ""; Username_Box.Text = ""; Input_Date_Box.Text = "";
+                    Product_Name_Box.Text = "";
 
                     //Refresh Table
                     display();

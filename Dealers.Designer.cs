@@ -181,7 +181,7 @@ namespace Proyek_UAS
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(322, 51);
             this.deleteButton.TabIndex = 41;
-            this.deleteButton.Text = "DELETE DEALER";
+            this.deleteButton.Text = "DISABLE DEALER";
             this.deleteButton.UseVisualStyleBackColor = false;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
@@ -242,6 +242,7 @@ namespace Proyek_UAS
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Name = "Dealers";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dealers";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_Closed);
             this.Load += new System.EventHandler(this.Dealers_Load);

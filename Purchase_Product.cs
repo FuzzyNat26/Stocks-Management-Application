@@ -134,7 +134,7 @@ namespace Proyek_UAS
             Dealer_Name_Box.Items.Clear();
             SqlCommand fill = con.CreateCommand();
             fill.CommandType = CommandType.Text;
-            fill.CommandText = "SELECT * FROM Dealers";
+            fill.CommandText = "SELECT * FROM Dealers WHERE Status='TRUE'";
             fill.ExecuteNonQuery();
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(fill);

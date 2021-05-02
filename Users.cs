@@ -157,7 +157,7 @@ namespace Proyek_UAS
             var username = dataGridView1.SelectedCells[2].Value.ToString();
             if (User_Log.Username == username)
             {
-                MessageBox.Show("You can't delete yourself!");
+                MessageBox.Show("You can't disable yourself!");
             }
             else
             {

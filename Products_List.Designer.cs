@@ -173,7 +173,7 @@ namespace Proyek_UAS
             this.Username_Box.Size = new System.Drawing.Size(267, 35);
             this.Username_Box.TabIndex = 76;
             // 
-            // Stocks_List
+            // Products_List
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -190,8 +190,9 @@ namespace Proyek_UAS
             this.Controls.Add(this.Product_Name_Box);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
-            this.Name = "Stocks_List";
-            this.Text = "Insert Stocks Name";
+            this.Name = "Products_List";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Insert Product Name";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_Closed);
             this.Load += new System.EventHandler(this.Stocks_Name_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

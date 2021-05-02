@@ -394,7 +394,7 @@ namespace Proyek_UAS
             this.Selling_Price_Box.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Only_Accept_Number_Key_Press);
             this.Selling_Price_Box.Leave += new System.EventHandler(this.Selling_Price_Leave);
             // 
-            // Purchase_Stocks
+            // Purchase_Product
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -427,7 +427,8 @@ namespace Proyek_UAS
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
-            this.Name = "Purchase_Stocks";
+            this.Name = "Purchase_Product";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Purchase Stocks";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_Closed);
             this.Load += new System.EventHandler(this.Add_Stocks_Load);

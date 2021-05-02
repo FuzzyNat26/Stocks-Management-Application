@@ -47,7 +47,7 @@ namespace Proyek_UAS
         {
             SqlCommand display = con.CreateCommand();
             display.CommandType = CommandType.Text;
-            display.CommandText = "SELECT * FROM Dealers";
+            display.CommandText = "SELECT Dealer_ID, Dealer_Name, Email_Address, Address, Telephone, Inserted_By FROM Dealers WHERE Status='TRUE'";
             display.ExecuteNonQuery();
 
             DataTable dataTable = new DataTable();
@@ -99,29 +99,49 @@ namespace Proyek_UAS
                 var confirmResult = MessageBox.Show(Texts, "Confirmation", MessageBoxButtons.YesNo);
                 if (confirmResult == DialogResult.Yes)
                 {
-                    //Insert data to Dealers
-                    SqlCommand cmd = con.CreateCommand();
-                    cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "INSERT INTO Dealers VALUES ('" + DealerNameBox.Text + "','" +
-                                                                        DealerEmailBox.Text + "','" +
-                                                                        DealerAddressBox.Text + "','" +
-                                                                        DealerPhoneBox.Text + "','" +
-                                                                        Inserted_By_Box.Text + "')";
-                    cmd.ExecuteNonQuery();
+                    int i = 0;
 
-                    //Reset text
-                    DealerNameBox.Text = ""; DealerEmailBox.Text = "";
-                    DealerAddressBox.Text = ""; DealerPhoneBox.Text = "";
-                    Inserted_By_Box.Text = "";
+                    //Check if there are the same username
+                    SqlCommand check = con.CreateCommand();
+                    check.CommandType = CommandType.Text;
+                    check.CommandText = "SELECT Dealer_Name FROM Dealers WHERE Dealer_Name='" + DealerNameBox.Text + "'";
+                    check.ExecuteNonQuery();
 
-                    //Refresh Table
-                    display();
+                    DataTable dataTable = new DataTable();
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter(check);
+                    dataAdapter.Fill(dataTable);
+                    i = Convert.ToInt32(dataTable.Rows.Count.ToString());
 
-                    MessageBox.Show("New Dealer Added!");
+                    if (i == 0) //If no, do this
+                    {
+                        //Insert data to Dealers
+                        SqlCommand cmd = con.CreateCommand();
+                        cmd.CommandType = CommandType.Text;
+                        cmd.CommandText = "INSERT INTO Dealers VALUES ('" + DealerNameBox.Text + "','" +
+                                                                            DealerEmailBox.Text + "','" +
+                                                                            DealerAddressBox.Text + "','" +
+                                                                            DealerPhoneBox.Text + "','" +
+                                                                            Inserted_By_Box.Text + "','" +
+                                                                            "TRUE" + "')";
+                        cmd.ExecuteNonQuery();
+
+                        //Reset text
+                        DealerNameBox.Text = ""; DealerEmailBox.Text = "";
+                        DealerAddressBox.Text = ""; DealerPhoneBox.Text = "";
+
+                        //Refresh Table
+                        display();
+
+                        MessageBox.Show("New Dealer Added!");
+                    }
+                    else //If yes, do this
+                    {
+                        MessageBox.Show("Oops! Try Again!");
+                    }
                 }
-                else //If yes, do this
+                else //If there is the same username, do this
                 {
-                    MessageBox.Show("Oops! Try Again!");
+                    MessageBox.Show("There is a similar or disabled dealer name." + Environment.NewLine + "Try change to a new dealer name!");
                 }
             }
         }
@@ -129,18 +149,18 @@ namespace Proyek_UAS
         //Delete dealers
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            var confirmResult = MessageBox.Show("Are you sure you want to delete this user?", "Confirmation", MessageBoxButtons.YesNo);
+            var confirmResult = MessageBox.Show("Are you sure you want to disable this dealer?", "Confirmation", MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
                 var Dealer_ID = dataGridView1.SelectedCells[0].Value.ToString();
                 SqlCommand cmd = con.CreateCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "DELETE FROM Dealers where Dealer_ID='" + Dealer_ID + "';";
+                cmd.CommandText = "UPDATE Dealers SET Status='FALSE' WHERE Dealer_ID='" + Dealer_ID + "';";
                 cmd.ExecuteNonQuery();
 
                 display();
 
-                MessageBox.Show("User deleted!");
+                MessageBox.Show("Dealer disabled!");
             }
         }
     }
