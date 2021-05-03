@@ -161,7 +161,7 @@ namespace Proyek_UAS
             }
             else
             {
-                var confirmResult = MessageBox.Show("Are you sure you want to delete this user?", "Confirmation", MessageBoxButtons.YesNo);
+                var confirmResult = MessageBox.Show("Are you sure you want to disable this user?", "Confirmation", MessageBoxButtons.YesNo);
                 if (confirmResult == DialogResult.Yes)
                 {
                     SqlCommand cmd = con.CreateCommand();
