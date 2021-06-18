@@ -13,10 +13,7 @@ namespace Proyek_UAS
 {
     public partial class Sales : Form
     {
-        //Establish connection to database
-        SqlConnection con = new SqlConnection(@"Data Source =(LocalDB)\MSSQLLocalDB;
-                                                AttachDbFilename='C:\PROJECT C DRIVE\VS 2019\Proyek UAS\R_Inventory.mdf';
-                                                Integrated Security = True");
+        SqlConnection con = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Proyek_UAS.Properties.Settings.InventoryConnectionString"].ToString());
 
         //Temporary datatable for datagridview
         DataTable temp_dataTable = new DataTable();
@@ -50,9 +47,9 @@ namespace Proyek_UAS
             temp_dataTable.Clear();
             temp_dataTable.Columns.Add("Product_ID");
             temp_dataTable.Columns.Add("Product_Name");
-            temp_dataTable.Columns.Add("Product_Price");
+            temp_dataTable.Columns.Add("Product_Price", typeof(Int32));
             temp_dataTable.Columns.Add("Quantity");
-            temp_dataTable.Columns.Add("Total_Price");
+            temp_dataTable.Columns.Add("Total_Price", typeof(Int32));
         }
 
         //Go to sales history

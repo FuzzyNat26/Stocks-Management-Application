@@ -13,10 +13,7 @@ namespace Proyek_UAS
 {
     public partial class Sales_History : Form
     {
-        //Establish connection with database
-        SqlConnection con = new SqlConnection(@"Data Source =(LocalDB)\MSSQLLocalDB;
-                                                AttachDbFilename='C:\PROJECT C DRIVE\VS 2019\Proyek UAS\R_Inventory.mdf';
-                                                Integrated Security = True");
+        SqlConnection con = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Proyek_UAS.Properties.Settings.InventoryConnectionString"].ToString());
 
         public Sales_History()
         {
@@ -53,6 +50,8 @@ namespace Proyek_UAS
             SqlDataAdapter da_sales = new SqlDataAdapter(call_sales);
             da_sales.Fill(sales_history);
             Data_Sales_History_View.DataSource = sales_history;
+
+            Data_Sales_History_View.Columns["Total"].DefaultCellStyle.Format = "N2";
         }
 
         //Display right datagrid for every left datagrid row clicked
@@ -74,7 +73,7 @@ namespace Proyek_UAS
             SqlDataAdapter da_found = new SqlDataAdapter(find);
             da_found.Fill(found);
 
-            found.Columns.Add("Sell_Price");
+            found.Columns.Add("Sell_Price", typeof(Int32));
 
             foreach (DataRow temp_dr in found.Rows)
             {
@@ -82,6 +81,8 @@ namespace Proyek_UAS
             }
 
             Data_SalesID_ProductHistory_View.DataSource = found;
+            Data_SalesID_ProductHistory_View.Columns["Sell_Price"].DefaultCellStyle.Format = "N2";
+            Data_SalesID_ProductHistory_View.Columns["Total"].DefaultCellStyle.Format = "N2";
 
             AdjustColumnOrder();
         }
