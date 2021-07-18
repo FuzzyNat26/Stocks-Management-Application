@@ -22,7 +22,6 @@ namespace Proyek_UAS
             Application.Exit();
         }
 
-        //Hello <log in user>
         private void Home_Load(object sender, EventArgs e)
         {
             label6.Text = "Hello " + User_Log.Username;
